@@ -80,7 +80,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div style="margin-bottom: 16px;">个人使用的一个博客</div>
 <nav class="SideNav border">
-<a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/%E3%80%90-xin-shou-jiao-cheng-%E3%80%91Markdown-ji-chu-yu-fa.html">
+<a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/2.html">
     <div class="d-flex flex-items-center">
         <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
@@ -91,7 +91,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
         <span class="Label LabelName" style="background-color:#5166BF"><object><a style="color:#fff" href="tag.html#教程">教程</a></object></span>
         <span class="Label LabelTime" style="background-color:#bc4c00">2024-08-29</span>
     </div>
-</a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/%E3%80%90-xin-shou-jiao-cheng-%E3%80%91-ben-bo-ke-wen-zhang-de-fa-biao.html">
+</a><a class="SideNav-item d-flex flex-items-center flex-justify-between" href="post/1.html">
     <div class="d-flex flex-items-center">
         <svg class="SideNav-icon octicon" style="witdh:16px;height:16px"><path class="svgTop0" d=""></path>
         </svg>
@@ -114,8 +114,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 var now=new Date();
 document.getElementById("copyrightYear").innerHTML=now.getFullYear();
 
-if(""!=""){
-    var startSite=new Date("");
+if("08/20/2024"!=""){
+    var startSite=new Date("08/20/2024");
     var diff=now.getTime()-startSite.getTime();
     var diffDay=Math.floor(diff/(1000*60*60*24));
     document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
