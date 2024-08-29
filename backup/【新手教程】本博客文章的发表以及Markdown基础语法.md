@@ -1,3 +1,5 @@
+# 发表文章及Markdown语法
+
 # 一、本博客文章的发表
 
 ## 1.访问github
@@ -80,7 +82,9 @@
 
 使用方括号`[]`来包含链接文本，圆括号`()`来包含URL
 
-`[这是一个链接](https://www.example.com)`
+```
+[这是一个链接](https://www.example.com)
+```
 
 [这是一个链接](https://www.example.com)
 
@@ -88,7 +92,9 @@
 
 和链接类似，但是前面加上一个感叹号`!`。
 
-`![这是图片的标记文字](https://www.example.com/image.jpg)`
+```
+![这是图片的标记文字](https://www.example.com/image.jpg)
+```
 
 ![这是图片的标记文字](https://www.example.com/image.jpg)
 
@@ -102,16 +108,20 @@
 ```
 > [!NOTE]
 > Useful information that users should know, even when skimming content.
-
+```
+```
 > [!TIP]
 > Helpful advice for doing things better or more easily.
-
+```
+```
 > [!IMPORTANT]
 > Key information users need to know to achieve their goal.
-
+```
+```
 > [!WARNING]
 > Urgent info that needs immediate user attention to avoid problems.
-
+```
+```
 > [!CAUTION]
 > Advises about risks or negative outcomes of certain actions.
 ```
