@@ -3,6 +3,6 @@
     "subTitle":"个人使用的一个博客",
     "avatarUrl":"https://avatars.githubusercontent.com/u/118879111?v=4",
     "GMEEK_VERSION":"last",
-    "script":"https://blog.meekdai.com/Gmeek/plugins/articletoc.js</script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>",
+    "script":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>",
     "allHead":"<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>"
 }
