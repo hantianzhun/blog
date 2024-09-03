@@ -28,6 +28,9 @@ https://wwwe.lanzouq.com/ibQ6728pr7mh
 > [!NOTE]
 > 书源需自行寻找，这里给一个[源仓库](https://www.yckceo.com/yuedu/index/index.html)地址
 
+> [!TIP]
+> 源仓库的使用请看[这里](https://blog.hanli.us.kg/post/4.html)
+
 |         1.打开阅读软件，tag显示在左下角叠放的两本书          |       2.最下面找到我的（类似联系人图标），进入书源管理       |        3.点开右上角三个点，网络导入在源仓库找到的书源        |     4.可在第一步的界面，点击右上角搜索键进行小说等的搜索     |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://wp-cdn.4ce.cn/v2/4264e60fd0201ddbfd3aa.png" alt="1547.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/dfaf82e57c73376397ee9.png" alt="1549.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/645841af0004df44fc2c2.png" alt="1550.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/fd22c373fb045cc48a727.png" alt="1551.png" style="zoom:20%;" /> |
