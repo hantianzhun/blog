@@ -121,6 +121,17 @@ _这是斜体_
 
 ![这是图片的标记文字](https://www.example.com/image.jpg)
 
+可以使用html标签对图片进行缩放
+
+``` 
+<img src="https://www.example.com/image.jpg" width="50%" height="50%" alt="这是图片的标记文字" />
+
+``` 
+
+``` 
+<img src="https://www.example.com/image.jpg" style="zoom:25% alt="这是图片的标记文字" />
+
+```
 ## 7.引用
 
 使用`>`来创建引用。
