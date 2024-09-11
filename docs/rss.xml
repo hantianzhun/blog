@@ -1,7 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Wed, 11 Sep 2024 03:13:19 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>1</title><link>https://hantianzhun.github.io/blog/post/5.html</link><description>
-&gt; [!NOTE] 
-&gt; 办事。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/5.html</guid><pubDate>Sun, 08 Sep 2024 06:39:02 +0000</pubDate></item><item><title> 阅读源仓库的使用
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Wed, 11 Sep 2024 03:30:29 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Android端压缩与解压</title><link>https://hantianzhun.github.io/blog/post/5.html</link><description>## 1.安装软件&#13;
+&#13;
+### 1.1两款软件&#13;
+&#13;
+#### ZArchiverPro&#13;
+&#13;
+&gt; [!NOTE]&#13;
+&gt; ZArchiverPro是大佬分享的，可以使用我提供是链接进行下载，有必要可以**支持正版**&#13;
+&gt;&#13;
+&gt; 只要不是远古手机或者是Redmi 9A等使用32位系统的，都**建议使用64位版本**&#13;
+&gt;&#13;
+&gt; [armv8a(64位)](https://wwwe.lanzouq.com/i0GYG29iqykf) 密码:h80j	[armv7a(32位)](https://wwwe.lanzouq.com/iqbji1npc15i) 密码:9fih&#13;
+&#13;
+#### MT文件管理器&#13;
+&#13;
+&gt; [!NOTE]&#13;
+&gt;&#13;
+&gt; [下载地址](https://mt2.cn/)&#13;
+&gt;&#13;
+&gt; mt管理器其免费功能已经够用**！！！！**&#13;
+&gt;&#13;
+&gt; **如果出现zip文件乱码的，可以尝试mt管理器解压。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/5.html</guid><pubDate>Sun, 08 Sep 2024 06:39:02 +0000</pubDate></item><item><title> 阅读源仓库的使用
 
 </title><link>https://hantianzhun.github.io/blog/post/4.html</link><description>## 一、访问网址&#13;
 ### [源仓库](https://www.yckceo.com/yuedu/index/index.html)的地址&#13;
