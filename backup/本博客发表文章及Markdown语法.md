@@ -4,13 +4,13 @@
 
 **访问[写作地址](https://github.com/hantianzhun/hantianzhun.github.io)，可以得到如下页面，此时最好先登录github账号。**
 
-![1.png](https://wp-cdn.4ce.cn/v2/b4ff7c9e45871f76c9339.png)
+![1.png](https://hantianzhun.github.io/blog/issues1.1.png)
 
 ## 2.打开Issues
 
 **点击Issues，可以看到如下内容。**
 
-![2.png](https://wp-cdn.4ce.cn/v2/88b774563940a237ffd83.png)
+![2.png](https://hantianzhun.github.io/blog/issues1.2.png)
 
 ## 3.撰写
 
@@ -19,19 +19,19 @@
 > [!TIP]
 > 这里给一个我使用的[图床网站](https://wp-cdn.4ce.cn/)
 
-![3.png](https://wp-cdn.4ce.cn/v2/45624a5550a011015d993.png)
+![3.png](https://hantianzhun.github.io/blog/issues1.3.png)
 
 ## 4.重新编辑
 
 **如果想要重新编辑之前写过的文章，点开自己之前的Issues，按下图所示进行即可。**
 
-![4.png](https://wp-cdn.4ce.cn/v2/9cdfca4c59c7e56b1805c.png)
+![4.png](https://hantianzhun.github.io/blog/issues1.4.png)
 
 ## 5.删除
 
 **想要删除所写的文章，往下拉，在下面可以看到如下图所示，点击delete的按钮按提示操作即可。**
 
-![5.png](https://wp-cdn.4ce.cn/v2/e60eff8fa613c8032e9d4.png)
+![5.png](https://hantianzhun.github.io/blog/issues1.5.png)
 
 # 二、Markdown语法
 
