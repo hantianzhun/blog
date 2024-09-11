@@ -17,7 +17,7 @@ https://wwwe.lanzouq.com/iCc5S28g8i6j
 ```
 |                    1.这里以via浏览器为例                     |                        2.点击电脑模式                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://wp-cdn.4ce.cn/v2/c5d9b016ae12a971755b0.png" alt="20482.png" style="zoom:25%;" /> | <img src="https://wp-cdn.4ce.cn/v2/22cb19175e14347678a1f.png" alt="20483.png" style="zoom:25%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues2.1.png" alt="20482.png" style="zoom:25%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.2.png" alt="20483.png" style="zoom:25%;" /> |
 |                             图一                             |                             图二                             |
 
 > [!TIP]
@@ -27,12 +27,12 @@ https://wwwe.lanzouq.com/iCc5S28g8i6j
 
 |               1.安装之后出现如下界面，点击配置               |         2.点击配置，出现如下图二界面，点击右上角+号          |                    3.即可出现如下图三页面                    |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://wp-cdn.4ce.cn/v2/0aa1396b4e4efafcdcfd8.png" alt="20489.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/9f986f4451e75fc226b30.png" alt="20490.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/5285ffe119f13de7d1ab3.png" alt="20491.png" style="zoom:20%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues2.3.png" alt="20489.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.4.png" alt="20490.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.5.png" alt="20491.png" style="zoom:20%;" /> |
 |                             图一                             |                             图二                             |                             图三                             |
 
 | 1.点击从URL导入，在URL处填写你的坤场的订阅链接，名称随便，自动更新按需，填写完成后，点击右上角保存即可 | 2.保存之后等待配置文件下载，完成后会显示如下图二界面 点击选中此订阅，返回首页 | 3.点击点此启动，第一次会弹出如下图三界面，点击确认即可开始愉快的使用 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://wp-cdn.4ce.cn/v2/398147fe39bf03045c4a5.png" alt="20492.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/ad4693d28b7254c6eadca.png" alt="20493.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/9b917914d063dd5362da1.png" alt="20494.png" style="zoom:20%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues2.6.png" alt="20492.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.7.png" alt="20493.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.8.png" alt="20494.png" style="zoom:20%;" /> |
 |                             图一                             |                             图二                             |                             图三                             |
 
 > [!NOTE]
