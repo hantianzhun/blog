@@ -17,7 +17,7 @@ https://wwwe.lanzouq.com/ibQ6728pr7mh
 
 |                    1.这里以via浏览器为例                     |                        2.点击电脑模式                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://wp-cdn.4ce.cn/v2/c5d9b016ae12a971755b0.png" alt="20482.png" style="zoom:25%;" /> | <img src="https://wp-cdn.4ce.cn/v2/22cb19175e14347678a1f.png" alt="20483.png" style="zoom:25%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues2.1.png" alt="20482.png" style="zoom:25%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.2.png" alt="20483.png" style="zoom:25%;" /> |
 |                             图一                             |                             图二                             |
 
 > [!TIP]
@@ -33,7 +33,7 @@ https://wwwe.lanzouq.com/ibQ6728pr7mh
 
 |         1.打开阅读软件，tag显示在左下角叠放的两本书          |       2.最下面找到我的（类似联系人图标），进入书源管理       |        3.点开右上角三个点，网络导入在源仓库找到的书源        |     4.可在第一步的界面，点击右上角搜索键进行小说等的搜索     |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://wp-cdn.4ce.cn/v2/4264e60fd0201ddbfd3aa.png" alt="1547.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/dfaf82e57c73376397ee9.png" alt="1549.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/645841af0004df44fc2c2.png" alt="1550.png" style="zoom:20%;" /> | <img src="https://wp-cdn.4ce.cn/v2/fd22c373fb045cc48a727.png" alt="1551.png" style="zoom:20%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues3.1.png" alt="1547.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues3.2.png" alt="1549.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues3.3.png" alt="1550.png" style="zoom:20%;" /> | <img src="https://hantianzhun.github.io/blog/issues3.4.png" alt="1551.png" style="zoom:20%;" /> |
 |                             图一                             |                             图二                             |                             图三                             |                             图四                             |
 
 **找到的本地书源就使用本地导入，选择系统文件选择器，找到你下载书源的位置，点击导入**
