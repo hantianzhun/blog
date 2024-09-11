@@ -28,7 +28,7 @@
 
 |                    1.这里以via浏览器为例                     |                        2.点击电脑模式                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://wp-cdn.4ce.cn/v2/c5d9b016ae12a971755b0.png" alt="20482.png" style="zoom:25%;" /> | <img src="https://wp-cdn.4ce.cn/v2/22cb19175e14347678a1f.png" alt="20483.png" style="zoom:25%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues2.1.png" alt="20482.png" style="zoom:25%;" /> | <img src="https://hantianzhun.github.io/blog/issues2.2.png" alt="20483.png" style="zoom:25%;" /> |
 |                             图一                             |                             图二                             |
 
 > [!TIP]
@@ -45,14 +45,14 @@
 
 | 打开mt文件管理器，找到压缩文件的位置 | 点击压缩文件是预览压缩文件 | 长按压缩文件，弹出选项选择解压到选项 | 选择合适的路径或者方法，解压成功即可在对应位置看到解压缩后的文件 |
 | :----------------------------------: | :------------------------: | :----------------------------------: | :----------------------------------------------------------: |
-| <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICZWbhDWHfpCC5PlaQIdrF66b7yoLVAAJovjEbly4JV9ZdUUnw5DlLAQADAgADdwADNgQ.png" alt="issues5.1.png" style="zoom: 50%;" /> | <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICZmbhDWEAAYQHY-7D5gZDHVc5ykn0QwACab4xG5cuCVdyHM1UdERgZgEAAwIAA3cAAzYE.png" alt="issues5.2.png" style="zoom: 50%;" /> | <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICaGbhDWLniQ5DYaup4zLf6xHqa4_GAAJrvjEbly4JVxcm_C3iagmFAQADAgADdwADNgQ.png" alt="issues5.3.png" style="zoom: 50%;" /> | <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICaWbhDWK_ICi4nhhhuUyABUM9N3S_AAJsvjEbly4JVxbQsbBwme3lAQADAgADdwADNgQ.png" alt="issues5.4.png" style="zoom: 50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues5.1.png" alt="issues5.1.png" style="zoom: 50%;" /> | <img src="https://hantianzhun.github.io/blog/issues5.2.png" alt="issues5.2.png" style="zoom: 50%;" /> | <img src="https://hantianzhun.github.io/blog/issues5.3.png" alt="issues5.3.png" style="zoom: 50%;" /> | <img src="https://hantianzhun.github.io/blog/issues5.4.png" alt="issues5.4.png" style="zoom: 50%;" /> |
 |                 图一                 |            图二            |                 图三                 |                             图四                             |
 
 ### ZArchiverPro
 
 | 打开ZArchiverPro，找到压缩文件的位置 | 点击压缩文件，弹出选项有很多，查看、解压到当前文件夹、解压到当前文件夹下面压缩包文件名的文件夹下、解压、测试、压缩 | 选择合适的路径或者方法，解压成功即可在对应位置看到解压缩后的文件 |
 | :----------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICZ2bhDWHiL567vkd5auH69ebXuW0rAAJqvjEbly4JV9lI2nU-Hc_aAQADAgADdwADNgQ.png" alt="issues5.5.png" style="zoom:50%;" /> | <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICa2bhDWfSeHiorbJJVHNI7JgxqsaxAAJuvjEbly4JVxu4_kt_8FCsAQADAgADdwADNgQ.png" alt="issues5.6.png" style="zoom:50%;" /> | <img src="https://demo-cloudflare-imgbed.pages.dev/file/AgACAgUAAyEGAASI6XYGAAICambhDWcxLJH0FV6hB0cik052GdQoAAJtvjEbly4JVxIebomR2fd4AQADAgADdwADNgQ.png" alt="issues5.7.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues5.5.png" alt="issues5.5.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues5.6.png" alt="issues5.6.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues5.7.png" alt="issues5.7.png" style="zoom:50%;" /> |
 |                 图一                 |                             图二                             |                             图三                             |
 
 > [!IMPORTANT]
