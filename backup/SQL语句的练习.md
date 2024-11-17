@@ -316,7 +316,8 @@ hiredate DATE,
 sal DECIMAL(9,2),
 COMM DECIMAL(9,2),
 deptno INT,
-FOREIGN KEY(deptno) REFERENCES dept(deptno) ON DELETE CASCADE ON UPDATE CASCADE -- 代表在主表有删除和更新时，从表会对应的删除记录和更新记录
+FOREIGN KEY(deptno) REFERENCES dept(deptno) ON DELETE CASCADE ON UPDATE CASCADE
+#代表在主表有删除和更新时，从表会对应的删除记录和更新记录
 )CHARSET=utf8;
 
 INSERT INTO emp2 VALUES(1007,'张飞','经理',1009,'2001-09-01',24500.00,NULL,10);

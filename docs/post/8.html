@@ -929,7 +929,8 @@ hiredate <span class="pl-k">DATE</span>,
 sal <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
 COMM <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
 deptno <span class="pl-k">INT</span>,
-<span class="pl-k">FOREIGN KEY</span>(deptno) <span class="pl-k">REFERENCES</span> dept(deptno) <span class="pl-k">ON DELETE CASCADE</span> <span class="pl-k">ON</span> <span class="pl-k">UPDATE</span> CASCADE <span class="pl-c"><span class="pl-c">--</span> 代表在主表有删除和更新时，从表会对应的删除记录和更新记录</span>
+<span class="pl-k">FOREIGN KEY</span>(deptno) <span class="pl-k">REFERENCES</span> dept(deptno) <span class="pl-k">ON DELETE CASCADE</span> <span class="pl-k">ON</span> <span class="pl-k">UPDATE</span> CASCADE
+<span class="pl-c"><span class="pl-c">#</span>代表在主表有删除和更新时，从表会对应的删除记录和更新记录</span>
 )CHARSET<span class="pl-k">=</span>utf8;
 
 <span class="pl-k">INSERT INTO</span> emp2 <span class="pl-k">VALUES</span>(<span class="pl-c1">1007</span>,<span class="pl-s"><span class="pl-pds">'</span>张飞<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>,<span class="pl-c1">1009</span>,<span class="pl-s"><span class="pl-pds">'</span>2001-09-01<span class="pl-pds">'</span></span>,<span class="pl-c1">24500</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">10</span>);
