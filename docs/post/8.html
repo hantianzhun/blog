@@ -920,7 +920,6 @@ deptno <span class="pl-k">INT</span>,
 <span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span>(<span class="pl-c1">1003</span>,<span class="pl-s"><span class="pl-pds">'</span>赵六<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>开发<span class="pl-pds">'</span></span>,<span class="pl-k">NULL</span>,<span class="pl-s"><span class="pl-pds">'</span>2020-01-01<span class="pl-pds">'</span></span>,<span class="pl-c1">10000</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">30</span>);
 
 <span class="pl-c"><span class="pl-c">#</span>从表 员工表2</span>
-<span class="pl-c"><span class="pl-c">#</span>ON DELETE CASCADE ON UPDATE CASCADE 代表在主表有删除和更新时，从表会对应的删除记录和更新记录</span>
 <span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">emp2</span>(
 empno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
 empname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>) <span class="pl-k">NOT NULL</span>,
@@ -930,8 +929,8 @@ hiredate <span class="pl-k">DATE</span>,
 sal <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
 COMM <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
 deptno <span class="pl-k">INT</span>,
-<span class="pl-k">FOREIGN KEY</span>(deptno) <span class="pl-k">REFERENCES</span> dept(deptno) <span class="pl-k">ON DELETE CASCADE</span> <span class="pl-k">ON</span> <span class="pl-k">UPDATE</span> CASCADE
-)CHARSET<span class="pl-k">=</span>utf8;
+<span class="pl-k">FOREIGN KEY</span>(deptno) <span class="pl-k">REFERENCES</span> dept(deptno) <span class="pl-k">ON DELETE CASCADE</span> <span class="pl-k">ON</span> <span class="pl-k">UPDATE</span> CASCADE)CHARSET<span class="pl-k">=</span>utf8;
+<span class="pl-c"><span class="pl-c">#</span>ON DELETE CASCADE ON UPDATE CASCADE 代表在主表有删除和更新时，从表会对应的删除记录和更新记录</span>
 
 <span class="pl-k">INSERT INTO</span> emp2 <span class="pl-k">VALUES</span>(<span class="pl-c1">1007</span>,<span class="pl-s"><span class="pl-pds">'</span>张飞<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>,<span class="pl-c1">1009</span>,<span class="pl-s"><span class="pl-pds">'</span>2001-09-01<span class="pl-pds">'</span></span>,<span class="pl-c1">24500</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">10</span>);
 <span class="pl-k">INSERT INTO</span> emp2 <span class="pl-k">VALUES</span>(<span class="pl-c1">1008</span>,<span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>分析师<span class="pl-pds">'</span></span>,<span class="pl-c1">1004</span>,<span class="pl-s"><span class="pl-pds">'</span>2007-04-19<span class="pl-pds">'</span></span>,<span class="pl-c1">30000</span>.<span class="pl-c1">00</span> ,<span class="pl-k">NULL</span>,<span class="pl-c1">20</span>);
