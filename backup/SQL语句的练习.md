@@ -13,7 +13,7 @@ USE exam;
 /*创建部门表*/
 CREATE TABLE dept(
 deptno INT PRIMARY KEY,
-dname	VARCHAR(50),
+dname VARCHAR(50),
 loc VARCHAR(50)
 );
 
