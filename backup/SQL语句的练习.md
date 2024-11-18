@@ -6,7 +6,7 @@
 ```sql
 DROP database IF EXISTS exam;
 
-CREATE DATABASE IF NOT EXISTS  exam CHARSET=utf8;  
+CREATE DATABASE IF NOT EXISTS exam CHARSET=utf8;  
 
 USE exam;
 
@@ -31,7 +31,7 @@ deptno INT
 
 /*创建工资等级表*/
 CREATE TABLE salgrade(
-grade	 INT PRIMARY KEY,
+grade INT PRIMARY KEY,
 losal INT,
 hisal INT
 );
