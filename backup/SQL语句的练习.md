@@ -441,3 +441,64 @@ JOIN dept ON emp.`deptno`=dept.`deptno`
 JOIN salgrade ON sal>=losal AND sal<=hisal
 LEFT JOIN emp AS e ON emp.`mgr`=e.`empno`;
 ```
+
+###6.子查询
+```sql
+# 1.查询工资高于殷天正并且低于诸葛亮的员工
+SELECT ename,sal FROM emp WHERE sal>(SELECT sal FROM emp WHERE ename='殷天正')
+AND sal<(SELECT sal FROM emp WHERE ename='诸葛亮');
+
+# 2.查询工资最高的员工姓名、工作和工资
+SELECT ename,job,sal FROM emp
+WHERE sal=(SELECT MAX(sal) FROM emp);
+
+# 3.查询工资最低的员工姓名、工作和工资
+SELECT ename,job,sal FROM emp
+WHERE sal=(SELECT MIN(sal) FROM emp);
+
+# 4.查询"学工部"工资最高的员工姓名、工作和工资
+SELECT ename,job,sal FROM emp
+JOIN dept ON emp.`deptno`=dept.`deptno`
+WHERE dept.`dname`='学工部'
+AND sal=(SELECT MAX(sal) FROM emp
+JOIN dept ON emp.`deptno`=dept.`deptno`
+WHERE dept.`dname`='学工部')
+
+# 5.查询"学工部"工资最高的员工姓名、工作、工资、部门名称和部门人数
+SELECT ename,job,sal,dname,COUNT(empno) AS total FROM emp
+JOIN dept ON emp.`deptno`=dept.`deptno`
+WHERE dept.`dname`='学工部'
+AND sal=(SELECT MAX(sal) FROM emp
+JOIN dept ON emp.`deptno`=dept.`deptno`
+WHERE dept.`dname`='学工部')
+
+# 6.查询与"刘备"或"诸葛亮"从事相同工作的员工
+SELECT ename,job FROM emp
+WHERE job IN (SELECT job FROM emp WHERE ename='刘备' OR ename='诸葛亮');
+
+# 7.查询入职日期早于上级的员工编号、姓名、工资
+SELECT emp.`empno`,emp.`ename`,emp.sal FROM emp
+LEFT JOIN emp AS e
+ON emp.`mgr`=e.`empno`
+WHERE emp.`hiredate` < e.`hiredate`;
+
+# 8.查询上级为"刘备"的员工
+SELECT emp.`ename`,emp.`mgr`,e.`ename` FROM emp
+LEFT JOIN emp AS e
+ON emp.`mgr`=e.`empno`
+WHERE e.`ename`='刘备';
+
+# 9.查询工资最高员工所在的部门名称
+SELECT emp.`ename`,dept.`dname` FROM emp
+JOIN dept ON emp.`deptno`=dept.`deptno`
+WHERE sal=(SELECT MAX(sal) FROM emp)
+
+# 10.查询没有员工的部门名称
+SELECT dept.`dname` FROM emp
+RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`
+WHERE emp.`deptno` IS NULL;
+```
+
+> [!TIP]
+> 子查询7 8 10没有使用子查询方法，可自行使用，或者等我补充
+

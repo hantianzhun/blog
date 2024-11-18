@@ -1041,7 +1041,63 @@ e.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,IFNULL(e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>) <span class="pl-k">AS</span> mgr_name,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
-<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>;</pre></div></div>
+<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>;</pre></div>
+<p>###6.子查询</p>
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1.查询工资高于殷天正并且低于诸葛亮的员工</span>
+<span class="pl-k">SELECT</span> ename,sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> sal<span class="pl-k">&gt;</span>(<span class="pl-k">SELECT</span> sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>殷天正<span class="pl-pds">'</span></span>)
+<span class="pl-k">AND</span> sal<span class="pl-k">&lt;</span>(<span class="pl-k">SELECT</span> sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>);
+
+<span class="pl-c"><span class="pl-c">#</span> 2.查询工资最高的员工姓名、工作和工资</span>
+<span class="pl-k">SELECT</span> ename,job,sal <span class="pl-k">FROM</span> emp
+<span class="pl-k">WHERE</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp);
+
+<span class="pl-c"><span class="pl-c">#</span> 3.查询工资最低的员工姓名、工作和工资</span>
+<span class="pl-k">SELECT</span> ename,job,sal <span class="pl-k">FROM</span> emp
+<span class="pl-k">WHERE</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MIN</span>(sal) <span class="pl-k">FROM</span> emp);
+
+<span class="pl-c"><span class="pl-c">#</span> 4.查询"学工部"工资最高的员工姓名、工作和工资</span>
+<span class="pl-k">SELECT</span> ename,job,sal <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>
+<span class="pl-k">AND</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>)
+
+<span class="pl-c"><span class="pl-c">#</span> 5.查询"学工部"工资最高的员工姓名、工作、工资、部门名称和部门人数</span>
+<span class="pl-k">SELECT</span> ename,job,sal,dname,<span class="pl-c1">COUNT</span>(empno) <span class="pl-k">AS</span> total <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>
+<span class="pl-k">AND</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>)
+
+<span class="pl-c"><span class="pl-c">#</span> 6.查询与"刘备"或"诸葛亮"从事相同工作的员工</span>
+<span class="pl-k">SELECT</span> ename,job <span class="pl-k">FROM</span> emp
+<span class="pl-k">WHERE</span> job <span class="pl-k">IN</span> (<span class="pl-k">SELECT</span> job <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>刘备<span class="pl-pds">'</span></span> <span class="pl-k">OR</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>);
+
+<span class="pl-c"><span class="pl-c">#</span> 7.查询入职日期早于上级的员工编号、姓名、工资</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,<span class="pl-c1">emp</span>.<span class="pl-c1">sal</span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e
+<span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>hiredate<span class="pl-pds">`</span></span> <span class="pl-k">&lt;</span> e.<span class="pl-s"><span class="pl-pds">`</span>hiredate<span class="pl-pds">`</span></span>;
+
+<span class="pl-c"><span class="pl-c">#</span> 8.查询上级为"刘备"的员工</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span>,e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e
+<span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>刘备<span class="pl-pds">'</span></span>;
+
+<span class="pl-c"><span class="pl-c">#</span> 9.查询工资最高员工所在的部门名称</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp)
+
+<span class="pl-c"><span class="pl-c">#</span> 10.查询没有员工的部门名称</span>
+<span class="pl-k">SELECT</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span> IS <span class="pl-k">NULL</span>;</pre></div>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>子查询7 8 10没有使用子查询方法，可自行使用，或者等我补充</p>
+</div></div>
 <div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
