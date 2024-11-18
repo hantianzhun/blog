@@ -1042,7 +1042,7 @@ e.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
 <span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>;</pre></div>
-<p>###6.子查询</p>
+<h3>6.子查询</h3>
 <div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1.查询工资高于殷天正并且低于诸葛亮的员工</span>
 <span class="pl-k">SELECT</span> ename,sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> sal<span class="pl-k">&gt;</span>(<span class="pl-k">SELECT</span> sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>殷天正<span class="pl-pds">'</span></span>)
 <span class="pl-k">AND</span> sal<span class="pl-k">&lt;</span>(<span class="pl-k">SELECT</span> sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>);

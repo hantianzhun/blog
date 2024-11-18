@@ -442,8 +442,7 @@ JOIN salgrade ON sal>=losal AND sal<=hisal
 LEFT JOIN emp AS e ON emp.`mgr`=e.`empno`;
 ```
 
-
-###6.子查询
+### 6.子查询
 
 ```sql
 # 1.查询工资高于殷天正并且低于诸葛亮的员工
