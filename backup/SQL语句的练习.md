@@ -442,7 +442,9 @@ JOIN salgrade ON sal>=losal AND sal<=hisal
 LEFT JOIN emp AS e ON emp.`mgr`=e.`empno`;
 ```
 
+
 ###6.子查询
+
 ```sql
 # 1.查询工资高于殷天正并且低于诸葛亮的员工
 SELECT ename,sal FROM emp WHERE sal>(SELECT sal FROM emp WHERE ename='殷天正')
@@ -501,4 +503,3 @@ WHERE emp.`deptno` IS NULL;
 
 > [!TIP]
 > 子查询7 8 10没有使用子查询方法，可自行使用，或者等我补充
-
