@@ -19,30 +19,30 @@ loc VARCHAR(50)
 
 /*创建雇员表*/
 CREATE TABLE emp(
-empno	INT PRIMARY KEY,
-ename	VARCHAR(50),
+empno INT PRIMARY KEY,
+ename VARCHAR(50),
 job VARCHAR(50),
 mgr INT,
-hiredate	DATE,
-sal	DECIMAL(7,2),
-COMM 	DECIMAL(7,2),
-deptno	INT
+hiredate DATE,
+sal DECIMAL(7,2),
+COMM DECIMAL(7,2),
+deptno INT
 );
 
 /*创建工资等级表*/
 CREATE TABLE salgrade(
 grade	 INT PRIMARY KEY,
-losal	INT,
-hisal	INT
+losal INT,
+hisal INT
 );
 
 /*创建学生表*/
 CREATE TABLE stu(
-sid	INT PRIMARY KEY,
-sname	 VARCHAR(50),
-age	INT,
-gander	VARCHAR(10),
-province	VARCHAR(50),
+sid INT PRIMARY KEY,
+sname VARCHAR(50),
+age INT,
+gander VARCHAR(10),
+province VARCHAR(50),
 tuition INT
 );
 
