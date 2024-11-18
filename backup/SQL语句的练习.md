@@ -164,7 +164,7 @@ CREATE TABLE 表名称(
 */
 # 数据类型：
 # 数值：
-#	int
+# int
 # float  decimail
 # 字符：char / varchar
 # 日期时间: date / datetime
