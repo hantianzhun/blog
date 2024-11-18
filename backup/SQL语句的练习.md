@@ -239,8 +239,8 @@ INSERT INTO dept(dname,loc) VALUES('教研部','北京');  # 只能执行1次
 INSERT INTO dept(dname,loc) VALUES('学工部','上海');  
 INSERT INTO dept(dname,loc) VALUES('','上海');  
 
-NULL : 空
-''   : 空字符串
+# NULL : 空
+# ''   : 空字符串
 
 CREATE TABLE dept(
 deptno INT PRIMARY KEY AUTO_INCREMENT,
@@ -252,7 +252,7 @@ INSERT INTO dept(dname,loc) VALUES('教研部','北京');
 INSERT INTO dept(dname) VALUES('学工部'); 
 INSERT INTO dept(dname,loc) VALUES('财务部',NULL); 
 
-#主键自增、唯一、非空、默认值：
+# 主键自增、唯一、非空、默认值：
 # 主键：唯一、非空、一个表最多只有一个
 # 唯一：唯一、可以有多个唯一约束、可以为NULL
 # 非空：不能为空
@@ -274,14 +274,14 @@ INSERT INTO dept(dname,loc) VALUES('财务部',NULL);
 # SET DEFAUL：当父表中的记录被更新时，子表中对应的外键字段将被设置为一个默认值。这种方式适用于需要将外键设置为某个默认值的情况。
 # SET NUL：当父表中的记录被删除或更新时，子表中对应的记录的外键字段将被设置为NULL。这种方式适用于子表中允许有空值的情况。
 
-#主表 部门表
+# 主表 部门表
 CREATE TABLE dept(
 deptno INT PRIMARY KEY,
 deptname VARCHAR(10),
 loc VARCHAR(20)
 )CHARSET=utf8;
 
-#从表 员工表1
+# 从表 员工表1
 CREATE TABLE emp(
 empno INT PRIMARY KEY,
 empname VARCHAR(20) NOT NULL,
@@ -304,7 +304,7 @@ INSERT INTO emp VALUES(1001,'李四','销售员',1004,'2014-09-10',6000.00,10000
 INSERT INTO emp VALUES(1002,'王五','文员',NULL,'2007-10-10',7000.00,NULL,40);
 INSERT INTO emp VALUES(1003,'赵六','开发',NULL,'2020-01-01',10000.00,NULL,30);
 
-#从表 员工表2
+# 从表 员工表2
 CREATE TABLE emp2(
 empno INT PRIMARY KEY,
 empname VARCHAR(20) NOT NULL,
@@ -353,15 +353,15 @@ SELECT * FROM emp,salgrade WHERE sal>=losal AND sal<=hisal;
 SELECT * FROM emp AS e,dept AS d,salgrade WHERE e.deptno=d.deptno AND (sal>=losal AND sal<=hisal);
 
 # 交集：{10,20,30}
-#内连接
+# 内连接
 SELECT * FROM emp AS e
 JOIN dept AS d ON
 e.`deptno`=d.`deptno`
 JOIN salgrade AS s ON
 e.sal>=s.losal AND e.sal<=s.hisal;
 
-#并集：{10,20,30,40}
-#外连接
+# 并集：{10,20,30,40}
+# 外连接
 SELECT * FROM emp RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`; -- 右外连接
 
 SELECT * FROM dept LEFT JOIN emp ON dept.`deptno`=emp.`deptno`; -- 左外连接
@@ -382,12 +382,12 @@ SELECT * FROM emp LEFT JOIN emp AS e ON emp.mgr=e.`empno`; -- 左外连接把员
 
 SELECT emp.ename,IFNULL(e.`ename`,'') AS mgr_name FROM emp LEFT JOIN emp AS e ON emp.mgr=e.`empno`;
 
-#表与表的关系：
-#笛卡尔积 + 条件
-#是否需要使用外连接
-#连接后可以看成是一个表
+# 表与表的关系：
+# 笛卡尔积 + 条件
+# 是否需要使用外连接
+# 连接后可以看成是一个表
 
-#把三个表连接起来，不要丢失数据也不要多余数据
+# 把三个表连接起来，不要丢失数据也不要多余数据
 SELECT * FROM emp AS e
 RIGHT JOIN dept AS d ON
 e.`deptno`=d.`deptno`
@@ -399,43 +399,43 @@ e.sal>=s.losal AND e.sal<=s.hisal; -- emp和dept连接可能部门会没有员�
 #### 5.1内外连接查询练习
 
 ```sql
-#1. 查询所有员工的编号、姓名、部门编号、部门名称和部门地址
+#1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址
 SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`;
 
-#2. 查询所有文员的编号、姓名、部门编号、部门名称和部门地址
+#2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址
 SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 WHERE emp.`job`='文员';
 
-#3. 查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序
+#3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序
 SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 ORDER BY emp.`sal`;
 
-#4. 查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级
+#4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级
 SELECT emp.`ename`,dept.`dname`,emp.`sal`,salgrade.`grade` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 JOIN salgrade ON sal>=losal AND sal<=hisal
 WHERE grade>2;
 
-#5. 查询每个部门的部门名称和部门员工人数
+#5.查询每个部门的部门名称和部门员工人数
 SELECT dname,COUNT(emp.`empno`) AS total FROM emp
 RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`
 GROUP BY dept.`deptno`;
 
-#6. 查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数
+#6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数
 SELECT dname,COUNT(emp.`empno`) AS total FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 GROUP BY dept.`deptno`
 HAVING total>3;
 
-#7. 查询工资等级为2级的员工姓名和工资等级
+#7.查询工资等级为2级的员工姓名和工资等级
 SELECT emp.`ename`,salgrade.`grade` FROM emp
 JOIN salgrade ON sal>=losal AND sal<=hisal
 WHERE grade=2;
 
-#8. 查询所有员工姓名、上级领导姓名、部门名称、和工资等级
+#8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级
 SELECT emp.`ename`,IFNULL(e.`ename`,'') AS mgr_name,dept.`dname`,salgrade.`grade` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 JOIN salgrade ON sal>=losal AND sal<=hisal
