@@ -149,7 +149,7 @@ INSERT INTO `stu` VALUES ('55', '周制强', '23', '男', '湖北', '4500');
 */
 
 # 创建库的语句：
-#CREATE DATABASE 库名称;
+# CREATE DATABASE 库名称;
 CREATE DATABASE mmb;
 USE mmb;  -- 使用库
 
@@ -399,43 +399,43 @@ e.sal>=s.losal AND e.sal<=s.hisal; -- emp和dept连接可能部门会没有员�
 #### 5.1内外连接查询练习
 
 ```sql
-#1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址
+# 1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址
 SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`;
 
-#2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址
+# 2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址
 SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 WHERE emp.`job`='文员';
 
-#3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序
+# 3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序
 SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 ORDER BY emp.`sal`;
 
-#4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级
+# 4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级
 SELECT emp.`ename`,dept.`dname`,emp.`sal`,salgrade.`grade` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 JOIN salgrade ON sal>=losal AND sal<=hisal
 WHERE grade>2;
 
-#5.查询每个部门的部门名称和部门员工人数
+# 5.查询每个部门的部门名称和部门员工人数
 SELECT dname,COUNT(emp.`empno`) AS total FROM emp
 RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`
 GROUP BY dept.`deptno`;
 
-#6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数
+# 6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数
 SELECT dname,COUNT(emp.`empno`) AS total FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 GROUP BY dept.`deptno`
 HAVING total>3;
 
-#7.查询工资等级为2级的员工姓名和工资等级
+# 7.查询工资等级为2级的员工姓名和工资等级
 SELECT emp.`ename`,salgrade.`grade` FROM emp
 JOIN salgrade ON sal>=losal AND sal<=hisal
 WHERE grade=2;
 
-#8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级
+# 8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级
 SELECT emp.`ename`,IFNULL(e.`ename`,'') AS mgr_name,dept.`dname`,salgrade.`grade` FROM emp
 JOIN dept ON emp.`deptno`=dept.`deptno`
 JOIN salgrade ON sal>=losal AND sal<=hisal

@@ -161,7 +161,7 @@ INSERT INTO `stu` VALUES ('55', '周制强', '23', '男', '湖北', '4500');
 */
 
 # 创建库的语句：
-#CREATE DATABASE 库名称;
+# CREATE DATABASE 库名称;
 CREATE DATABASE mmb;
 USE mmb;  -- 使用库
 
@@ -434,7 +434,7 @@ INSERT INTO `stu` VALUES ('55', '周制强', '23', '男', '湖北', '4500');
 */
 
 # 创建库的语句：
-#CREATE DATABASE 库名称;
+# CREATE DATABASE 库名称;
 CREATE DATABASE mmb;
 USE mmb;  -- 使用库
 
@@ -769,7 +769,7 @@ tuition <span class="pl-k">INT</span>
 <span class="pl-c"><span class="pl-c">*/</span></span>
 
 <span class="pl-c"><span class="pl-c">#</span> 创建库的语句：</span>
-<span class="pl-c"><span class="pl-c">#</span>CREATE DATABASE 库名称;</span>
+<span class="pl-c"><span class="pl-c">#</span> CREATE DATABASE 库名称;</span>
 <span class="pl-k">CREATE</span> <span class="pl-k">DATABASE</span> <span class="pl-en">mmb</span>;
 USE mmb;  <span class="pl-c"><span class="pl-c">--</span> 使用库</span>
 
@@ -1001,43 +1001,43 @@ e.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</
 <span class="pl-c1">e</span>.<span class="pl-c1">sal</span><span class="pl-k">&gt;=</span><span class="pl-c1">s</span>.<span class="pl-c1">losal</span> <span class="pl-k">AND</span> <span class="pl-c1">e</span>.<span class="pl-c1">sal</span><span class="pl-k">&lt;=</span><span class="pl-c1">s</span>.<span class="pl-c1">hisal</span>; <span class="pl-c"><span class="pl-c">--</span> emp和dept连接可能部门会没有员工，所以使用右连接，连接后左边的表比工资范围表大，使用左连接</span>
 <span class="pl-c"><span class="pl-c">#</span> WHERE / GROUP BY / HAVING / ORDER BY / LIMIT</span></pre></div>
 <h4>5.1内外连接查询练习</h4>
-<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址</span>
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址</span>
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>loc<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>;
 
-<span class="pl-c"><span class="pl-c">#</span>2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址</span>
+<span class="pl-c"><span class="pl-c">#</span> 2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址</span>
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>loc<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>job<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>;
 
-<span class="pl-c"><span class="pl-c">#</span>3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序</span>
+<span class="pl-c"><span class="pl-c">#</span> 3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序</span>
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>loc<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">ORDER BY</span> emp.<span class="pl-s"><span class="pl-pds">`</span>sal<span class="pl-pds">`</span></span>;
 
-<span class="pl-c"><span class="pl-c">#</span>4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级</span>
+<span class="pl-c"><span class="pl-c">#</span> 4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级</span>
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>sal<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
 <span class="pl-k">WHERE</span> grade<span class="pl-k">&gt;</span><span class="pl-c1">2</span>;
 
-<span class="pl-c"><span class="pl-c">#</span>5.查询每个部门的部门名称和部门员工人数</span>
+<span class="pl-c"><span class="pl-c">#</span> 5.查询每个部门的部门名称和部门员工人数</span>
 <span class="pl-k">SELECT</span> dname,<span class="pl-c1">COUNT</span>(emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>) <span class="pl-k">AS</span> total <span class="pl-k">FROM</span> emp
 <span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">GROUP BY</span> dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>;
 
-<span class="pl-c"><span class="pl-c">#</span>6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数</span>
+<span class="pl-c"><span class="pl-c">#</span> 6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数</span>
 <span class="pl-k">SELECT</span> dname,<span class="pl-c1">COUNT</span>(emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>) <span class="pl-k">AS</span> total <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">GROUP BY</span> dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">HAVING</span> total<span class="pl-k">&gt;</span><span class="pl-c1">3</span>;
 
-<span class="pl-c"><span class="pl-c">#</span>7.查询工资等级为2级的员工姓名和工资等级</span>
+<span class="pl-c"><span class="pl-c">#</span> 7.查询工资等级为2级的员工姓名和工资等级</span>
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
 <span class="pl-k">WHERE</span> grade<span class="pl-k">=</span><span class="pl-c1">2</span>;
 
-<span class="pl-c"><span class="pl-c">#</span>8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级</span>
+<span class="pl-c"><span class="pl-c">#</span> 8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级</span>
 <span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,IFNULL(e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>) <span class="pl-k">AS</span> mgr_name,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
 <span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
 <span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
