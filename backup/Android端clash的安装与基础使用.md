@@ -12,8 +12,8 @@ https://github.com/MetaCubeX/ClashMetaForAndroid/releases
 下载需要把浏览器ua改成电脑版/电脑模式/PC等
 
 ```shell
-https://wwwe.lanzouq.com/ixeL42avw1zc
-密码:629q
+https://wwwe.lanzouq.com/b0xvuriuf
+密码：gz9j
 ```
 |                    1.这里以via浏览器为例                     |                        2.点击电脑模式                        |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
