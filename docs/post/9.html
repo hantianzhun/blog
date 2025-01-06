@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/118879111?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 1.为什么要学习Linux，Linux在工作中用来干什么？
+
+1. Linux在工作中主要用于环境部署（程序代码包  .jar  .war）-->部署到服务器上-->有页面或者是app端
+2. 使用服务器获取日志，协助定位问题
+
+## 2.计算机组成
+
+### 2.1硬件
+
+- 显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）
+
+### 2.2操作系统
+
+1. PC端：x86   32位操作系统，x86-64  64位操作系统
+2. 手机端：arm 32位操作系统，arm64  64位操作系统
+3. Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙
+4. 语言：c语言 、java语言、python-->解释器或者是编译器-->转换成计算机能识别的二进制代码程序代码-->指令      数据
+
+### 2.3应用软件
+
+- web端-->app端（qq、微信、淘宝、美团、手机银行app）-->小程序（微信小程序、支付宝小程序）-->嵌入式设备与App交互
+
+
+## 3.Linux操作系统
+
+1. Linux内核（由linus开发出）-->放到开源平台-->图标（企鹅）、名字linux，没有图形化界面，纯命令界面
+
+2. 小巧、功能全、安全、多用户多任务的操作系统
+
+3. 发行版本：RedHat、Debian、Arch、openSUSE、CentOS、Ubuntu等
+
+4. 客户端系统：Windows、Android、IOS、Harmony、个人用Linux
+
+5. 服务端系统：99%Linux
+
+6. 服务器：365天*24小时运行、服务器的本质也是电脑，是功能更加强大的电脑
+
+7. 学校一般自建服务器（托管官网、学生数据等）
+
+8. 中小型公司租云服务器：阿里云、腾讯云、百度云
+
+9. 大型公司自建服务器，提供云服务器资源
+
+## 4.电脑装多系统
+
+- VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）
+- 镜像文件：后缀为.iso的操作系统文件
+
+## 5.软件的安装
+
+-   安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)
+
+-   安装路径中只能有字母或下划线
+
+-    D:\it_install、D:\vm_install
+
+## 6.远程连接、换源、安装软件包
+
+### 6.1使用ip  addr命令查看IP地址
+
+### 6.2如果不能上网，解决办法？
+
+```shell
+cd /etc/sysconfig/network-scripts
+vi ifcfg-ens33#后半网卡名可不同
+```
+-   进入后将光标移动到最下面，然后输入'i'
+
+-   将最后一行的no修改为yes，再点击键盘左上角的ESC，输入:wq!再按回车（按ZZ也可）
+
+### 6.3如果源不可用，解决办法？
+
+```shell
+#CentOS7换源
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+```
+### 6.4出现command  not  found如何解决？
+
+  - 尝试安装使用的命令、例：`yum install ifconfig`
+  - 提示包不存在可使用yum search 命令、例：`yum search ifconfig`
+
+### 6.5yum的作用
+
+```shell
+#在线下载并安装
+yum search 安装包的包名
+yum -y install 安装包名
+```
+
+## 7.Linux文件管理系统
+
+```shell
+#目录结构树
+/etc     存放配置相关的文件      /etc/profile 环境变量 /etc/sysconfig/newrok-Scripts 网卡配置
+/bin     存放的是可执行的命令文件     启动服务器
+/sbin    存放的是root用户的可执行的命令文件
+/root    是root用户的家目录
+/home    是普通用户的家目录
+/opt     存放的是临时文件相关的一些目录
+/mnt     存放的是挂载文件相关的目录
+```
+
+## 8.Linux基本命令
+
+### 8.1目录相关的命令
+
+```shell
+'创建文件夹' mkdir 文件夹名1
+'创建多个文件夹' mkdir 文件夹1 文件夹2
+'创建多层级的文件' mkdir -p A/B
+'删除空文件夹' rmdir 文件夹名
+'删除非空的文件夹' rm -r 非空目录名
+'强制删除非空文件夹' rm -rf 非空的目录名 
+'复制文件夹到指定的目录' cp -r 要复制的文件 复制到哪里去
+'剪切文件到指定的目录' mv 要剪切的文件 剪切到哪里去
+'重命名' mv 要重命名的文件夹/文件 新的文件夹/文件的名字
+```
+
+###  8.2编写路径
+
+-  绝对路径：一次到达，从根目录开始写、例：`/etc/ssh/sshd_config`
+-  相对路径：相对与当前目录而言、例：`../home/hanli`(假设当前目录为root)
+
+### 8.3文件相关的命令
+
+```shell
+'创建文件' touch 文件1
+'创建多个文件' touch f2 f3
+'弹出提示信息删除文件' rm 文件名  
+'强制删除文件' rm -f 文件名
+'复制文件' cp 要复制的文件 复制到哪里去
+'剪切文件' mv 要剪切的文件 剪切到哪里去
+'覆盖写如内容到文件中'
+echo 'i love linux' > f1
+echo 'i love python' > f1
+'追加写内容到指定的文件' echo 'i love oracle' >> f1
+```
+
+```shell
+'查看文件的内容'
+cat 查看小文件
+cat -n 文件名 #n不能代表代表任意数字
+more 文件名
+less 文件名 #按照屏幕比例显示内容，可以输入next进行翻页
+head -n 文件名 #查看文件的前n行，n代表的任意数字
+tail -n 文件名 #查看文件的最后n行，n代表任意数字
+n 文件名 #带行号显示文件的所有内容
+'查看一个文件的第3行到第5行' sed -n 'n1,n2p' 文件名  #n1和n2代表的是两个数字
+'查看一个文件的第3行到第5行' head -5 文件名 | tail -3
+'查看文件的第5行' sed -n '5p' 文件名
+```
+
+### 8.4打包压缩相关的命令
+
+### 8.5进程服务相关的命令
+
+### 8.6权限相关的命令
+
+### 8.7其他的常用命令
+
+```shell
+cd 'change directory' '切换目录'
+cd .. '切换到上一级目录'
+cd ../.. '切换到上上一级目录'
+cd / '切换到根目录'
+cd ~ '切换到家目录'
+cd - '切换到上次目录'
+. '代表的是当前目录'
+.. '代表的是上级目录'
+ls 'list' '列出所有文件'
+ls -a '显示所有的文件' #all: 所有的文件的包括了隐藏
+ls -l '显示文件的详细信息'
+ls -al '显示所有文件的详细信息'
+pwd 'print work directory' '打印当前工作目录'
+tree '树形结构展示当前目录下的所有文件或文件夹'
+```。">
+<meta property="og:title" content="Linux基础命令1">
+<meta property="og:description" content="## 1.为什么要学习Linux，Linux在工作中用来干什么？
+
+1. Linux在工作中主要用于环境部署（程序代码包  .jar  .war）-->部署到服务器上-->有页面或者是app端
+2. 使用服务器获取日志，协助定位问题
+
+## 2.计算机组成
+
+### 2.1硬件
+
+- 显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）
+
+### 2.2操作系统
+
+1. PC端：x86   32位操作系统，x86-64  64位操作系统
+2. 手机端：arm 32位操作系统，arm64  64位操作系统
+3. Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙
+4. 语言：c语言 、java语言、python-->解释器或者是编译器-->转换成计算机能识别的二进制代码程序代码-->指令      数据
+
+### 2.3应用软件
+
+- web端-->app端（qq、微信、淘宝、美团、手机银行app）-->小程序（微信小程序、支付宝小程序）-->嵌入式设备与App交互
+
+
+## 3.Linux操作系统
+
+1. Linux内核（由linus开发出）-->放到开源平台-->图标（企鹅）、名字linux，没有图形化界面，纯命令界面
+
+2. 小巧、功能全、安全、多用户多任务的操作系统
+
+3. 发行版本：RedHat、Debian、Arch、openSUSE、CentOS、Ubuntu等
+
+4. 客户端系统：Windows、Android、IOS、Harmony、个人用Linux
+
+5. 服务端系统：99%Linux
+
+6. 服务器：365天*24小时运行、服务器的本质也是电脑，是功能更加强大的电脑
+
+7. 学校一般自建服务器（托管官网、学生数据等）
+
+8. 中小型公司租云服务器：阿里云、腾讯云、百度云
+
+9. 大型公司自建服务器，提供云服务器资源
+
+## 4.电脑装多系统
+
+- VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）
+- 镜像文件：后缀为.iso的操作系统文件
+
+## 5.软件的安装
+
+-   安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)
+
+-   安装路径中只能有字母或下划线
+
+-    D:\it_install、D:\vm_install
+
+## 6.远程连接、换源、安装软件包
+
+### 6.1使用ip  addr命令查看IP地址
+
+### 6.2如果不能上网，解决办法？
+
+```shell
+cd /etc/sysconfig/network-scripts
+vi ifcfg-ens33#后半网卡名可不同
+```
+-   进入后将光标移动到最下面，然后输入'i'
+
+-   将最后一行的no修改为yes，再点击键盘左上角的ESC，输入:wq!再按回车（按ZZ也可）
+
+### 6.3如果源不可用，解决办法？
+
+```shell
+#CentOS7换源
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+```
+### 6.4出现command  not  found如何解决？
+
+  - 尝试安装使用的命令、例：`yum install ifconfig`
+  - 提示包不存在可使用yum search 命令、例：`yum search ifconfig`
+
+### 6.5yum的作用
+
+```shell
+#在线下载并安装
+yum search 安装包的包名
+yum -y install 安装包名
+```
+
+## 7.Linux文件管理系统
+
+```shell
+#目录结构树
+/etc     存放配置相关的文件      /etc/profile 环境变量 /etc/sysconfig/newrok-Scripts 网卡配置
+/bin     存放的是可执行的命令文件     启动服务器
+/sbin    存放的是root用户的可执行的命令文件
+/root    是root用户的家目录
+/home    是普通用户的家目录
+/opt     存放的是临时文件相关的一些目录
+/mnt     存放的是挂载文件相关的目录
+```
+
+## 8.Linux基本命令
+
+### 8.1目录相关的命令
+
+```shell
+'创建文件夹' mkdir 文件夹名1
+'创建多个文件夹' mkdir 文件夹1 文件夹2
+'创建多层级的文件' mkdir -p A/B
+'删除空文件夹' rmdir 文件夹名
+'删除非空的文件夹' rm -r 非空目录名
+'强制删除非空文件夹' rm -rf 非空的目录名 
+'复制文件夹到指定的目录' cp -r 要复制的文件 复制到哪里去
+'剪切文件到指定的目录' mv 要剪切的文件 剪切到哪里去
+'重命名' mv 要重命名的文件夹/文件 新的文件夹/文件的名字
+```
+
+###  8.2编写路径
+
+-  绝对路径：一次到达，从根目录开始写、例：`/etc/ssh/sshd_config`
+-  相对路径：相对与当前目录而言、例：`../home/hanli`(假设当前目录为root)
+
+### 8.3文件相关的命令
+
+```shell
+'创建文件' touch 文件1
+'创建多个文件' touch f2 f3
+'弹出提示信息删除文件' rm 文件名  
+'强制删除文件' rm -f 文件名
+'复制文件' cp 要复制的文件 复制到哪里去
+'剪切文件' mv 要剪切的文件 剪切到哪里去
+'覆盖写如内容到文件中'
+echo 'i love linux' > f1
+echo 'i love python' > f1
+'追加写内容到指定的文件' echo 'i love oracle' >> f1
+```
+
+```shell
+'查看文件的内容'
+cat 查看小文件
+cat -n 文件名 #n不能代表代表任意数字
+more 文件名
+less 文件名 #按照屏幕比例显示内容，可以输入next进行翻页
+head -n 文件名 #查看文件的前n行，n代表的任意数字
+tail -n 文件名 #查看文件的最后n行，n代表任意数字
+n 文件名 #带行号显示文件的所有内容
+'查看一个文件的第3行到第5行' sed -n 'n1,n2p' 文件名  #n1和n2代表的是两个数字
+'查看一个文件的第3行到第5行' head -5 文件名 | tail -3
+'查看文件的第5行' sed -n '5p' 文件名
+```
+
+### 8.4打包压缩相关的命令
+
+### 8.5进程服务相关的命令
+
+### 8.6权限相关的命令
+
+### 8.7其他的常用命令
+
+```shell
+cd 'change directory' '切换目录'
+cd .. '切换到上一级目录'
+cd ../.. '切换到上上一级目录'
+cd / '切换到根目录'
+cd ~ '切换到家目录'
+cd - '切换到上次目录'
+. '代表的是当前目录'
+.. '代表的是上级目录'
+ls 'list' '列出所有文件'
+ls -a '显示所有的文件' #all: 所有的文件的包括了隐藏
+ls -l '显示文件的详细信息'
+ls -al '显示所有文件的详细信息'
+pwd 'print work directory' '打印当前工作目录'
+tree '树形结构展示当前目录下的所有文件或文件夹'
+```。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hantianzhun.github.io/blog/post/9.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
+<title>Linux基础命令1</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Linux基础命令1</h1>
+<div class="title-right">
+    <a href="https://hantianzhun.github.io/blog" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/hantianzhun/blog/issues/9" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>1.为什么要学习Linux，Linux在工作中用来干什么？</h2>
+<ol>
+<li>Linux在工作中主要用于环境部署（程序代码包  .jar  .war）--&gt;部署到服务器上--&gt;有页面或者是app端</li>
+<li>使用服务器获取日志，协助定位问题</li>
+</ol>
+<h2>2.计算机组成</h2>
+<h3>2.1硬件</h3>
+<ul>
+<li>显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）</li>
+</ul>
+<h3>2.2操作系统</h3>
+<ol>
+<li>PC端：x86   32位操作系统，x86-64  64位操作系统</li>
+<li>手机端：arm 32位操作系统，arm64  64位操作系统</li>
+<li>Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙</li>
+<li>语言：c语言 、java语言、python--&gt;解释器或者是编译器--&gt;转换成计算机能识别的二进制代码程序代码--&gt;指令      数据</li>
+</ol>
+<h3>2.3应用软件</h3>
+<ul>
+<li>web端--&gt;app端（qq、微信、淘宝、美团、手机银行app）--&gt;小程序（微信小程序、支付宝小程序）--&gt;嵌入式设备与App交互</li>
+</ul>
+<h2>3.Linux操作系统</h2>
+<ol>
+<li>
+<p>Linux内核（由linus开发出）--&gt;放到开源平台--&gt;图标（企鹅）、名字linux，没有图形化界面，纯命令界面</p>
+</li>
+<li>
+<p>小巧、功能全、安全、多用户多任务的操作系统</p>
+</li>
+<li>
+<p>发行版本：RedHat、Debian、Arch、openSUSE、CentOS、Ubuntu等</p>
+</li>
+<li>
+<p>客户端系统：Windows、Android、IOS、Harmony、个人用Linux</p>
+</li>
+<li>
+<p>服务端系统：99%Linux</p>
+</li>
+<li>
+<p>服务器：365天*24小时运行、服务器的本质也是电脑，是功能更加强大的电脑</p>
+</li>
+<li>
+<p>学校一般自建服务器（托管官网、学生数据等）</p>
+</li>
+<li>
+<p>中小型公司租云服务器：阿里云、腾讯云、百度云</p>
+</li>
+<li>
+<p>大型公司自建服务器，提供云服务器资源</p>
+</li>
+</ol>
+<h2>4.电脑装多系统</h2>
+<ul>
+<li>VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）</li>
+<li>镜像文件：后缀为.iso的操作系统文件</li>
+</ul>
+<h2>5.软件的安装</h2>
+<ul>
+<li>
+<p>安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)</p>
+</li>
+<li>
+<p>安装路径中只能有字母或下划线</p>
+</li>
+<li>
+<p>D:\it_install、D:\vm_install</p>
+</li>
+</ul>
+<h2>6.远程连接、换源、安装软件包</h2>
+<h3>6.1使用ip  addr命令查看IP地址</h3>
+<h3>6.2如果不能上网，解决办法？</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> /etc/sysconfig/network-scripts
+vi ifcfg-ens33#后半网卡名可不同</pre></div>
+<ul>
+<li>
+<p>进入后将光标移动到最下面，然后输入"i"</p>
+</li>
+<li>
+<p>将最后一行的no修改为yes，再点击键盘左上角的ESC，输入:wq!再按回车（按ZZ也可）</p>
+</li>
+</ul>
+<h3>6.3如果源不可用，解决办法？</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>CentOS7换源</span>
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</pre></div>
+<h3>6.4出现command  not  found如何解决？</h3>
+<ul>
+<li>尝试安装使用的命令、例：<code class="notranslate">yum install ifconfig</code></li>
+<li>提示包不存在可使用yum search 命令、例：<code class="notranslate">yum search ifconfig</code></li>
+</ul>
+<h3>6.5yum的作用</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>在线下载并安装</span>
+yum search 安装包的包名
+yum -y install 安装包名</pre></div>
+<h2>7.Linux文件管理系统</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>目录结构树</span>
+/etc     存放配置相关的文件      /etc/profile 环境变量 /etc/sysconfig/newrok-Scripts 网卡配置
+/bin     存放的是可执行的命令文件     启动服务器
+/sbin    存放的是root用户的可执行的命令文件
+/root    是root用户的家目录
+/home    是普通用户的家目录
+/opt     存放的是临时文件相关的一些目录
+/mnt     存放的是挂载文件相关的目录</pre></div>
+<h2>8.Linux基本命令</h2>
+<h3>8.1目录相关的命令</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建文件夹<span class="pl-pds">'</span></span> mkdir 文件夹名1
+<span class="pl-s"><span class="pl-pds">'</span>创建多个文件夹<span class="pl-pds">'</span></span> mkdir 文件夹1 文件夹2
+<span class="pl-s"><span class="pl-pds">'</span>创建多层级的文件<span class="pl-pds">'</span></span> mkdir -p A/B
+<span class="pl-s"><span class="pl-pds">'</span>删除空文件夹<span class="pl-pds">'</span></span> rmdir 文件夹名
+<span class="pl-s"><span class="pl-pds">'</span>删除非空的文件夹<span class="pl-pds">'</span></span> rm -r 非空目录名
+<span class="pl-s"><span class="pl-pds">'</span>强制删除非空文件夹<span class="pl-pds">'</span></span> rm -rf 非空的目录名 
+<span class="pl-s"><span class="pl-pds">'</span>复制文件夹到指定的目录<span class="pl-pds">'</span></span> cp -r 要复制的文件 复制到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>剪切文件到指定的目录<span class="pl-pds">'</span></span> mv 要剪切的文件 剪切到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>重命名<span class="pl-pds">'</span></span> mv 要重命名的文件夹/文件 新的文件夹/文件的名字</pre></div>
+<h3>8.2编写路径</h3>
+<ul>
+<li>绝对路径：一次到达，从根目录开始写、例：<code class="notranslate">/etc/ssh/sshd_config</code></li>
+<li>相对路径：相对与当前目录而言、例：<code class="notranslate">../home/hanli</code>(假设当前目录为root)</li>
+</ul>
+<h3>8.3文件相关的命令</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建文件<span class="pl-pds">'</span></span> touch 文件1
+<span class="pl-s"><span class="pl-pds">'</span>创建多个文件<span class="pl-pds">'</span></span> touch f2 f3
+<span class="pl-s"><span class="pl-pds">'</span>弹出提示信息删除文件<span class="pl-pds">'</span></span> rm 文件名  
+<span class="pl-s"><span class="pl-pds">'</span>强制删除文件<span class="pl-pds">'</span></span> rm -f 文件名
+<span class="pl-s"><span class="pl-pds">'</span>复制文件<span class="pl-pds">'</span></span> cp 要复制的文件 复制到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>剪切文件<span class="pl-pds">'</span></span> mv 要剪切的文件 剪切到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>覆盖写如内容到文件中<span class="pl-pds">'</span></span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>i love linux<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> f1
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>i love python<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> f1
+<span class="pl-s"><span class="pl-pds">'</span>追加写内容到指定的文件<span class="pl-pds">'</span></span> <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>i love oracle<span class="pl-pds">"</span></span> <span class="pl-k">&gt;&gt;</span> f1</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>查看文件的内容<span class="pl-pds">'</span></span>
+cat 查看小文件
+cat -n 文件名 <span class="pl-c"><span class="pl-c">#</span>n不能代表代表任意数字</span>
+more 文件名
+less 文件名 <span class="pl-c"><span class="pl-c">#</span>按照屏幕比例显示内容，可以输入next进行翻页</span>
+head -n 文件名 <span class="pl-c"><span class="pl-c">#</span>查看文件的前n行，n代表的任意数字</span>
+tail -n 文件名 <span class="pl-c"><span class="pl-c">#</span>查看文件的最后n行，n代表任意数字</span>
+n 文件名 <span class="pl-c"><span class="pl-c">#</span>带行号显示文件的所有内容</span>
+<span class="pl-s"><span class="pl-pds">'</span>查看一个文件的第3行到第5行<span class="pl-pds">'</span></span> sed -n <span class="pl-s"><span class="pl-pds">'</span>n1,n2p<span class="pl-pds">'</span></span> 文件名  <span class="pl-c"><span class="pl-c">#</span>n1和n2代表的是两个数字</span>
+<span class="pl-s"><span class="pl-pds">'</span>查看一个文件的第3行到第5行<span class="pl-pds">'</span></span> head -5 文件名 <span class="pl-k">|</span> tail -3
+<span class="pl-s"><span class="pl-pds">'</span>查看文件的第5行<span class="pl-pds">'</span></span> sed -n <span class="pl-s"><span class="pl-pds">'</span>5p<span class="pl-pds">'</span></span> 文件名</pre></div>
+<h3>8.4打包压缩相关的命令</h3>
+<h3>8.5进程服务相关的命令</h3>
+<h3>8.6权限相关的命令</h3>
+<h3>8.7其他的常用命令</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-s"><span class="pl-pds">'</span>change directory<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>切换目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> .. <span class="pl-s"><span class="pl-pds">'</span>切换到上一级目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> ../.. <span class="pl-s"><span class="pl-pds">'</span>切换到上上一级目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> / <span class="pl-s"><span class="pl-pds">'</span>切换到根目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> <span class="pl-k">~</span> <span class="pl-s"><span class="pl-pds">'</span>切换到家目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> - <span class="pl-s"><span class="pl-pds">'</span>切换到上次目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">.</span> <span class="pl-s"><span class="pl-pds">'</span>代表的是当前目录<span class="pl-pds">'</span></span>
+.. <span class="pl-s"><span class="pl-pds">'</span>代表的是上级目录<span class="pl-pds">'</span></span>
+ls <span class="pl-s"><span class="pl-pds">'</span>list<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>列出所有文件<span class="pl-pds">'</span></span>
+ls -a <span class="pl-s"><span class="pl-pds">'</span>显示所有的文件<span class="pl-pds">'</span></span> <span class="pl-c"><span class="pl-c">#</span>all: 所有的文件的包括了隐藏</span>
+ls -l <span class="pl-s"><span class="pl-pds">'</span>显示文件的详细信息<span class="pl-pds">'</span></span>
+ls -al <span class="pl-s"><span class="pl-pds">'</span>显示所有文件的详细信息<span class="pl-pds">'</span></span>
+<span class="pl-c1">pwd</span> <span class="pl-s"><span class="pl-pds">'</span>print work directory<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>打印当前工作目录<span class="pl-pds">'</span></span>
+tree <span class="pl-s"><span class="pl-pds">'</span>树形结构展示当前目录下的所有文件或文件夹<span class="pl-pds">'</span></span></pre></div></div>
+<div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://hantianzhun.github.io/blog">枕上诗书闲的博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/20/2024"!=""){
+    var startSite=new Date("08/20/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","hantianzhun/blog");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
