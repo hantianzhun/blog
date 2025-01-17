@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/118879111?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 1.禅道开源版
+
+## 1.找到官网
+
+- [禅道下载界面](https://www.zentao.net/downloads.html) [按住ctrl点击链接即可打开]
+
+## 2.本地安装和在线安装
+
+### 2.1本地安装
+
+1. 在禅道下载界面选择linux+一键安装包，点击下载，文件在下载目录
+
+2. 使用xftp或者rz传输到linux
+
+3. 解压一键安装包
+
+   ```shell
+   tar -xzvf ZenTaoxxx.tar.gz -C /opt
+   ```
+
+### 2.2在线安装
+
+1. 点击开源版的安装指南，找到linux一键安装包（推荐）
+
+2. 使用wget进行下载(复制指南的)
+
+   ````shell
+   wget https://www.zentao.net/dl/zentao/18.5/ZenTaoPMS.18.5.zbox_64.tar.gz
+   ````
+
+3. 解压一键安装包
+
+   ```shell
+   tar -xzvf ZenTaoxxx.tar.gz -C /opt
+   ```
+
+## 3.启动禅道
+
+> [!CAUTION]
+> 运行成功之后若无法通过IP地址进行访问，检查系统防火墙
+> systemctl status firewalld (查看防火墙运行状态)
+> systemctl stop firewalld (暂时关闭)
+> systemctl disable firewalld (关闭开机自启动)
+
+### 3.1运行zbox
+
+```shell
+[root@localhost ~]# cd /opt
+[root@localhost opt]# ls
+btop  zbox
+[root@localhost opt]# cd zbox/
+[root@localhost zbox]# ./zbox start
+ 16:03:17.91 INFO  ==> Starting service with Apache port=80, MySQL port=3306, Redis port=6379...
+```
+
+## 4.启动问题
+
+### 4.1端口占用：没有关程序(./zbox stop)导致
+
+- 查看被占用的端口进程（ps -ef |grep mysql/apache）
+- 查进程，注意被占用的是哪个进程
+
+![](https://hantianzhun.github.io/blog/issues12.01.png)
+
+![](https://hantianzhun.github.io/blog/issues12.02.png)
+
+## 5.禅道的项目结构(集成项目软件包):php+apache+mysql
+
+### 5.1zbox文件夹下的目录介绍
+
+```shell
+app：存放的是开发人员写的代码
+bin：可执行文件的命令
+etc：配置文件  端口号修改等等
+tmp：临时文件
+auth：作者相关文件
+data：数据相关的文件
+logs：日志文件
+run：运行程序相关文件
+```
+
+# 2.JavaWeb项目(Tomcat)
+
+- 组成 ：案例依赖：编程语言(java)  jdk +服务器（tomcat）+数据库（mysql）
+
+## 2.1安装jdk
+
+- 配置环境变量，验证是否部署成功  java -version
+  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+
+## 2.2安装tomcat
+
+- 使用ftp软件上传到linux服务器
+
+- 解压缩启动服务，验证环境部署是否成功：在浏览器中输入地址[http://ip:端口]，出现tomcat页面√
+
+### 2.2.1apache-tomcat-xx.xx.xx下所有目录详解
+
+- bin ：可执行文件的命令文件，启动服务器在该目录
+
+- conf：相关配置文件，如修改端口号(server.xml)等
+
+- lib：动态库链接
+
+- logs：日志文件，如出现异常时可查找日志发现问题所在
+
+- tmp：临时文件
+
+- weapps：开发人员写的程序代码包  （xxx.war）
+
+- work：一些启动目录
+
+### 2.2.2tomcat启动失败
+
+#### 2.2.2.1防火墙没关
+
+> [!CAUTION]
+> 运行成功之后若无法通过IP地址进行访问，检查系统防火墙
+> systemctl status firewalld (查看防火墙运行状态)
+> systemctl stop firewalld (暂时关闭)
+> systemctl disable firewalld (关闭开机自启动)
+
+#### 2.2.2.2端口冲突，被占用 
+
+```
+ps -ef|grep tomcat(进程)
+netstat -ano|grep 8080(端口号)
+kill -9 进程号 
+```
+
+#### 2.2.2.3修改端口号
+
+- 修改apache-tomcat-xx.xx.xx目录下的conf/server.xml文件
+
+##### 2.2.2.3.1部分修改
+
+```shell
+1.# vim ./apache-tomcat-xx.xx.xx/conf/server.xml
+2.# 使用vim进行搜索	/8080 并按回车（Enter）
+3.# 修改未被注释为需要的端口号（不可与被占用的端口号一致）
+4.# 保存退出
+```
+
+![](https://hantianzhun.github.io/blog/issues12.03.png)
+
+##### 2.2.2.3.2全部修改
+```shell
+1.# vim ./apache-tomcat-xx.xx.xx/conf/server.xml
+2.# 全部修改需要的端口号（不可与被占用的端口号一致）
+	:%s/8080/9090/g '%'是整个文件，其他同下
+	:1,$s/8080/9090/g ':'是进入命令模式1,$表示从第1行到$代表最后一行,'s'是substitute的缩写，表示替换操作,'/8080'是要被替换的文本,'g':替换每一行中所有匹配的8080
+3.#保存退出
+```
+
+## 2.3安装并运行数据库
+
+**示例：Centos7安装MySQL_5.6.51**
+
+### 2.3.1安装MySQL
+
+```shell
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm #获取MySQL5的yum源
+rpm -ivh mysql-community-release-el7-5.noarch.rpm #安装MySQL5的yum源
+'安装数据库' yum -y install mysql-server
+```
+
+### 2.3.2运行数据库
+
+```shell
+systemctl start mysqld #启动MySQL服务
+```
+
+#### 2.3.2.1MySQL无法启动
+
+```shell
+#解决办法一
+ps -ef | grep mysql #筛选出包含MySQL字段的进程
+netstat -ano | grep 3306 #筛选出使用3306端口的进程
+kill -9 pid #强制关闭进程
+systemctl start mysqld #启动MySQL服务
+
+#解决办法二
+systemctl stop mysqld #关闭MySQL服务
+systemctl start mysqld #启动MySQL服务
+
+#解决办法三--->最好使用前两种
+reboot #重启服务器，MySQL默认开机自启
+systemctl status mysqld #查看MySQL服务状态
+```
+
+### 2.3.2赋予权限并设置密码
+
+```sql
+mysql -u root -p #本机连接MySQL
+show databases; #查看数据库
+use mysql; #使用mysql数据库
+select user,host,password from user; #查看数据库的用户名、host和密码
+# 新建root用户，密码为123456，允许远程连接，赋予全部权限
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+# 刷新权限
+FLUSH PRIVILEGES;
+```
+
+## 2.4远程连接数据库
+
+**Navicat for MySQL v10为例**
+
+![](https://hantianzhun.github.io/blog/issues12.04.png)
+
+![](https://hantianzhun.github.io/blog/issues12.05.png)
+
+## 2.5上传程序员写的代码
+
+> [!CAUTION]
+> 创建的数据库名称随意(非中文)，根据库字符集和表结构以及表数量、数据都与项目文档保持一致
+
+### 2.5.1创建数据库，导入SQL文件
+
+![](https://hantianzhun.github.io/blog/issues12.06.png)
+
+![](https://hantianzhun.github.io/blog/issues12.07.png)
+
+![](https://hantianzhun.github.io/blog/issues12.08.png)
+
+![](https://hantianzhun.github.io/blog/issues12.09.png)
+
+![](https://hantianzhun.github.io/blog/issues12.10.png)
+
+### 2.5.2修改jdbc连接文件
+
+![](https://hantianzhun.github.io/blog/issues12.11.png)
+
+### 2.5.3上传jdbc+log4j文件
+
+**上传到tomcat解压目录下的conf里面**
+
+![](https://hantianzhun.github.io/blog/issues12.12.png)
+
+### 2.5.4上传jar或war包
+
+**上传到tomcat解压目录下的webapps里面**
+
+![](https://hantianzhun.github.io/blog/issues12.13.png)
+
+### 2.5.5浏览器访问http://ip:端口号/包名(在webapps查看) 
+
+- 若有对应的文档里面有**项目访问URL**以文档优先、本文为辅助参考
+
+## 2.6测试过程中发现bug
+
+- 提交bug----->开发修改bug，提交一个新的xx.war------>测试拿到包，停止服务，把最新的xx.war复制到webapps目录下，启动服务，测试
+- 在项目组中发包的频率：一般项目迭代周期： 二周。">
+<meta property="og:title" content="Linux部署">
+<meta property="og:description" content="# 1.禅道开源版
+
+## 1.找到官网
+
+- [禅道下载界面](https://www.zentao.net/downloads.html) [按住ctrl点击链接即可打开]
+
+## 2.本地安装和在线安装
+
+### 2.1本地安装
+
+1. 在禅道下载界面选择linux+一键安装包，点击下载，文件在下载目录
+
+2. 使用xftp或者rz传输到linux
+
+3. 解压一键安装包
+
+   ```shell
+   tar -xzvf ZenTaoxxx.tar.gz -C /opt
+   ```
+
+### 2.2在线安装
+
+1. 点击开源版的安装指南，找到linux一键安装包（推荐）
+
+2. 使用wget进行下载(复制指南的)
+
+   ````shell
+   wget https://www.zentao.net/dl/zentao/18.5/ZenTaoPMS.18.5.zbox_64.tar.gz
+   ````
+
+3. 解压一键安装包
+
+   ```shell
+   tar -xzvf ZenTaoxxx.tar.gz -C /opt
+   ```
+
+## 3.启动禅道
+
+> [!CAUTION]
+> 运行成功之后若无法通过IP地址进行访问，检查系统防火墙
+> systemctl status firewalld (查看防火墙运行状态)
+> systemctl stop firewalld (暂时关闭)
+> systemctl disable firewalld (关闭开机自启动)
+
+### 3.1运行zbox
+
+```shell
+[root@localhost ~]# cd /opt
+[root@localhost opt]# ls
+btop  zbox
+[root@localhost opt]# cd zbox/
+[root@localhost zbox]# ./zbox start
+ 16:03:17.91 INFO  ==> Starting service with Apache port=80, MySQL port=3306, Redis port=6379...
+```
+
+## 4.启动问题
+
+### 4.1端口占用：没有关程序(./zbox stop)导致
+
+- 查看被占用的端口进程（ps -ef |grep mysql/apache）
+- 查进程，注意被占用的是哪个进程
+
+![](https://hantianzhun.github.io/blog/issues12.01.png)
+
+![](https://hantianzhun.github.io/blog/issues12.02.png)
+
+## 5.禅道的项目结构(集成项目软件包):php+apache+mysql
+
+### 5.1zbox文件夹下的目录介绍
+
+```shell
+app：存放的是开发人员写的代码
+bin：可执行文件的命令
+etc：配置文件  端口号修改等等
+tmp：临时文件
+auth：作者相关文件
+data：数据相关的文件
+logs：日志文件
+run：运行程序相关文件
+```
+
+# 2.JavaWeb项目(Tomcat)
+
+- 组成 ：案例依赖：编程语言(java)  jdk +服务器（tomcat）+数据库（mysql）
+
+## 2.1安装jdk
+
+- 配置环境变量，验证是否部署成功  java -version
+  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+
+## 2.2安装tomcat
+
+- 使用ftp软件上传到linux服务器
+
+- 解压缩启动服务，验证环境部署是否成功：在浏览器中输入地址[http://ip:端口]，出现tomcat页面√
+
+### 2.2.1apache-tomcat-xx.xx.xx下所有目录详解
+
+- bin ：可执行文件的命令文件，启动服务器在该目录
+
+- conf：相关配置文件，如修改端口号(server.xml)等
+
+- lib：动态库链接
+
+- logs：日志文件，如出现异常时可查找日志发现问题所在
+
+- tmp：临时文件
+
+- weapps：开发人员写的程序代码包  （xxx.war）
+
+- work：一些启动目录
+
+### 2.2.2tomcat启动失败
+
+#### 2.2.2.1防火墙没关
+
+> [!CAUTION]
+> 运行成功之后若无法通过IP地址进行访问，检查系统防火墙
+> systemctl status firewalld (查看防火墙运行状态)
+> systemctl stop firewalld (暂时关闭)
+> systemctl disable firewalld (关闭开机自启动)
+
+#### 2.2.2.2端口冲突，被占用 
+
+```
+ps -ef|grep tomcat(进程)
+netstat -ano|grep 8080(端口号)
+kill -9 进程号 
+```
+
+#### 2.2.2.3修改端口号
+
+- 修改apache-tomcat-xx.xx.xx目录下的conf/server.xml文件
+
+##### 2.2.2.3.1部分修改
+
+```shell
+1.# vim ./apache-tomcat-xx.xx.xx/conf/server.xml
+2.# 使用vim进行搜索	/8080 并按回车（Enter）
+3.# 修改未被注释为需要的端口号（不可与被占用的端口号一致）
+4.# 保存退出
+```
+
+![](https://hantianzhun.github.io/blog/issues12.03.png)
+
+##### 2.2.2.3.2全部修改
+```shell
+1.# vim ./apache-tomcat-xx.xx.xx/conf/server.xml
+2.# 全部修改需要的端口号（不可与被占用的端口号一致）
+	:%s/8080/9090/g '%'是整个文件，其他同下
+	:1,$s/8080/9090/g ':'是进入命令模式1,$表示从第1行到$代表最后一行,'s'是substitute的缩写，表示替换操作,'/8080'是要被替换的文本,'g':替换每一行中所有匹配的8080
+3.#保存退出
+```
+
+## 2.3安装并运行数据库
+
+**示例：Centos7安装MySQL_5.6.51**
+
+### 2.3.1安装MySQL
+
+```shell
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm #获取MySQL5的yum源
+rpm -ivh mysql-community-release-el7-5.noarch.rpm #安装MySQL5的yum源
+'安装数据库' yum -y install mysql-server
+```
+
+### 2.3.2运行数据库
+
+```shell
+systemctl start mysqld #启动MySQL服务
+```
+
+#### 2.3.2.1MySQL无法启动
+
+```shell
+#解决办法一
+ps -ef | grep mysql #筛选出包含MySQL字段的进程
+netstat -ano | grep 3306 #筛选出使用3306端口的进程
+kill -9 pid #强制关闭进程
+systemctl start mysqld #启动MySQL服务
+
+#解决办法二
+systemctl stop mysqld #关闭MySQL服务
+systemctl start mysqld #启动MySQL服务
+
+#解决办法三--->最好使用前两种
+reboot #重启服务器，MySQL默认开机自启
+systemctl status mysqld #查看MySQL服务状态
+```
+
+### 2.3.2赋予权限并设置密码
+
+```sql
+mysql -u root -p #本机连接MySQL
+show databases; #查看数据库
+use mysql; #使用mysql数据库
+select user,host,password from user; #查看数据库的用户名、host和密码
+# 新建root用户，密码为123456，允许远程连接，赋予全部权限
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+# 刷新权限
+FLUSH PRIVILEGES;
+```
+
+## 2.4远程连接数据库
+
+**Navicat for MySQL v10为例**
+
+![](https://hantianzhun.github.io/blog/issues12.04.png)
+
+![](https://hantianzhun.github.io/blog/issues12.05.png)
+
+## 2.5上传程序员写的代码
+
+> [!CAUTION]
+> 创建的数据库名称随意(非中文)，根据库字符集和表结构以及表数量、数据都与项目文档保持一致
+
+### 2.5.1创建数据库，导入SQL文件
+
+![](https://hantianzhun.github.io/blog/issues12.06.png)
+
+![](https://hantianzhun.github.io/blog/issues12.07.png)
+
+![](https://hantianzhun.github.io/blog/issues12.08.png)
+
+![](https://hantianzhun.github.io/blog/issues12.09.png)
+
+![](https://hantianzhun.github.io/blog/issues12.10.png)
+
+### 2.5.2修改jdbc连接文件
+
+![](https://hantianzhun.github.io/blog/issues12.11.png)
+
+### 2.5.3上传jdbc+log4j文件
+
+**上传到tomcat解压目录下的conf里面**
+
+![](https://hantianzhun.github.io/blog/issues12.12.png)
+
+### 2.5.4上传jar或war包
+
+**上传到tomcat解压目录下的webapps里面**
+
+![](https://hantianzhun.github.io/blog/issues12.13.png)
+
+### 2.5.5浏览器访问http://ip:端口号/包名(在webapps查看) 
+
+- 若有对应的文档里面有**项目访问URL**以文档优先、本文为辅助参考
+
+## 2.6测试过程中发现bug
+
+- 提交bug----->开发修改bug，提交一个新的xx.war------>测试拿到包，停止服务，把最新的xx.war复制到webapps目录下，启动服务，测试
+- 在项目组中发包的频率：一般项目迭代周期： 二周。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hantianzhun.github.io/blog/post/12.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
+<title>Linux部署</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-caution {border-left-color:var(--borderColor-danger-emphasis, var(--color-danger-emphasis));background-color:var(--color-danger-subtle);}.markdown-alert.markdown-alert-caution .markdown-alert-title {color: var(--fgColor-danger,var(--color-danger-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Linux部署</h1>
+<div class="title-right">
+    <a href="https://hantianzhun.github.io/blog" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/hantianzhun/blog/issues/12" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>1.禅道开源版</h1>
+<h2>1.找到官网</h2>
+<ul>
+<li><a href="https://www.zentao.net/downloads.html" rel="nofollow">禅道下载界面</a> [按住ctrl点击链接即可打开]</li>
+</ul>
+<h2>2.本地安装和在线安装</h2>
+<h3>2.1本地安装</h3>
+<ol>
+<li>
+<p>在禅道下载界面选择linux+一键安装包，点击下载，文件在下载目录</p>
+</li>
+<li>
+<p>使用xftp或者rz传输到linux</p>
+</li>
+<li>
+<p>解压一键安装包</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">tar -xzvf ZenTaoxxx.tar.gz -C /opt</pre></div>
+</li>
+</ol>
+<h3>2.2在线安装</h3>
+<ol>
+<li>
+<p>点击开源版的安装指南，找到linux一键安装包（推荐）</p>
+</li>
+<li>
+<p>使用wget进行下载(复制指南的)</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">wget https://www.zentao.net/dl/zentao/18.5/ZenTaoPMS.18.5.zbox_64.tar.gz</pre></div>
+</li>
+<li>
+<p>解压一键安装包</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">tar -xzvf ZenTaoxxx.tar.gz -C /opt</pre></div>
+</li>
+</ol>
+<h2>3.启动禅道</h2>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>运行成功之后若无法通过IP地址进行访问，检查系统防火墙<br>
+systemctl status firewalld (查看防火墙运行状态)<br>
+systemctl stop firewalld (暂时关闭)<br>
+systemctl disable firewalld (关闭开机自启动)</p>
+</div>
+<h3>3.1运行zbox</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">[root@localhost <span class="pl-k">~</span>]<span class="pl-c"><span class="pl-c">#</span> cd /opt</span>
+[root@localhost opt]<span class="pl-c"><span class="pl-c">#</span> ls</span>
+btop  zbox
+[root@localhost opt]<span class="pl-c"><span class="pl-c">#</span> cd zbox/</span>
+[root@localhost zbox]<span class="pl-c"><span class="pl-c">#</span> ./zbox start</span>
+ 16:03:17.91 INFO  ==<span class="pl-k">&gt;</span> Starting service with Apache port=80, MySQL port=3306, Redis port=6379...</pre></div>
+<h2>4.启动问题</h2>
+<h3>4.1端口占用：没有关程序(./zbox stop)导致</h3>
+<ul>
+<li>查看被占用的端口进程（ps -ef |grep mysql/apache）</li>
+<li>查进程，注意被占用的是哪个进程</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/37cd79d1821ba8194d38cb71fc019690ceb52324b31bcef7a0ee0ebc6c804f80/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30312e706e67"><img src="https://camo.githubusercontent.com/37cd79d1821ba8194d38cb71fc019690ceb52324b31bcef7a0ee0ebc6c804f80/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30312e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.01.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f2a7a6761764dc425425915355d9fa81c578fd7166b449001613f3946da46e2e/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30322e706e67"><img src="https://camo.githubusercontent.com/f2a7a6761764dc425425915355d9fa81c578fd7166b449001613f3946da46e2e/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30322e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.02.png" style="max-width: 100%;"></a></p>
+<h2>5.禅道的项目结构(集成项目软件包):php+apache+mysql</h2>
+<h3>5.1zbox文件夹下的目录介绍</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">app：存放的是开发人员写的代码
+bin：可执行文件的命令
+etc：配置文件  端口号修改等等
+tmp：临时文件
+auth：作者相关文件
+data：数据相关的文件
+logs：日志文件
+run：运行程序相关文件</pre></div>
+<h1>2.JavaWeb项目(Tomcat)</h1>
+<ul>
+<li>组成 ：案例依赖：编程语言(java)  jdk +服务器（tomcat）+数据库（mysql）</li>
+</ul>
+<h2>2.1安装jdk</h2>
+<ul>
+<li>配置环境变量，验证是否部署成功  java -version
+<ul>
+<li>详情可见：<a href="./01_Java%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.md">01_Java环境变量配置</a> [按住ctrl点击链接即可打开]</li>
+</ul>
+</li>
+</ul>
+<h2>2.2安装tomcat</h2>
+<ul>
+<li>
+<p>使用ftp软件上传到linux服务器</p>
+</li>
+<li>
+<p>解压缩启动服务，验证环境部署是否成功：在浏览器中输入地址[http://ip:端口]，出现tomcat页面√</p>
+</li>
+</ul>
+<h3>2.2.1apache-tomcat-xx.xx.xx下所有目录详解</h3>
+<ul>
+<li>
+<p>bin ：可执行文件的命令文件，启动服务器在该目录</p>
+</li>
+<li>
+<p>conf：相关配置文件，如修改端口号(server.xml)等</p>
+</li>
+<li>
+<p>lib：动态库链接</p>
+</li>
+<li>
+<p>logs：日志文件，如出现异常时可查找日志发现问题所在</p>
+</li>
+<li>
+<p>tmp：临时文件</p>
+</li>
+<li>
+<p>weapps：开发人员写的程序代码包  （xxx.war）</p>
+</li>
+<li>
+<p>work：一些启动目录</p>
+</li>
+</ul>
+<h3>2.2.2tomcat启动失败</h3>
+<h4>2.2.2.1防火墙没关</h4>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>运行成功之后若无法通过IP地址进行访问，检查系统防火墙<br>
+systemctl status firewalld (查看防火墙运行状态)<br>
+systemctl stop firewalld (暂时关闭)<br>
+systemctl disable firewalld (关闭开机自启动)</p>
+</div>
+<h4>2.2.2.2端口冲突，被占用</h4>
+<pre class="notranslate"><code class="notranslate">ps -ef|grep tomcat(进程)
+netstat -ano|grep 8080(端口号)
+kill -9 进程号 
+</code></pre>
+<h4>2.2.2.3修改端口号</h4>
+<ul>
+<li>修改apache-tomcat-xx.xx.xx目录下的conf/server.xml文件</li>
+</ul>
+<h5>2.2.2.3.1部分修改</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">1.<span class="pl-c"><span class="pl-c">#</span> vim ./apache-tomcat-xx.xx.xx/conf/server.xml</span>
+2.<span class="pl-c"><span class="pl-c">#</span> 使用vim进行搜索	/8080 并按回车（Enter）</span>
+3.<span class="pl-c"><span class="pl-c">#</span> 修改未被注释为需要的端口号（不可与被占用的端口号一致）</span>
+4.<span class="pl-c"><span class="pl-c">#</span> 保存退出</span></pre></div>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f4795bd2abe33ac7a5b4953a518fd2550061c4d662747127ede87e9d4a0fc19e/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30332e706e67"><img src="https://camo.githubusercontent.com/f4795bd2abe33ac7a5b4953a518fd2550061c4d662747127ede87e9d4a0fc19e/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30332e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.03.png" style="max-width: 100%;"></a></p>
+<h5>2.2.2.3.2全部修改</h5>
+<div class="highlight highlight-source-shell"><pre class="notranslate">1.<span class="pl-c"><span class="pl-c">#</span> vim ./apache-tomcat-xx.xx.xx/conf/server.xml</span>
+2.<span class="pl-c"><span class="pl-c">#</span> 全部修改需要的端口号（不可与被占用的端口号一致）</span>
+	:%s/8080/9090/g <span class="pl-s"><span class="pl-pds">'</span>%<span class="pl-pds">'</span></span>是整个文件，其他同下
+	:1,<span class="pl-smi">$s</span>/8080/9090/g <span class="pl-s"><span class="pl-pds">'</span>:<span class="pl-pds">'</span></span>是进入命令模式1,$表示从第1行到$代表最后一行,<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span>是substitute的缩写，表示替换操作,<span class="pl-s"><span class="pl-pds">"</span>/8080<span class="pl-pds">"</span></span>是要被替换的文本,<span class="pl-s"><span class="pl-pds">"</span>g<span class="pl-pds">"</span></span>:替换每一行中所有匹配的8080
+3.<span class="pl-c"><span class="pl-c">#</span>保存退出</span></pre></div>
+<h2>2.3安装并运行数据库</h2>
+<p><strong>示例：Centos7安装MySQL_5.6.51</strong></p>
+<h3>2.3.1安装MySQL</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm <span class="pl-c"><span class="pl-c">#</span>获取MySQL5的yum源</span>
+rpm -ivh mysql-community-release-el7-5.noarch.rpm <span class="pl-c"><span class="pl-c">#</span>安装MySQL5的yum源</span>
+<span class="pl-s"><span class="pl-pds">'</span>安装数据库<span class="pl-pds">'</span></span> yum -y install mysql-server</pre></div>
+<h3>2.3.2运行数据库</h3>
+<div class="highlight highlight-source-shell"><pre class="notranslate">systemctl start mysqld <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span></pre></div>
+<h4>2.3.2.1MySQL无法启动</h4>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>解决办法一</span>
+ps -ef <span class="pl-k">|</span> grep mysql <span class="pl-c"><span class="pl-c">#</span>筛选出包含MySQL字段的进程</span>
+netstat -ano <span class="pl-k">|</span> grep 3306 <span class="pl-c"><span class="pl-c">#</span>筛选出使用3306端口的进程</span>
+<span class="pl-c1">kill</span> -9 pid <span class="pl-c"><span class="pl-c">#</span>强制关闭进程</span>
+systemctl start mysqld <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span>
+
+<span class="pl-c"><span class="pl-c">#</span>解决办法二</span>
+systemctl stop mysqld <span class="pl-c"><span class="pl-c">#</span>关闭MySQL服务</span>
+systemctl start mysqld <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span>
+
+<span class="pl-c"><span class="pl-c">#</span>解决办法三---&gt;最好使用前两种</span>
+reboot <span class="pl-c"><span class="pl-c">#</span>重启服务器，MySQL默认开机自启</span>
+systemctl status mysqld <span class="pl-c"><span class="pl-c">#</span>查看MySQL服务状态</span></pre></div>
+<h3>2.3.2赋予权限并设置密码</h3>
+<div class="highlight highlight-source-sql"><pre class="notranslate">mysql <span class="pl-k">-</span>u root <span class="pl-k">-</span>p <span class="pl-c"><span class="pl-c">#</span>本机连接MySQL</span>
+show databases; <span class="pl-c"><span class="pl-c">#</span>查看数据库</span>
+use mysql; <span class="pl-c"><span class="pl-c">#</span>使用mysql数据库</span>
+<span class="pl-k">select</span> user,host,password <span class="pl-k">from</span> user; <span class="pl-c"><span class="pl-c">#</span>查看数据库的用户名、host和密码</span>
+<span class="pl-c"><span class="pl-c">#</span> 新建root用户，密码为123456，允许远程连接，赋予全部权限</span>
+<span class="pl-k">GRANT</span> ALL PRIVILEGES <span class="pl-k">ON</span> <span class="pl-k">*</span>.<span class="pl-k">*</span> TO <span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>@<span class="pl-s"><span class="pl-pds">'</span>%<span class="pl-pds">'</span></span> IDENTIFIED BY <span class="pl-s"><span class="pl-pds">'</span>123456<span class="pl-pds">'</span></span> WITH <span class="pl-k">GRANT</span> OPTION;
+<span class="pl-c"><span class="pl-c">#</span> 刷新权限</span>
+FLUSH PRIVILEGES;</pre></div>
+<h2>2.4远程连接数据库</h2>
+<p><strong>Navicat for MySQL v10为例</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/095857e70fd95001e5238983bce093ebaa397064c55e98e8a80205bf8c833579/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30342e706e67"><img src="https://camo.githubusercontent.com/095857e70fd95001e5238983bce093ebaa397064c55e98e8a80205bf8c833579/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30342e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.04.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/55704c75e558b1dda685b8ef0f57fd725c4ea8681190488302f9dc9647b29977/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30352e706e67"><img src="https://camo.githubusercontent.com/55704c75e558b1dda685b8ef0f57fd725c4ea8681190488302f9dc9647b29977/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30352e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.05.png" style="max-width: 100%;"></a></p>
+<h2>2.5上传程序员写的代码</h2>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>创建的数据库名称随意(非中文)，根据库字符集和表结构以及表数量、数据都与项目文档保持一致</p>
+</div>
+<h3>2.5.1创建数据库，导入SQL文件</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8297ce02c60fed6abef5e1f1dd8663786749c5e9fdbad46674ba9452f1f06bd3/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30362e706e67"><img src="https://camo.githubusercontent.com/8297ce02c60fed6abef5e1f1dd8663786749c5e9fdbad46674ba9452f1f06bd3/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30362e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.06.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8cf3bc8b66220613950e5bde4aef0538d3a001518c90e1807f2b3f5d2596f58d/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30372e706e67"><img src="https://camo.githubusercontent.com/8cf3bc8b66220613950e5bde4aef0538d3a001518c90e1807f2b3f5d2596f58d/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30372e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.07.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9204540c98125eb3f432570baa7a0879a338119d8b45c99c3af42d77d1b0dc2f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30382e706e67"><img src="https://camo.githubusercontent.com/9204540c98125eb3f432570baa7a0879a338119d8b45c99c3af42d77d1b0dc2f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30382e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.08.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5ce39cefe5212c962020a819f5a7ac626050b4187b866bc106f86dc59cbd5e63/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30392e706e67"><img src="https://camo.githubusercontent.com/5ce39cefe5212c962020a819f5a7ac626050b4187b866bc106f86dc59cbd5e63/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30392e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.09.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f481abe4925466df3da4af97fa4a74c171c83368c9c8064b22efae289f655e0a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31302e706e67"><img src="https://camo.githubusercontent.com/f481abe4925466df3da4af97fa4a74c171c83368c9c8064b22efae289f655e0a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31302e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.10.png" style="max-width: 100%;"></a></p>
+<h3>2.5.2修改jdbc连接文件</h3>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/719c06b3a4f8c14197128f849526d5a1f4539dd27624b6ce660b839802359166/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31312e706e67"><img src="https://camo.githubusercontent.com/719c06b3a4f8c14197128f849526d5a1f4539dd27624b6ce660b839802359166/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31312e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.11.png" style="max-width: 100%;"></a></p>
+<h3>2.5.3上传jdbc+log4j文件</h3>
+<p><strong>上传到tomcat解压目录下的conf里面</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/43d7514c924731ab99e6a305188fb3e931b63b1b858b450e866d7807b65ba6a7/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31322e706e67"><img src="https://camo.githubusercontent.com/43d7514c924731ab99e6a305188fb3e931b63b1b858b450e866d7807b65ba6a7/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31322e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.12.png" style="max-width: 100%;"></a></p>
+<h3>2.5.4上传jar或war包</h3>
+<p><strong>上传到tomcat解压目录下的webapps里面</strong></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/75e88250d67b5243c480c87f2354a887abdb039d0f283a8bc41f30cda361eef1/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31332e706e67"><img src="https://camo.githubusercontent.com/75e88250d67b5243c480c87f2354a887abdb039d0f283a8bc41f30cda361eef1/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e31332e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.13.png" style="max-width: 100%;"></a></p>
+<h3>2.5.5浏览器访问<a href="http://ip:%E7%AB%AF%E5%8F%A3%E5%8F%B7/%E5%8C%85%E5%90%8D(%E5%9C%A8webapps%E6%9F%A5%E7%9C%8B)" rel="nofollow">http://ip:端口号/包名(在webapps查看)</a></h3>
+<ul>
+<li>若有对应的文档里面有<strong>项目访问URL</strong>以文档优先、本文为辅助参考</li>
+</ul>
+<h2>2.6测试过程中发现bug</h2>
+<ul>
+<li>提交bug-----&gt;开发修改bug，提交一个新的xx.war------&gt;测试拿到包，停止服务，把最新的xx.war复制到webapps目录下，启动服务，测试</li>
+<li>在项目组中发包的频率：一般项目迭代周期： 二周</li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://hantianzhun.github.io/blog">枕上诗书闲的博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/20/2024"!=""){
+    var startSite=new Date("08/20/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","hantianzhun/blog");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
