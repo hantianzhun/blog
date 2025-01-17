@@ -1,5 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Fri, 17 Jan 2025 14:52:00 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Navicat的历史版本</title><link>https://hantianzhun.github.io/blog/post/10.html</link><description>## 1.通过固定链接下载
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Fri, 17 Jan 2025 15:08:22 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Java环境变量配置</title><link>https://hantianzhun.github.io/blog/post/11.html</link><description>## 1.下载JDK
+
+首先我们需要下载 java 开发工具包 JDK，下载地址：[Oracle 中国 Java 下载](https://www.oracle.com/cn/java/technologies/downloads/) [按住ctrl点击链接即可打开]
+
+在下载页面中根据自己的系统选择对应的版本，以 Window 64位系统为例：
+
+![](https://hantianzhun.github.io/blog/issues11.01.png)
+
+下载后双击安装，安装过程中可以自定义安装目录等信息，例如我们选择安装目录为`D:\Program Files\Java\jdk`
+
+## 2.配置环境变量
+
+### 2.1Windows系统
+
+#### 2.1.1Windows7
+
+安装完成后，右击'我的电脑'，点击'属性'，选择'高级系统设置'
+
+![](https://hantianzhun.github.io/blog/issues11.02.png)
+
+选择'高级'选项卡，点击'环境变量'
+
+![](https://hantianzhun.github.io/blog/issues11.03.png)
+
+出现如下图所示的画面：
+
+![](https://hantianzhun.github.io/blog/issues11.04.png)
+
+- 在 '系统变量' 中设置 3 项属性
+- JAVA_HOME、PATH、CLASSPATH(大小写无所谓,但是要与path里面引用的一致)
+- 若已存在则点击'编辑'，不存在则点击'新建'。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/11.html</guid><pubDate>Fri, 17 Jan 2025 15:07:36 +0000</pubDate></item><item><title>Navicat的历史版本</title><link>https://hantianzhun.github.io/blog/post/10.html</link><description>## 1.通过固定链接下载
 
 ### Navicat的官网提供了部分历史版本的下载链接，你可以根据需要选择对应版本下载。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/10.html</guid><pubDate>Fri, 17 Jan 2025 14:47:50 +0000</pubDate></item><item><title>Linux基础知识和命令</title><link>https://hantianzhun.github.io/blog/post/9.html</link><description>## 1.为什么要学习Linux，Linux在工作中用来干什么？
 
