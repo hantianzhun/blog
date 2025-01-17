@@ -84,7 +84,7 @@
 https://wwwe.lanzouq.com/iXVzK2kloaxg
 
 > [!CAUTION]
->
+> 里面的软件我也不记得哪里找的了，侵删
 > **链接里面没有教程、且不保证完全可用**
 > **只有Windows可以使用，Linux不清楚怎么激活**
 
