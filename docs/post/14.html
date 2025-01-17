@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/118879111?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="# 1.python项目部署
+
+## 1.1下载Python安装包
+
+- 在Python官网进行下载：[Python官网下载地址](https://www.python.org/downloads/) [按住ctrl点击链接即可打开]
+
+## 1.2安装Python
+
+![](https://hantianzhun.github.io/blog/issues14.01.png)
+
+![](https://hantianzhun.github.io/blog/issues14.02.png)
+
+![](https://hantianzhun.github.io/blog/issues14.03.png)
+
+- **点击install，完成后弹出的界面点击close即可**
+- **在cmd里面输入`python -V`**
+
+![](https://hantianzhun.github.io/blog/issues14.04.png)
+
+## 1.3安装python需要的软件包
+
+- 安装python包，在项目代码的路径(不要出现中文)
+
+```cmd
+安装第三方库
+pip install -r 文件名.txt（文件里是需要安装的包列表）
+pip  install  包名==版本号
+使用镜像源进行包的安装（可以提升速度）
+pip install -r requirements.txt -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+使用镜像源更新pip
+python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --upgrade pip
+```
+
+![](https://hantianzhun.github.io/blog/issues14.05.png)
+
+> [!NOTE]
+> 没error就是正常安装了包
+
+- 查看包，`pip list`
+
+![](https://hantianzhun.github.io/blog/issues14.06.png)
+
+- python包安装成功，在项目路径使用`python xxx.py`即可
+
+![](https://hantianzhun.github.io/blog/issues14.07.png)
+
+# 2.Jmeter安装+使用
+
+## 2.1Jmeter安装
+
+- 在Apache官网进行下载：[Jemter下载地址](https://jmeter.apache.org/download_jmeter.cgi) [按住ctrl点击链接即可打开]
+
+- 将下载的apache-jmeter-5.6.3.zip的压缩包解压到想要的目录即可（不可是中文路径）
+
+## 2.2Windows的JDK是安装包
+
+> [!CAUTION]
+> 安装配置环境变量之后JDK改位置和环境变量，双击Jmeter会无法使用
+
+- 配置环境变量，验证是否部署成功  java -version
+  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+
+- 双击`安装目录/bin/ApacheJMeter.jar`即可打开中文界面的Jmeter
+
+## 2.3Windows的JDK是压缩包
+
+- 解压到想要的文件夹
+- 配置环境变量，验证是否部署成功  java -version
+  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+
+- 使用jmeter.bat启动
+  1. 打开 JMeter 的安装目录，找到 `bin` 文件夹。">
+<meta property="og:title" content="python部署+Jmeter安装">
+<meta property="og:description" content="# 1.python项目部署
+
+## 1.1下载Python安装包
+
+- 在Python官网进行下载：[Python官网下载地址](https://www.python.org/downloads/) [按住ctrl点击链接即可打开]
+
+## 1.2安装Python
+
+![](https://hantianzhun.github.io/blog/issues14.01.png)
+
+![](https://hantianzhun.github.io/blog/issues14.02.png)
+
+![](https://hantianzhun.github.io/blog/issues14.03.png)
+
+- **点击install，完成后弹出的界面点击close即可**
+- **在cmd里面输入`python -V`**
+
+![](https://hantianzhun.github.io/blog/issues14.04.png)
+
+## 1.3安装python需要的软件包
+
+- 安装python包，在项目代码的路径(不要出现中文)
+
+```cmd
+安装第三方库
+pip install -r 文件名.txt（文件里是需要安装的包列表）
+pip  install  包名==版本号
+使用镜像源进行包的安装（可以提升速度）
+pip install -r requirements.txt -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+使用镜像源更新pip
+python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --upgrade pip
+```
+
+![](https://hantianzhun.github.io/blog/issues14.05.png)
+
+> [!NOTE]
+> 没error就是正常安装了包
+
+- 查看包，`pip list`
+
+![](https://hantianzhun.github.io/blog/issues14.06.png)
+
+- python包安装成功，在项目路径使用`python xxx.py`即可
+
+![](https://hantianzhun.github.io/blog/issues14.07.png)
+
+# 2.Jmeter安装+使用
+
+## 2.1Jmeter安装
+
+- 在Apache官网进行下载：[Jemter下载地址](https://jmeter.apache.org/download_jmeter.cgi) [按住ctrl点击链接即可打开]
+
+- 将下载的apache-jmeter-5.6.3.zip的压缩包解压到想要的目录即可（不可是中文路径）
+
+## 2.2Windows的JDK是安装包
+
+> [!CAUTION]
+> 安装配置环境变量之后JDK改位置和环境变量，双击Jmeter会无法使用
+
+- 配置环境变量，验证是否部署成功  java -version
+  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+
+- 双击`安装目录/bin/ApacheJMeter.jar`即可打开中文界面的Jmeter
+
+## 2.3Windows的JDK是压缩包
+
+- 解压到想要的文件夹
+- 配置环境变量，验证是否部署成功  java -version
+  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+
+- 使用jmeter.bat启动
+  1. 打开 JMeter 的安装目录，找到 `bin` 文件夹。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://hantianzhun.github.io/blog/post/14.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
+<title>python部署+Jmeter安装</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style><style>.markdown-alert.markdown-alert-caution {border-left-color:var(--borderColor-danger-emphasis, var(--color-danger-emphasis));background-color:var(--color-danger-subtle);}.markdown-alert.markdown-alert-caution .markdown-alert-title {color: var(--fgColor-danger,var(--color-danger-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">python部署+Jmeter安装</h1>
+<div class="title-right">
+    <a href="https://hantianzhun.github.io/blog" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/hantianzhun/blog/issues/14" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h1>1.python项目部署</h1>
+<h2>1.1下载Python安装包</h2>
+<ul>
+<li>在Python官网进行下载：<a href="https://www.python.org/downloads/" rel="nofollow">Python官网下载地址</a> [按住ctrl点击链接即可打开]</li>
+</ul>
+<h2>1.2安装Python</h2>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/173f2a32d16387c2a78f53cca3a5f5de5febaf00921df3a86c22dc613df14fa0/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30312e706e67"><img src="https://camo.githubusercontent.com/173f2a32d16387c2a78f53cca3a5f5de5febaf00921df3a86c22dc613df14fa0/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30312e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.01.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/2744b4e2a836b32f581b20943aa20698110905a5e8ae16ea9f2628577456d6d8/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30322e706e67"><img src="https://camo.githubusercontent.com/2744b4e2a836b32f581b20943aa20698110905a5e8ae16ea9f2628577456d6d8/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30322e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.02.png" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0f226093ef3cd6394bd2450242884b18ff56c2e8e772c2ef50c3cae5de1d1af0/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30332e706e67"><img src="https://camo.githubusercontent.com/0f226093ef3cd6394bd2450242884b18ff56c2e8e772c2ef50c3cae5de1d1af0/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30332e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.03.png" style="max-width: 100%;"></a></p>
+<ul>
+<li><strong>点击install，完成后弹出的界面点击close即可</strong></li>
+<li><strong>在cmd里面输入<code class="notranslate">python -V</code></strong></li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/96ea87d61596ce488ec7d9429fd8b651d6387ef7d85717e4160da211278238e2/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30342e706e67"><img src="https://camo.githubusercontent.com/96ea87d61596ce488ec7d9429fd8b651d6387ef7d85717e4160da211278238e2/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30342e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.04.png" style="max-width: 100%;"></a></p>
+<h2>1.3安装python需要的软件包</h2>
+<ul>
+<li>安装python包，在项目代码的路径(不要出现中文)</li>
+</ul>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate">安装第三方库
+pip install -r 文件名.txt（文件里是需要安装的包列表）
+pip  install  包名<span class="pl-k">==</span>版本号
+使用镜像源进行包的安装（可以提升速度）
+pip install -r requirements.txt -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+使用镜像源更新pip
+python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --upgrade pip</pre></div>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/459274634e3a73997be71636e9b20198914d1da2272b77c7d6b4e69c6a52dd82/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30352e706e67"><img src="https://camo.githubusercontent.com/459274634e3a73997be71636e9b20198914d1da2272b77c7d6b4e69c6a52dd82/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30352e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.05.png" style="max-width: 100%;"></a></p>
+<div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>没error就是正常安装了包</p>
+</div>
+<ul>
+<li>查看包，<code class="notranslate">pip list</code></li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/94612ce33b7fe9afde685a90e87339a613ff80e6daea85d12713bb9872dc77b8/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30362e706e67"><img src="https://camo.githubusercontent.com/94612ce33b7fe9afde685a90e87339a613ff80e6daea85d12713bb9872dc77b8/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30362e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.06.png" style="max-width: 100%;"></a></p>
+<ul>
+<li>python包安装成功，在项目路径使用<code class="notranslate">python xxx.py</code>即可</li>
+</ul>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/12b8c2550ed347e3fa47381f9bd678d31faf9960d69fcc716a4e7b638351d7cd/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30372e706e67"><img src="https://camo.githubusercontent.com/12b8c2550ed347e3fa47381f9bd678d31faf9960d69fcc716a4e7b638351d7cd/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331342e30372e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues14.07.png" style="max-width: 100%;"></a></p>
+<h1>2.Jmeter安装+使用</h1>
+<h2>2.1Jmeter安装</h2>
+<ul>
+<li>
+<p>在Apache官网进行下载：<a href="https://jmeter.apache.org/download_jmeter.cgi" rel="nofollow">Jemter下载地址</a> [按住ctrl点击链接即可打开]</p>
+</li>
+<li>
+<p>将下载的apache-jmeter-5.6.3.zip的压缩包解压到想要的目录即可（不可是中文路径）</p>
+</li>
+</ul>
+<h2>2.2Windows的JDK是安装包</h2>
+<div class="markdown-alert markdown-alert-caution"><p class="markdown-alert-title"><svg class="octicon octicon-stop mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Caution</p><p>安装配置环境变量之后JDK改位置和环境变量，双击Jmeter会无法使用</p>
+</div>
+<ul>
+<li>
+<p>配置环境变量，验证是否部署成功  java -version</p>
+<ul>
+<li>详情可见：<a href="./01_Java%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.md">01_Java环境变量配置</a> [按住ctrl点击链接即可打开]</li>
+</ul>
+</li>
+<li>
+<p>双击<code class="notranslate">安装目录/bin/ApacheJMeter.jar</code>即可打开中文界面的Jmeter</p>
+</li>
+</ul>
+<h2>2.3Windows的JDK是压缩包</h2>
+<ul>
+<li>
+<p>解压到想要的文件夹</p>
+</li>
+<li>
+<p>配置环境变量，验证是否部署成功  java -version</p>
+<ul>
+<li>详情可见：<a href="./01_Java%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE.md">01_Java环境变量配置</a> [按住ctrl点击链接即可打开]</li>
+</ul>
+</li>
+<li>
+<p>使用jmeter.bat启动</p>
+<ol>
+<li>打开 JMeter 的安装目录，找到 <code class="notranslate">bin</code> 文件夹。</li>
+<li>在 <code class="notranslate">bin</code> 文件夹中，找到并打开 <code class="notranslate">jmeter.properties</code> 文件。</li>
+<li>在 <code class="notranslate">jmeter.properties</code> 文件中，找到以 <code class="notranslate">#language=</code> 开头的行。这行通常位于文件的开头部分。</li>
+<li>去掉该行前面的 <code class="notranslate">#</code> 号，并将 <code class="notranslate">en</code> 改为 <code class="notranslate">zh_CN</code>。修改后的行应该类似于 <code class="notranslate">language=zh_CN</code>。</li>
+<li>保存并关闭 <code class="notranslate">jmeter.properties</code> 文件。</li>
+<li>重新启动 JMeter 软件，你会发现界面已经变成了中文，并且这种设置会永久生效。</li>
+</ol>
+</li>
+<li>
+<p>在jmeter.bat同目录下新建一个<code class="notranslate">start.vbs</code></p>
+</li>
+</ul>
+<div class="highlight highlight-source-vbnet"><pre class="notranslate"><span class="pl-smi">#目录和Jmeter安装目录有关系</span>
+<span class="pl-k">Set</span> <span class="pl-smi">WshShell</span> <span class="pl-smi">=</span> <span class="pl-smi">CreateObject(</span><span class="pl-s">"WScript.Shell"</span><span class="pl-smi">)</span> 
+<span class="pl-smi">WshShell.Run</span> <span class="pl-smi">chr(</span><span class="pl-s">34</span><span class="pl-smi">)</span> <span class="pl-smi">&amp;</span> <span class="pl-s">"D:\apache-jmeter-5.3\bin\jmeter.bat"</span> <span class="pl-smi">&amp;</span> <span class="pl-smi">Chr(</span><span class="pl-s">34</span><span class="pl-smi">),</span> <span class="pl-s">0</span>
+<span class="pl-k">Set</span> <span class="pl-smi">WshShell</span> <span class="pl-smi">=</span> <span class="pl-k">Nothing</span></pre></div>
+<ul>
+<li>
+<p>可以给这个vbs文件创建一个快捷方式到桌面，对快捷方式也可以随意改名</p>
+</li>
+<li>
+<p>双击这个vbs文件就可以打开中文界面的Jmeter</p>
+</li>
+</ul></div>
+<div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="https://hantianzhun.github.io/blog">枕上诗书闲的博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/20/2024"!=""){
+    var startSite=new Date("08/20/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","hantianzhun/blog");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
