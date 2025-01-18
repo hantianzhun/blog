@@ -10,30 +10,32 @@
         let theme = localStorage.getItem("meek_theme") || "light";
         document.documentElement.setAttribute("data-color-mode", theme);
     </script>
-<meta name="description" content="## 1.为什么要学习Linux，Linux在工作中用来干什么？
+<meta name="description" content="# Linux基础知识和命令
+
+# 1.为什么要学习Linux，Linux在工作中用来干什么？
 
 1. Linux在工作中主要用于环境部署（程序代码包  .jar  .war）-->部署到服务器上-->有页面或者是app端
 2. 使用服务器获取日志，协助定位问题
 
-## 2.计算机组成
+# 2.计算机组成
 
-### 2.1硬件
+## 2.1硬件
 
 - 显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）
 
-### 2.2操作系统
+## 2.2操作系统
 
 1. PC端：x86   32位操作系统，x86-64  64位操作系统
 2. 手机端：arm 32位操作系统，arm64  64位操作系统
 3. Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙
 4. 语言：c语言 、java语言、python-->解释器或者是编译器-->转换成计算机能识别的二进制代码程序代码-->指令      数据
 
-### 2.3应用软件
+## 2.3应用软件
 
 - web端-->app端（qq、微信、淘宝、美团、手机银行app）-->小程序（微信小程序、支付宝小程序）-->嵌入式设备与App交互
 
 
-## 3.Linux操作系统
+# 3.Linux操作系统
 
 1. Linux内核（由linus开发出）-->放到开源平台-->图标（企鹅）、名字linux，没有图形化界面，纯命令界面
 
@@ -53,12 +55,12 @@
 
 9. 大型公司自建服务器，提供云服务器资源
 
-## 4.电脑装多系统
+# 4.电脑装多系统
 
 - VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）
 - 镜像文件：后缀为.iso的操作系统文件
 
-## 5.软件的安装
+# 5.软件的安装
 
 -   安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)
 
@@ -66,11 +68,11 @@
 
 -    D:\it_install、D:\vm_install
 
-## 6.远程连接、换源、安装软件包
+# 6.远程连接、换源、安装软件包
 
-### 6.1使用`ip address`or`ifconfig`命令查看IP地址
+## 6.1使用`ip address`or`ifconfig`命令查看IP地址
 
-### 6.2如果不能上网，解决办法？
+## 6.2如果不能上网，解决办法？
 
 ```shell
 cd /etc/sysconfig/network-scripts
@@ -80,18 +82,18 @@ vi ifcfg-ens33#后半网卡名可不同
 
 -   将最后一行的no修改为yes，再点击键盘左上角的ESC，输入`:wq!`再按回车（按ZZ也可）
 
-### 6.3如果源不可用，解决办法？
+## 6.3如果源不可用，解决办法？
 
 ```shell
 #CentOS7换源
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
-### 6.4出现command  not  found如何解决？
+## 6.4出现command  not  found如何解决？
 
   - 尝试安装使用的命令、例：`yum install ifconfig`
   - 提示包不存在可使用yum search 命令、例：`yum search ifconfig`
 
-### 6.5yum的作用
+## 6.5yum的作用
 
 ```shell
 #在线下载并安装
@@ -99,7 +101,7 @@ yum search 安装包的包名
 yum -y install 安装包名
 ```
 
-### 6.6linux获取文件
+## 6.6linux获取文件
 
 1. 使用ftp进行上传
 2. 在linux使用rz命令
@@ -111,7 +113,7 @@ curl -O [URL] --->文件保存为原始文件名
 curl -o [filename] [URL] --->文件保存并重命名为[filename]
 ```
 
-## 7.Linux文件管理系统
+# 7.Linux文件管理系统
 
 ```shell
 #目录结构树
@@ -124,9 +126,9 @@ curl -o [filename] [URL] --->文件保存并重命名为[filename]
 /mnt     存放的是挂载文件相关的目录
 ```
 
-## 8.Linux基本命令
+# 8.Linux基本命令
 
-### 8.1目录相关的命令
+## 8.1目录相关的命令
 
 ```shell
 '创建文件夹' mkdir 文件夹名1
@@ -140,12 +142,12 @@ curl -o [filename] [URL] --->文件保存并重命名为[filename]
 '重命名' mv 要重命名的文件夹/文件 新的文件夹/文件的名字
 ```
 
-###  8.2编写路径
+##  8.2编写路径
 
 -  绝对路径：一次到达，从根目录开始写、例：`/etc/ssh/sshd_config`
 -  相对路径：相对与当前目录而言、例：`../home/hanli`(假设当前目录为root)
 
-### 8.3文件相关的命令
+## 8.3文件相关的命令
 
 ```shell
 '创建文件' touch 文件1
@@ -174,7 +176,7 @@ nl 文件名 #带行号显示文件的所有内容
 '查看文件的第5行' sed -n '5p' 文件名
 ```
 
-### 8.4vi/vim编辑器
+## 8.4vi/vim编辑器
 
 - vi编辑器模式：命令模式，末行模式，编辑模式
 - 默认进入的是命令模式（只读）-->`i`或`a`或`o`-->编辑模式：输入内容
@@ -208,7 +210,7 @@ ndd '删除n行'
 :1,$s/旧字符/新字符 '把第一行到最后一行的第一个旧字符修改为新字符'
 ```
 
-### 8.5打包压缩相关的命令
+## 8.5打包压缩相关的命令
 
 ```shell
 #打包：可以对文件也可以对文件夹进行打包
@@ -228,9 +230,9 @@ tar -tzvf T.tar.gz '查看压缩文件'
 tar -xzvf T.tar.gz -大写C 目录 '解压缩到指定的目录'
 ```
 
-### 8.6进程服务相关的命令
+## 8.6进程服务相关的命令
 
-##### 8.6.1程序和进程的区别？
+### 8.6.1程序和进程的区别？
 
 - 程序是死的
 - 进程：正在运行的程序(动态的)
@@ -251,9 +253,9 @@ grep 过滤查找
 '杀进程' kill -9 pid
 ```
 
-### 8.7权限相关的命令
+## 8.7权限相关的命令
 
-#### 8.7.1用户
+### 8.7.1用户
 
 **Linux系统中有两类用户**
 
@@ -271,7 +273,7 @@ grep 过滤查找
 				用户名:密码:用户id:组ID:用户的家目录:shell环境
 ```
 
-#### 8.7.2组
+### 8.7.2组
 
 ```shell
 '创建组' groupadd 组名
@@ -291,7 +293,7 @@ grep 过滤查找
 useradd -g 组id 用户名
 ```
 
-#### 8.7.3权限
+### 8.7.3权限
 
 - Linux系统是一个多用户多任务的操作系统，安全，对每一个文件或者文件夹都管理了权限
 - Linux系统中的权限是针对文件或者是文件夹的权限，对系统中的每一个文件或者文件夹都涉及到了权限
@@ -320,11 +322,11 @@ useradd -g 组id 用户名
 执行:进入这个文件文件 cd
 ```
 
-#### 8.7.4修改权限
+### 8.7.4修改权限
 
 **权限的数字： `r 读 4` `w  写  2` `x  执行 1`**
 
-##### 方法一
+#### 方法一
 
 **数字法修改权限**：4+2+1
 
@@ -333,7 +335,7 @@ useradd -g 组id 用户名
 chmod 777 文件名 '给所有用户赋予读写执行权限'
 ```
 
-##### 方法二
+#### 方法二
 
 通过字母来修改权限   u   所有者   g 所在组     o 其他组    a（all）所有用户
 
@@ -343,7 +345,7 @@ chmod u-r 1.txt
 chmod a=r 1.txt
 ```
 
-### 8.8其他的常用命令
+## 8.8其他的常用命令
 
 ```shell
 cd 'change directory' '切换目录'
@@ -364,7 +366,7 @@ clear '清空终端屏幕'
 man 命令 '查看帮忙命令' = 命令 --help
 ```
 
-### 8.9常见文件后缀
+## 8.9常见文件后缀
 
 ```shell
 .exe  ---可执行
@@ -374,9 +376,9 @@ man 命令 '查看帮忙命令' = 命令 --help
 .xml  ---配置文件
 ```
 
-## 9.杂
+# 9.杂
 
-### 9.1项目组成员
+## 9.1项目组成员
 
 1. 项目经理
 2. 产品经理（BA）
@@ -389,7 +391,7 @@ man 命令 '查看帮忙命令' = 命令 --help
    - 在项目开始做之间，就会做好数据字典，项目中一共需要多少张表，每一张表存储哪一些字段的数据
    - 表与表之间怎么关联
 
-### 9.2环境
+## 9.2环境
 
 - 测试环境:   http://ip地址
 - 生成环境：上线之后客户真实使用的环境    http：//www.taobao.com
@@ -403,7 +405,7 @@ man 命令 '查看帮忙命令' = 命令 --help
   - 发包：
   - 生产环境的部署    很有经验的老的开发
   
-### 9.3日志分析
+## 9.3日志分析
   1. anr   crash    app产生的中间      app的客户端的日志
   2. 手机中的指定的文件中找    /data/anr
   3. 日志    服务器下面logs
@@ -428,32 +430,37 @@ man 命令 '查看帮忙命令' = 命令 --help
     - 偶现的bug ，不能直接的复现这些操作 ，去打印日志协助分析问题
     - 日志文件一般会展示所有的异常，大概异常发送的时间点 2:30  -4:30
     - 2024-5-12   14:02   XXXXX
-。">
+
+# 10.DD命令
+
+`dd`命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。">
 <meta property="og:title" content="Linux基础知识和命令">
-<meta property="og:description" content="## 1.为什么要学习Linux，Linux在工作中用来干什么？
+<meta property="og:description" content="# Linux基础知识和命令
+
+# 1.为什么要学习Linux，Linux在工作中用来干什么？
 
 1. Linux在工作中主要用于环境部署（程序代码包  .jar  .war）-->部署到服务器上-->有页面或者是app端
 2. 使用服务器获取日志，协助定位问题
 
-## 2.计算机组成
+# 2.计算机组成
 
-### 2.1硬件
+## 2.1硬件
 
 - 显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）
 
-### 2.2操作系统
+## 2.2操作系统
 
 1. PC端：x86   32位操作系统，x86-64  64位操作系统
 2. 手机端：arm 32位操作系统，arm64  64位操作系统
 3. Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙
 4. 语言：c语言 、java语言、python-->解释器或者是编译器-->转换成计算机能识别的二进制代码程序代码-->指令      数据
 
-### 2.3应用软件
+## 2.3应用软件
 
 - web端-->app端（qq、微信、淘宝、美团、手机银行app）-->小程序（微信小程序、支付宝小程序）-->嵌入式设备与App交互
 
 
-## 3.Linux操作系统
+# 3.Linux操作系统
 
 1. Linux内核（由linus开发出）-->放到开源平台-->图标（企鹅）、名字linux，没有图形化界面，纯命令界面
 
@@ -473,12 +480,12 @@ man 命令 '查看帮忙命令' = 命令 --help
 
 9. 大型公司自建服务器，提供云服务器资源
 
-## 4.电脑装多系统
+# 4.电脑装多系统
 
 - VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）
 - 镜像文件：后缀为.iso的操作系统文件
 
-## 5.软件的安装
+# 5.软件的安装
 
 -   安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)
 
@@ -486,11 +493,11 @@ man 命令 '查看帮忙命令' = 命令 --help
 
 -    D:\it_install、D:\vm_install
 
-## 6.远程连接、换源、安装软件包
+# 6.远程连接、换源、安装软件包
 
-### 6.1使用`ip address`or`ifconfig`命令查看IP地址
+## 6.1使用`ip address`or`ifconfig`命令查看IP地址
 
-### 6.2如果不能上网，解决办法？
+## 6.2如果不能上网，解决办法？
 
 ```shell
 cd /etc/sysconfig/network-scripts
@@ -500,18 +507,18 @@ vi ifcfg-ens33#后半网卡名可不同
 
 -   将最后一行的no修改为yes，再点击键盘左上角的ESC，输入`:wq!`再按回车（按ZZ也可）
 
-### 6.3如果源不可用，解决办法？
+## 6.3如果源不可用，解决办法？
 
 ```shell
 #CentOS7换源
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
-### 6.4出现command  not  found如何解决？
+## 6.4出现command  not  found如何解决？
 
   - 尝试安装使用的命令、例：`yum install ifconfig`
   - 提示包不存在可使用yum search 命令、例：`yum search ifconfig`
 
-### 6.5yum的作用
+## 6.5yum的作用
 
 ```shell
 #在线下载并安装
@@ -519,7 +526,7 @@ yum search 安装包的包名
 yum -y install 安装包名
 ```
 
-### 6.6linux获取文件
+## 6.6linux获取文件
 
 1. 使用ftp进行上传
 2. 在linux使用rz命令
@@ -531,7 +538,7 @@ curl -O [URL] --->文件保存为原始文件名
 curl -o [filename] [URL] --->文件保存并重命名为[filename]
 ```
 
-## 7.Linux文件管理系统
+# 7.Linux文件管理系统
 
 ```shell
 #目录结构树
@@ -544,9 +551,9 @@ curl -o [filename] [URL] --->文件保存并重命名为[filename]
 /mnt     存放的是挂载文件相关的目录
 ```
 
-## 8.Linux基本命令
+# 8.Linux基本命令
 
-### 8.1目录相关的命令
+## 8.1目录相关的命令
 
 ```shell
 '创建文件夹' mkdir 文件夹名1
@@ -560,12 +567,12 @@ curl -o [filename] [URL] --->文件保存并重命名为[filename]
 '重命名' mv 要重命名的文件夹/文件 新的文件夹/文件的名字
 ```
 
-###  8.2编写路径
+##  8.2编写路径
 
 -  绝对路径：一次到达，从根目录开始写、例：`/etc/ssh/sshd_config`
 -  相对路径：相对与当前目录而言、例：`../home/hanli`(假设当前目录为root)
 
-### 8.3文件相关的命令
+## 8.3文件相关的命令
 
 ```shell
 '创建文件' touch 文件1
@@ -594,7 +601,7 @@ nl 文件名 #带行号显示文件的所有内容
 '查看文件的第5行' sed -n '5p' 文件名
 ```
 
-### 8.4vi/vim编辑器
+## 8.4vi/vim编辑器
 
 - vi编辑器模式：命令模式，末行模式，编辑模式
 - 默认进入的是命令模式（只读）-->`i`或`a`或`o`-->编辑模式：输入内容
@@ -628,7 +635,7 @@ ndd '删除n行'
 :1,$s/旧字符/新字符 '把第一行到最后一行的第一个旧字符修改为新字符'
 ```
 
-### 8.5打包压缩相关的命令
+## 8.5打包压缩相关的命令
 
 ```shell
 #打包：可以对文件也可以对文件夹进行打包
@@ -648,9 +655,9 @@ tar -tzvf T.tar.gz '查看压缩文件'
 tar -xzvf T.tar.gz -大写C 目录 '解压缩到指定的目录'
 ```
 
-### 8.6进程服务相关的命令
+## 8.6进程服务相关的命令
 
-##### 8.6.1程序和进程的区别？
+### 8.6.1程序和进程的区别？
 
 - 程序是死的
 - 进程：正在运行的程序(动态的)
@@ -671,9 +678,9 @@ grep 过滤查找
 '杀进程' kill -9 pid
 ```
 
-### 8.7权限相关的命令
+## 8.7权限相关的命令
 
-#### 8.7.1用户
+### 8.7.1用户
 
 **Linux系统中有两类用户**
 
@@ -691,7 +698,7 @@ grep 过滤查找
 				用户名:密码:用户id:组ID:用户的家目录:shell环境
 ```
 
-#### 8.7.2组
+### 8.7.2组
 
 ```shell
 '创建组' groupadd 组名
@@ -711,7 +718,7 @@ grep 过滤查找
 useradd -g 组id 用户名
 ```
 
-#### 8.7.3权限
+### 8.7.3权限
 
 - Linux系统是一个多用户多任务的操作系统，安全，对每一个文件或者文件夹都管理了权限
 - Linux系统中的权限是针对文件或者是文件夹的权限，对系统中的每一个文件或者文件夹都涉及到了权限
@@ -740,11 +747,11 @@ useradd -g 组id 用户名
 执行:进入这个文件文件 cd
 ```
 
-#### 8.7.4修改权限
+### 8.7.4修改权限
 
 **权限的数字： `r 读 4` `w  写  2` `x  执行 1`**
 
-##### 方法一
+#### 方法一
 
 **数字法修改权限**：4+2+1
 
@@ -753,7 +760,7 @@ useradd -g 组id 用户名
 chmod 777 文件名 '给所有用户赋予读写执行权限'
 ```
 
-##### 方法二
+#### 方法二
 
 通过字母来修改权限   u   所有者   g 所在组     o 其他组    a（all）所有用户
 
@@ -763,7 +770,7 @@ chmod u-r 1.txt
 chmod a=r 1.txt
 ```
 
-### 8.8其他的常用命令
+## 8.8其他的常用命令
 
 ```shell
 cd 'change directory' '切换目录'
@@ -784,7 +791,7 @@ clear '清空终端屏幕'
 man 命令 '查看帮忙命令' = 命令 --help
 ```
 
-### 8.9常见文件后缀
+## 8.9常见文件后缀
 
 ```shell
 .exe  ---可执行
@@ -794,9 +801,9 @@ man 命令 '查看帮忙命令' = 命令 --help
 .xml  ---配置文件
 ```
 
-## 9.杂
+# 9.杂
 
-### 9.1项目组成员
+## 9.1项目组成员
 
 1. 项目经理
 2. 产品经理（BA）
@@ -809,7 +816,7 @@ man 命令 '查看帮忙命令' = 命令 --help
    - 在项目开始做之间，就会做好数据字典，项目中一共需要多少张表，每一张表存储哪一些字段的数据
    - 表与表之间怎么关联
 
-### 9.2环境
+## 9.2环境
 
 - 测试环境:   http://ip地址
 - 生成环境：上线之后客户真实使用的环境    http：//www.taobao.com
@@ -823,7 +830,7 @@ man 命令 '查看帮忙命令' = 命令 --help
   - 发包：
   - 生产环境的部署    很有经验的老的开发
   
-### 9.3日志分析
+## 9.3日志分析
   1. anr   crash    app产生的中间      app的客户端的日志
   2. 手机中的指定的文件中找    /data/anr
   3. 日志    服务器下面logs
@@ -848,7 +855,10 @@ man 命令 '查看帮忙命令' = 命令 --help
     - 偶现的bug ，不能直接的复现这些操作 ，去打印日志协助分析问题
     - 日志文件一般会展示所有的异常，大概异常发送的时间点 2:30  -4:30
     - 2024-5-12   14:02   XXXXX
-。">
+
+# 10.DD命令
+
+`dd`命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://hantianzhun.github.io/blog/post/9.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
@@ -889,7 +899,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     font-size: 12px;
 }
 </style>
-
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style>
 
 
 
@@ -919,28 +929,29 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </div>
 </div>
     <div id="content">
-<div class="markdown-body" id="postBody"><h2>1.为什么要学习Linux，Linux在工作中用来干什么？</h2>
+<div class="markdown-body" id="postBody"><h1>Linux基础知识和命令</h1>
+<h1>1.为什么要学习Linux，Linux在工作中用来干什么？</h1>
 <ol>
 <li>Linux在工作中主要用于环境部署（程序代码包  .jar  .war）--&gt;部署到服务器上--&gt;有页面或者是app端</li>
 <li>使用服务器获取日志，协助定位问题</li>
 </ol>
-<h2>2.计算机组成</h2>
-<h3>2.1硬件</h3>
+<h1>2.计算机组成</h1>
+<h2>2.1硬件</h2>
 <ul>
 <li>显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）</li>
 </ul>
-<h3>2.2操作系统</h3>
+<h2>2.2操作系统</h2>
 <ol>
 <li>PC端：x86   32位操作系统，x86-64  64位操作系统</li>
 <li>手机端：arm 32位操作系统，arm64  64位操作系统</li>
 <li>Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙</li>
 <li>语言：c语言 、java语言、python--&gt;解释器或者是编译器--&gt;转换成计算机能识别的二进制代码程序代码--&gt;指令      数据</li>
 </ol>
-<h3>2.3应用软件</h3>
+<h2>2.3应用软件</h2>
 <ul>
 <li>web端--&gt;app端（qq、微信、淘宝、美团、手机银行app）--&gt;小程序（微信小程序、支付宝小程序）--&gt;嵌入式设备与App交互</li>
 </ul>
-<h2>3.Linux操作系统</h2>
+<h1>3.Linux操作系统</h1>
 <ol>
 <li>
 <p>Linux内核（由linus开发出）--&gt;放到开源平台--&gt;图标（企鹅）、名字linux，没有图形化界面，纯命令界面</p>
@@ -970,12 +981,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>大型公司自建服务器，提供云服务器资源</p>
 </li>
 </ol>
-<h2>4.电脑装多系统</h2>
+<h1>4.电脑装多系统</h1>
 <ul>
 <li>VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）</li>
 <li>镜像文件：后缀为.iso的操作系统文件</li>
 </ul>
-<h2>5.软件的安装</h2>
+<h1>5.软件的安装</h1>
 <ul>
 <li>
 <p>安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)</p>
@@ -987,9 +998,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>D:\it_install、D:\vm_install</p>
 </li>
 </ul>
-<h2>6.远程连接、换源、安装软件包</h2>
-<h3>6.1使用<code class="notranslate">ip address</code>or<code class="notranslate">ifconfig</code>命令查看IP地址</h3>
-<h3>6.2如果不能上网，解决办法？</h3>
+<h1>6.远程连接、换源、安装软件包</h1>
+<h2>6.1使用<code class="notranslate">ip address</code>or<code class="notranslate">ifconfig</code>命令查看IP地址</h2>
+<h2>6.2如果不能上网，解决办法？</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> /etc/sysconfig/network-scripts
 vi ifcfg-ens33#后半网卡名可不同</pre></div>
 <ul>
@@ -1000,19 +1011,19 @@ vi ifcfg-ens33#后半网卡名可不同</pre></div>
 <p>将最后一行的no修改为yes，再点击键盘左上角的ESC，输入<code class="notranslate">:wq!</code>再按回车（按ZZ也可）</p>
 </li>
 </ul>
-<h3>6.3如果源不可用，解决办法？</h3>
+<h2>6.3如果源不可用，解决办法？</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>CentOS7换源</span>
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</pre></div>
-<h3>6.4出现command  not  found如何解决？</h3>
+<h2>6.4出现command  not  found如何解决？</h2>
 <ul>
 <li>尝试安装使用的命令、例：<code class="notranslate">yum install ifconfig</code></li>
 <li>提示包不存在可使用yum search 命令、例：<code class="notranslate">yum search ifconfig</code></li>
 </ul>
-<h3>6.5yum的作用</h3>
+<h2>6.5yum的作用</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>在线下载并安装</span>
 yum search 安装包的包名
 yum -y install 安装包名</pre></div>
-<h3>6.6linux获取文件</h3>
+<h2>6.6linux获取文件</h2>
 <ol>
 <li>使用ftp进行上传</li>
 <li>在linux使用rz命令</li>
@@ -1021,7 +1032,7 @@ yum -y install 安装包名</pre></div>
 <div class="highlight highlight-source-shell"><pre class="notranslate">wget  [URL] ---<span class="pl-k">&gt;</span>文件保存为原始文件名
 curl -O [URL] ---<span class="pl-k">&gt;</span>文件保存为原始文件名
 curl -o [filename] [URL] ---<span class="pl-k">&gt;</span>文件保存并重命名为[filename]</pre></div>
-<h2>7.Linux文件管理系统</h2>
+<h1>7.Linux文件管理系统</h1>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>目录结构树</span>
 /etc     存放配置相关的文件      /etc/profile 环境变量 /etc/sysconfig/newrok-Scripts 网卡配置
 /bin     存放的是可执行的命令文件     启动服务器
@@ -1030,8 +1041,8 @@ curl -o [filename] [URL] ---<span class="pl-k">&gt;</span>文件保存并重命�
 /home    是普通用户的家目录
 /opt     存放的是临时文件相关的一些目录
 /mnt     存放的是挂载文件相关的目录</pre></div>
-<h2>8.Linux基本命令</h2>
-<h3>8.1目录相关的命令</h3>
+<h1>8.Linux基本命令</h1>
+<h2>8.1目录相关的命令</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建文件夹<span class="pl-pds">'</span></span> mkdir 文件夹名1
 <span class="pl-s"><span class="pl-pds">'</span>创建多个文件夹<span class="pl-pds">'</span></span> mkdir 文件夹1 文件夹2
 <span class="pl-s"><span class="pl-pds">'</span>创建多层级的文件<span class="pl-pds">'</span></span> mkdir -p A/B
@@ -1041,12 +1052,12 @@ curl -o [filename] [URL] ---<span class="pl-k">&gt;</span>文件保存并重命�
 <span class="pl-s"><span class="pl-pds">'</span>复制文件夹到指定的目录<span class="pl-pds">'</span></span> cp -r 要复制的文件 复制到哪里去
 <span class="pl-s"><span class="pl-pds">'</span>剪切文件到指定的目录<span class="pl-pds">'</span></span> mv 要剪切的文件 剪切到哪里去
 <span class="pl-s"><span class="pl-pds">'</span>重命名<span class="pl-pds">'</span></span> mv 要重命名的文件夹/文件 新的文件夹/文件的名字</pre></div>
-<h3>8.2编写路径</h3>
+<h2>8.2编写路径</h2>
 <ul>
 <li>绝对路径：一次到达，从根目录开始写、例：<code class="notranslate">/etc/ssh/sshd_config</code></li>
 <li>相对路径：相对与当前目录而言、例：<code class="notranslate">../home/hanli</code>(假设当前目录为root)</li>
 </ul>
-<h3>8.3文件相关的命令</h3>
+<h2>8.3文件相关的命令</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建文件<span class="pl-pds">'</span></span> touch 文件1
 <span class="pl-s"><span class="pl-pds">'</span>创建多个文件<span class="pl-pds">'</span></span> touch f2 f3
 <span class="pl-s"><span class="pl-pds">'</span>弹出提示信息删除文件<span class="pl-pds">'</span></span> rm 文件名  
@@ -1068,7 +1079,7 @@ nl 文件名 <span class="pl-c"><span class="pl-c">#</span>带行号显示文件
 <span class="pl-s"><span class="pl-pds">'</span>查看一个文件的第3行到第5行<span class="pl-pds">'</span></span> sed -n <span class="pl-s"><span class="pl-pds">'</span>n1,n2p<span class="pl-pds">'</span></span> 文件名  <span class="pl-c"><span class="pl-c">#</span>n1和n2代表的是两个数字</span>
 <span class="pl-s"><span class="pl-pds">'</span>查看一个文件的第3行到第5行<span class="pl-pds">'</span></span> head -5 文件名 <span class="pl-k">|</span> tail -3
 <span class="pl-s"><span class="pl-pds">'</span>查看文件的第5行<span class="pl-pds">'</span></span> sed -n <span class="pl-s"><span class="pl-pds">'</span>5p<span class="pl-pds">'</span></span> 文件名</pre></div>
-<h3>8.4vi/vim编辑器</h3>
+<h2>8.4vi/vim编辑器</h2>
 <ul>
 <li>vi编辑器模式：命令模式，末行模式，编辑模式</li>
 <li>默认进入的是命令模式（只读）--&gt;<code class="notranslate">i</code>或<code class="notranslate">a</code>或<code class="notranslate">o</code>--&gt;编辑模式：输入内容</li>
@@ -1099,7 +1110,7 @@ ndd <span class="pl-s"><span class="pl-pds">'</span>删除n行<span class="pl-pd
 :1,3s/旧字符/新字符/g <span class="pl-s"><span class="pl-pds">'</span>把第一行到第三行的所有的旧字符修改为新字符<span class="pl-pds">'</span></span>
 :4s/旧字符/新字符/g <span class="pl-s"><span class="pl-pds">'</span>把第四行的所有的旧字符修改为新字符<span class="pl-pds">'</span></span>
 :1,<span class="pl-smi">$s</span>/旧字符/新字符 <span class="pl-s"><span class="pl-pds">'</span>把第一行到最后一行的第一个旧字符修改为新字符<span class="pl-pds">'</span></span></pre></div>
-<h3>8.5打包压缩相关的命令</h3>
+<h2>8.5打包压缩相关的命令</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>打包：可以对文件也可以对文件夹进行打包</span>
 tar -cvf T.tar 要打包的文件/文件夹 <span class="pl-s"><span class="pl-pds">'</span>c：create f：file v：verbose 过程<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>打包<span class="pl-pds">'</span></span>
 
@@ -1115,8 +1126,8 @@ tar -czvf T.tar.gz 文件 文件夹1 文件2 文件夹2 <span class="pl-s"><span
 tar -xzvf T.tar.gz <span class="pl-s"><span class="pl-pds">'</span>默认解压到当前目录<span class="pl-pds">'</span></span>
 tar -tzvf T.tar.gz <span class="pl-s"><span class="pl-pds">'</span>查看压缩文件<span class="pl-pds">'</span></span>
 tar -xzvf T.tar.gz -大写C 目录 <span class="pl-s"><span class="pl-pds">'</span>解压缩到指定的目录<span class="pl-pds">'</span></span></pre></div>
-<h3>8.6进程服务相关的命令</h3>
-<h5>8.6.1程序和进程的区别？</h5>
+<h2>8.6进程服务相关的命令</h2>
+<h3>8.6.1程序和进程的区别？</h3>
 <ul>
 <li>程序是死的</li>
 <li>进程：正在运行的程序(动态的)</li>
@@ -1134,8 +1145,8 @@ systemctl start httpd <span class="pl-c"><span class="pl-c">#</span>启动MySQL�
 grep 过滤查找
 
 <span class="pl-s"><span class="pl-pds">'</span>杀进程<span class="pl-pds">'</span></span> <span class="pl-c1">kill</span> -9 pid</pre></div>
-<h3>8.7权限相关的命令</h3>
-<h4>8.7.1用户</h4>
+<h2>8.7权限相关的命令</h2>
+<h3>8.7.1用户</h3>
 <p><strong>Linux系统中有两类用户</strong></p>
 <ul>
 <li>一类是管理员用户 root /root [root@localhost opt]# root用户的标识符 #</li>
@@ -1149,7 +1160,7 @@ grep 过滤查找
 <span class="pl-s"><span class="pl-pds">'</span>用户的信息存放在<span class="pl-pds">'</span></span> /etc/passwd   
 				xiaoming:x:1000:1001::/home/xiaoming:/bin/bash
 				用户名:密码:用户id:组ID:用户的家目录:shell环境</pre></div>
-<h4>8.7.2组</h4>
+<h3>8.7.2组</h3>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建组<span class="pl-pds">'</span></span> groupadd 组名
 <span class="pl-s"><span class="pl-pds">'</span>删除组<span class="pl-pds">'</span></span> groupdel 组名 <span class="pl-s"><span class="pl-pds">'</span>不能删除有用户的组<span class="pl-pds">'</span></span>
 <span class="pl-s"><span class="pl-pds">'</span>组的信息存放在<span class="pl-pds">'</span></span> /etc/group
@@ -1162,7 +1173,7 @@ grep 过滤查找
 </ul>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个用户并确定属组</span>
 useradd -g 组id 用户名</pre></div>
-<h4>8.7.3权限</h4>
+<h3>8.7.3权限</h3>
 <ul>
 <li>Linux系统是一个多用户多任务的操作系统，安全，对每一个文件或者文件夹都管理了权限</li>
 <li>Linux系统中的权限是针对文件或者是文件夹的权限，对系统中的每一个文件或者文件夹都涉及到了权限</li>
@@ -1183,18 +1194,18 @@ useradd -g 组id 用户名</pre></div>
 <div class="highlight highlight-source-shell"><pre class="notranslate">读:读取查看文件夹中的内容 ls ls-a
 写：可以在文件夹中创建文件夹创建文件复制剪切
 执行:进入这个文件文件 <span class="pl-c1">cd</span></pre></div>
-<h4>8.7.4修改权限</h4>
+<h3>8.7.4修改权限</h3>
 <p><strong>权限的数字： <code class="notranslate">r 读 4</code> <code class="notranslate">w  写  2</code> <code class="notranslate">x  执行 1</code></strong></p>
-<h5>方法一</h5>
+<h4>方法一</h4>
 <p><strong>数字法修改权限</strong>：4+2+1</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">第一个数字代表的是所有者的权限，第二个数字代表的是所在组的权限，第三个数字是其他组的权限
 chmod 777 文件名 <span class="pl-s"><span class="pl-pds">'</span>给所有用户赋予读写执行权限<span class="pl-pds">'</span></span></pre></div>
-<h5>方法二</h5>
+<h4>方法二</h4>
 <p>通过字母来修改权限   u   所有者   g 所在组     o 其他组    a（all）所有用户</p>
 <div class="highlight highlight-source-shell"><pre class="notranslate">chmod u=rwx 1.txt
 chmod u-r 1.txt
 chmod a=r 1.txt</pre></div>
-<h3>8.8其他的常用命令</h3>
+<h2>8.8其他的常用命令</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-s"><span class="pl-pds">'</span>change directory<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>切换目录<span class="pl-pds">'</span></span>
 <span class="pl-c1">cd</span> .. <span class="pl-s"><span class="pl-pds">'</span>切换到上一级目录<span class="pl-pds">'</span></span>
 <span class="pl-c1">cd</span> ../.. <span class="pl-s"><span class="pl-pds">'</span>切换到上上一级目录<span class="pl-pds">'</span></span>
@@ -1211,14 +1222,14 @@ ls -al <span class="pl-s"><span class="pl-pds">'</span>显示所有文件的详�
 tree <span class="pl-s"><span class="pl-pds">'</span>树形结构展示当前目录下的所有文件或文件夹<span class="pl-pds">'</span></span>
 clear <span class="pl-s"><span class="pl-pds">'</span>清空终端屏幕<span class="pl-pds">'</span></span>
 man 命令 <span class="pl-s"><span class="pl-pds">'</span>查看帮忙命令<span class="pl-pds">'</span></span> = 命令 --help</pre></div>
-<h3>8.9常见文件后缀</h3>
+<h2>8.9常见文件后缀</h2>
 <div class="highlight highlight-source-shell"><pre class="notranslate">.exe  ---可执行
 .iso  ---镜像文件
 .bat  ---windoes中可执行文件
 .sh   ---Linux中可执行文件
 .xml  ---配置文件</pre></div>
-<h2>9.杂</h2>
-<h3>9.1项目组成员</h3>
+<h1>9.杂</h1>
+<h2>9.1项目组成员</h2>
 <ol>
 <li>项目经理</li>
 <li>产品经理（BA）</li>
@@ -1234,7 +1245,7 @@ man 命令 <span class="pl-s"><span class="pl-pds">'</span>查看帮忙命令<sp
 </ul>
 </li>
 </ol>
-<h3>9.2环境</h3>
+<h2>9.2环境</h2>
 <ul>
 <li>
 <p>测试环境:   <a href="http://ip%E5%9C%B0%E5%9D%80" rel="nofollow">http://ip地址</a></p>
@@ -1256,7 +1267,7 @@ taobao项目组的测试     zhanghao  1亿</li>
 </ul>
 </li>
 </ul>
-<h3>9.3日志分析</h3>
+<h2>9.3日志分析</h2>
 <ol>
 <li>
 <p>anr   crash    app产生的中间      app的客户端的日志</p>
@@ -1301,7 +1312,58 @@ cd   /data/anr</li>
 <li>2024-5-12   14:02   XXXXX</li>
 </ul>
 </li>
-</ul></div>
+</ul>
+<h1>10.DD命令</h1>
+<p><code class="notranslate">dd</code>命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。以下是如何使用<code class="notranslate">dd</code>命令的一些基本方法：</p>
+<h2>10.1基本语法</h2>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=<span class="pl-k">&lt;</span>输入文件<span class="pl-k">&gt;</span> of=<span class="pl-k">&lt;</span>输出文件<span class="pl-k">&gt;</span> [选项]</pre></div>
+<ul>
+<li><code class="notranslate">if</code>：指定输入文件名或设备名。默认为标准输入(stdin)。</li>
+<li><code class="notranslate">of</code>：指定输出文件名或设备名。默认为标准输出(stdout)。</li>
+<li><code class="notranslate">[选项]</code>：各种可选参数，用于控制复制行为。</li>
+</ul>
+<h2>10.2常用选项</h2>
+<ul>
+<li><code class="notranslate">bs=块大小</code>：指定读写的块大小，如<code class="notranslate">bs=4M</code>。默认为512字节。</li>
+<li><code class="notranslate">count=块数</code>：指定要复制的块数，如<code class="notranslate">count=10</code>。</li>
+<li><code class="notranslate">skip=块数</code>：在读取输入文件之前跳过的块数，如<code class="notranslate">skip=5</code>。</li>
+<li><code class="notranslate">seek=块数</code>：在写入输出文件之前跳过的块数，如<code class="notranslate">seek=5</code>。</li>
+<li><code class="notranslate">conv=转换列表</code>：指定数据转换方式，如<code class="notranslate">conv=sync</code>确保同步模式，<code class="notranslate">conv=noerror</code>忽略读写错误等。</li>
+<li><code class="notranslate">status=LEVEL</code>：控制状态输出的详细程度，如<code class="notranslate">status=progress</code>会显示复制进度。</li>
+</ul>
+<h2>10.3示例</h2>
+<ul>
+<li>
+<p><strong>复制文件</strong>：将一个文件复制到另一个文件。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/path/to/source_file of=/path/to/destination_file</pre></div>
+</li>
+<li>
+<p><strong>备份磁盘分区</strong>：将一个磁盘分区备份到一个镜像文件。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/dev/sda1 of=/path/to/backup.img</pre></div>
+</li>
+<li>
+<p><strong>恢复磁盘分区</strong>：将镜像文件恢复到磁盘分区。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/path/to/backup.img of=/dev/sda1</pre></div>
+</li>
+<li>
+<p><strong>创建镜像文件</strong>：创建一个指定大小的镜像文件，内容全为零。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/dev/zero of=imagefile.img bs=1G count=10</pre></div>
+</li>
+<li>
+<p><strong>制作启动盘</strong>：将ISO文件写入U盘，制作启动盘。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/path/to/ubuntu.iso of=/dev/sdb bs=4M status=progress</pre></div>
+</li>
+<li>
+<p><strong>擦除硬盘数据</strong>：使用随机数据覆盖整个硬盘，确保数据无法恢复。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/dev/urandom of=/dev/sda bs=4M</pre></div>
+</li>
+</ul>
+<div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<ul>
+<li>使用<code class="notranslate">dd</code>命令时需要谨慎，错误的操作可能会导致数据丢失或系统损坏。在执行涉及磁盘操作的命令前，最好先进行备份。</li>
+<li>部分操作可能需要root权限，如备份和恢复磁盘分区等。</li>
+</ul>
+</div></div>
 <div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

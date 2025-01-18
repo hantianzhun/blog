@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Fri, 17 Jan 2025 15:35:23 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>python部署+Jmeter安装</title><link>https://hantianzhun.github.io/blog/post/14.html</link><description># 1.python项目部署
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Sat, 18 Jan 2025 07:48:49 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>python部署+Jmeter安装</title><link>https://hantianzhun.github.io/blog/post/14.html</link><description># 1.python项目部署
 
 ## 1.1下载Python安装包
 
@@ -357,30 +357,32 @@ FLUSH PRIVILEGES;
 - JAVA_HOME、PATH、CLASSPATH(大小写无所谓,但是要与path里面引用的一致)
 - 若已存在则点击'编辑'，不存在则点击'新建'。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/11.html</guid><pubDate>Fri, 17 Jan 2025 15:07:36 +0000</pubDate></item><item><title>Navicat的历史版本</title><link>https://hantianzhun.github.io/blog/post/10.html</link><description>## 1.通过固定链接下载
 
-### Navicat的官网提供了部分历史版本的下载链接，你可以根据需要选择对应版本下载。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/10.html</guid><pubDate>Fri, 17 Jan 2025 14:47:50 +0000</pubDate></item><item><title>Linux基础知识和命令</title><link>https://hantianzhun.github.io/blog/post/9.html</link><description>## 1.为什么要学习Linux，Linux在工作中用来干什么？
+### Navicat的官网提供了部分历史版本的下载链接，你可以根据需要选择对应版本下载。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/10.html</guid><pubDate>Fri, 17 Jan 2025 14:47:50 +0000</pubDate></item><item><title>Linux基础知识和命令</title><link>https://hantianzhun.github.io/blog/post/9.html</link><description># Linux基础知识和命令
+
+# 1.为什么要学习Linux，Linux在工作中用来干什么？
 
 1. Linux在工作中主要用于环境部署（程序代码包  .jar  .war）--&gt;部署到服务器上--&gt;有页面或者是app端
 2. 使用服务器获取日志，协助定位问题
 
-## 2.计算机组成
+# 2.计算机组成
 
-### 2.1硬件
+## 2.1硬件
 
 - 显示器 、鼠标 、键盘 、主机（主板  内存条   网卡  显卡 声卡   CPU：核   电源   风扇）
 
-### 2.2操作系统
+## 2.2操作系统
 
 1. PC端：x86   32位操作系统，x86-64  64位操作系统
 2. 手机端：arm 32位操作系统，arm64  64位操作系统
 3. Windows、MacOS、dos、Linux、Andorid、ios、鸿蒙
 4. 语言：c语言 、java语言、python--&gt;解释器或者是编译器--&gt;转换成计算机能识别的二进制代码程序代码--&gt;指令      数据
 
-### 2.3应用软件
+## 2.3应用软件
 
 - web端--&gt;app端（qq、微信、淘宝、美团、手机银行app）--&gt;小程序（微信小程序、支付宝小程序）--&gt;嵌入式设备与App交互
 
 
-## 3.Linux操作系统
+# 3.Linux操作系统
 
 1. Linux内核（由linus开发出）--&gt;放到开源平台--&gt;图标（企鹅）、名字linux，没有图形化界面，纯命令界面
 
@@ -400,12 +402,12 @@ FLUSH PRIVILEGES;
 
 9. 大型公司自建服务器，提供云服务器资源
 
-## 4.电脑装多系统
+# 4.电脑装多系统
 
 - VM虚拟机：在宿主机中独立出一块空间（CPU，内存，网卡，显卡，声卡）
 - 镜像文件：后缀为.iso的操作系统文件
 
-## 5.软件的安装
+# 5.软件的安装
 
 -   安装的路径中不要出现中文，或者是特殊符号   it-install(错误示范)
 
@@ -413,11 +415,11 @@ FLUSH PRIVILEGES;
 
 -    D:\it_install、D:\vm_install
 
-## 6.远程连接、换源、安装软件包
+# 6.远程连接、换源、安装软件包
 
-### 6.1使用`ip address`or`ifconfig`命令查看IP地址
+## 6.1使用`ip address`or`ifconfig`命令查看IP地址
 
-### 6.2如果不能上网，解决办法？
+## 6.2如果不能上网，解决办法？
 
 ```shell
 cd /etc/sysconfig/network-scripts
@@ -427,18 +429,18 @@ vi ifcfg-ens33#后半网卡名可不同
 
 -   将最后一行的no修改为yes，再点击键盘左上角的ESC，输入`:wq!`再按回车（按ZZ也可）
 
-### 6.3如果源不可用，解决办法？
+## 6.3如果源不可用，解决办法？
 
 ```shell
 #CentOS7换源
 curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 ```
-### 6.4出现command  not  found如何解决？
+## 6.4出现command  not  found如何解决？
 
   - 尝试安装使用的命令、例：`yum install ifconfig`
   - 提示包不存在可使用yum search 命令、例：`yum search ifconfig`
 
-### 6.5yum的作用
+## 6.5yum的作用
 
 ```shell
 #在线下载并安装
@@ -446,7 +448,7 @@ yum search 安装包的包名
 yum -y install 安装包名
 ```
 
-### 6.6linux获取文件
+## 6.6linux获取文件
 
 1. 使用ftp进行上传
 2. 在linux使用rz命令
@@ -458,7 +460,7 @@ curl -O [URL] ---&gt;文件保存为原始文件名
 curl -o [filename] [URL] ---&gt;文件保存并重命名为[filename]
 ```
 
-## 7.Linux文件管理系统
+# 7.Linux文件管理系统
 
 ```shell
 #目录结构树
@@ -471,9 +473,9 @@ curl -o [filename] [URL] ---&gt;文件保存并重命名为[filename]
 /mnt     存放的是挂载文件相关的目录
 ```
 
-## 8.Linux基本命令
+# 8.Linux基本命令
 
-### 8.1目录相关的命令
+## 8.1目录相关的命令
 
 ```shell
 '创建文件夹' mkdir 文件夹名1
@@ -487,12 +489,12 @@ curl -o [filename] [URL] ---&gt;文件保存并重命名为[filename]
 '重命名' mv 要重命名的文件夹/文件 新的文件夹/文件的名字
 ```
 
-###  8.2编写路径
+##  8.2编写路径
 
 -  绝对路径：一次到达，从根目录开始写、例：`/etc/ssh/sshd_config`
 -  相对路径：相对与当前目录而言、例：`../home/hanli`(假设当前目录为root)
 
-### 8.3文件相关的命令
+## 8.3文件相关的命令
 
 ```shell
 '创建文件' touch 文件1
@@ -521,7 +523,7 @@ nl 文件名 #带行号显示文件的所有内容
 '查看文件的第5行' sed -n '5p' 文件名
 ```
 
-### 8.4vi/vim编辑器
+## 8.4vi/vim编辑器
 
 - vi编辑器模式：命令模式，末行模式，编辑模式
 - 默认进入的是命令模式（只读）--&gt;`i`或`a`或`o`--&gt;编辑模式：输入内容
@@ -555,7 +557,7 @@ ndd '删除n行'
 :1,$s/旧字符/新字符 '把第一行到最后一行的第一个旧字符修改为新字符'
 ```
 
-### 8.5打包压缩相关的命令
+## 8.5打包压缩相关的命令
 
 ```shell
 #打包：可以对文件也可以对文件夹进行打包
@@ -575,9 +577,9 @@ tar -tzvf T.tar.gz '查看压缩文件'
 tar -xzvf T.tar.gz -大写C 目录 '解压缩到指定的目录'
 ```
 
-### 8.6进程服务相关的命令
+## 8.6进程服务相关的命令
 
-##### 8.6.1程序和进程的区别？
+### 8.6.1程序和进程的区别？
 
 - 程序是死的
 - 进程：正在运行的程序(动态的)
@@ -598,9 +600,9 @@ grep 过滤查找
 '杀进程' kill -9 pid
 ```
 
-### 8.7权限相关的命令
+## 8.7权限相关的命令
 
-#### 8.7.1用户
+### 8.7.1用户
 
 **Linux系统中有两类用户**
 
@@ -618,7 +620,7 @@ grep 过滤查找
 				用户名:密码:用户id:组ID:用户的家目录:shell环境
 ```
 
-#### 8.7.2组
+### 8.7.2组
 
 ```shell
 '创建组' groupadd 组名
@@ -638,7 +640,7 @@ grep 过滤查找
 useradd -g 组id 用户名
 ```
 
-#### 8.7.3权限
+### 8.7.3权限
 
 - Linux系统是一个多用户多任务的操作系统，安全，对每一个文件或者文件夹都管理了权限
 - Linux系统中的权限是针对文件或者是文件夹的权限，对系统中的每一个文件或者文件夹都涉及到了权限
@@ -667,11 +669,11 @@ useradd -g 组id 用户名
 执行:进入这个文件文件 cd
 ```
 
-#### 8.7.4修改权限
+### 8.7.4修改权限
 
 **权限的数字： `r 读 4` `w  写  2` `x  执行 1`**
 
-##### 方法一
+#### 方法一
 
 **数字法修改权限**：4+2+1
 
@@ -680,7 +682,7 @@ useradd -g 组id 用户名
 chmod 777 文件名 '给所有用户赋予读写执行权限'
 ```
 
-##### 方法二
+#### 方法二
 
 通过字母来修改权限   u   所有者   g 所在组     o 其他组    a（all）所有用户
 
@@ -690,7 +692,7 @@ chmod u-r 1.txt
 chmod a=r 1.txt
 ```
 
-### 8.8其他的常用命令
+## 8.8其他的常用命令
 
 ```shell
 cd 'change directory' '切换目录'
@@ -711,7 +713,7 @@ clear '清空终端屏幕'
 man 命令 '查看帮忙命令' = 命令 --help
 ```
 
-### 8.9常见文件后缀
+## 8.9常见文件后缀
 
 ```shell
 .exe  ---可执行
@@ -721,9 +723,9 @@ man 命令 '查看帮忙命令' = 命令 --help
 .xml  ---配置文件
 ```
 
-## 9.杂
+# 9.杂
 
-### 9.1项目组成员
+## 9.1项目组成员
 
 1. 项目经理
 2. 产品经理（BA）
@@ -736,7 +738,7 @@ man 命令 '查看帮忙命令' = 命令 --help
    - 在项目开始做之间，就会做好数据字典，项目中一共需要多少张表，每一张表存储哪一些字段的数据
    - 表与表之间怎么关联
 
-### 9.2环境
+## 9.2环境
 
 - 测试环境:   http://ip地址
 - 生成环境：上线之后客户真实使用的环境    http：//www.taobao.com
@@ -750,7 +752,7 @@ man 命令 '查看帮忙命令' = 命令 --help
   - 发包：
   - 生产环境的部署    很有经验的老的开发
   
-### 9.3日志分析
+## 9.3日志分析
   1. anr   crash    app产生的中间      app的客户端的日志
   2. 手机中的指定的文件中找    /data/anr
   3. 日志    服务器下面logs
@@ -775,7 +777,10 @@ man 命令 '查看帮忙命令' = 命令 --help
     - 偶现的bug ，不能直接的复现这些操作 ，去打印日志协助分析问题
     - 日志文件一般会展示所有的异常，大概异常发送的时间点 2:30  -4:30
     - 2024-5-12   14:02   XXXXX
-。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/9.html</guid><pubDate>Mon, 06 Jan 2025 12:34:25 +0000</pubDate></item><item><title>MySQL数据库的练习</title><link>https://hantianzhun.github.io/blog/post/8.html</link><description>### 1.导入exam-utf8（无外键）数据库&#13;
+
+# 10.DD命令
+
+`dd`命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/9.html</guid><pubDate>Mon, 06 Jan 2025 12:34:25 +0000</pubDate></item><item><title>MySQL数据库的练习</title><link>https://hantianzhun.github.io/blog/post/8.html</link><description>### 1.导入exam-utf8（无外键）数据库&#13;
 &#13;
 &gt; [!TIP]&#13;
 &gt; 导入数据库是为了方便后面的查询练习&#13;
