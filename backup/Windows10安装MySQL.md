@@ -43,11 +43,11 @@
 
 |                      1.双击打开安装程序                      |                      2.同意并点击下一步                      |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://hantianzhun.github.io/blog/issues16.19.png"  /> | <img src="https://hantianzhun.github.io/blog/issues16.20.png"  /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.19.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.20.png" style="zoom:50%;" /> |
 | 3.一般选典型，也可选第二个自定义但只改安装路径，除非懂每一项的作用 |                          4.点击安装                          |
-| <img src="https://hantianzhun.github.io/blog/issues16.21.png"  /> | <img src="https://hantianzhun.github.io/blog/issues16.22.png"  /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.21.png"  style="zoom:50%;"/> | <img src="https://hantianzhun.github.io/blog/issues16.22.png" style="zoom:50%;" /> |
 |                5.默认勾选进行配置，点击Finish                |                         6.点击下一步                         |
-| <img src="https://hantianzhun.github.io/blog/issues16.23.png"  /> | <img src="https://hantianzhun.github.io/blog/issues16.24.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.23.png"  style="zoom:50%;"/> | <img src="https://hantianzhun.github.io/blog/issues16.24.png" style="zoom:50%;" /> |
 |                     7.可选数据库存放位置                     |                8.可配置类型和端口号，一般默认                |
 | <img src="https://hantianzhun.github.io/blog/issues16.25.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.26.png" style="zoom:50%;" /> |
 |                       9.root用户的密码                       |                    10.安装MySQL自启动服务                    |
