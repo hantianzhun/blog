@@ -63,13 +63,13 @@
 
 |               1.在典型安装后，自动弹出这个弹窗               |                         2.点击下一步                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://hantianzhun.github.io/blog/issues16.34.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.35.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.34.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.35.png"/> |
 |             3.默认勾选启动数据库配置，点击finish             |                         4.点击下一步                         |
-| <img src="https://hantianzhun.github.io/blog/issues16.36.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.37.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.36.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.37.png" /> |
 |   5.第一次安装选择和我一样的标准安装，第一种自定义自行摸索   |               6.安装MySQL服务，默认勾选自启动                |
-| <img src="https://hantianzhun.github.io/blog/issues16.38.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.39.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.38.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.39.png" /> |
 |          7.root用户密码，可勾选远程访问允许root用户          |                          8.点击执行                          |
-| <img src="https://hantianzhun.github.io/blog/issues16.40.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.41.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues16.40.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.41.png"/> |
 |                    9.安装完毕，点击finish                    |                                                              |
 | <img src="https://hantianzhun.github.io/blog/issues16.42.png" style="zoom:50%;" /> |                                                              |
 

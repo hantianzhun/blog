@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Mon, 09 Jun 2025 13:10:24 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10安装MySQL</title><link>http://blog.587459.xyz/post/16.html</link><description>## 1.使用MySQL Installer安装
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Mon, 09 Jun 2025 13:12:28 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10安装MySQL</title><link>http://blog.587459.xyz/post/16.html</link><description>## 1.使用MySQL Installer安装
 
 ### 1.1下载MySQL Installer
 
@@ -64,13 +64,13 @@
 
 |               1.在典型安装后，自动弹出这个弹窗               |                         2.点击下一步                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| &lt;img src='https://hantianzhun.github.io/blog/issues16.34.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.35.png' style='zoom:50%;' /&gt; |
+| &lt;img src='https://hantianzhun.github.io/blog/issues16.34.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.35.png'/&gt; |
 |             3.默认勾选启动数据库配置，点击finish             |                         4.点击下一步                         |
-| &lt;img src='https://hantianzhun.github.io/blog/issues16.36.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.37.png' style='zoom:50%;' /&gt; |
+| &lt;img src='https://hantianzhun.github.io/blog/issues16.36.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.37.png' /&gt; |
 |   5.第一次安装选择和我一样的标准安装，第一种自定义自行摸索   |               6.安装MySQL服务，默认勾选自启动                |
-| &lt;img src='https://hantianzhun.github.io/blog/issues16.38.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.39.png' style='zoom:50%;' /&gt; |
+| &lt;img src='https://hantianzhun.github.io/blog/issues16.38.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.39.png' /&gt; |
 |          7.root用户密码，可勾选远程访问允许root用户          |                          8.点击执行                          |
-| &lt;img src='https://hantianzhun.github.io/blog/issues16.40.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.41.png' style='zoom:50%;' /&gt; |
+| &lt;img src='https://hantianzhun.github.io/blog/issues16.40.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.41.png'/&gt; |
 |                    9.安装完毕，点击finish                    |                                                              |
 | &lt;img src='https://hantianzhun.github.io/blog/issues16.42.png' style='zoom:50%;' /&gt; |                                                              |
 
