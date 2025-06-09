@@ -38,7 +38,7 @@
 
 |                   1.打开navicat，点击连接                    |                 2.选择PostgreSQL，点击下一步                 |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| <img src="https://hantianzhun.github.io/blog/issues16.issues17.19.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues17.20.png" style="zoom:50%;" /> |
+| <img src="https://hantianzhun.github.io/blog/issues17.19.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues17.20.png" style="zoom:50%;" /> |
 |             3.连接名称随意，除密码外都默认填写了             |       4.输入密码，点击连接，就可在public的表下面创建表       |
 | <img src="https://hantianzhun.github.io/blog/issues17.21.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues17.22.png" style="zoom:50%;" /> |
 
