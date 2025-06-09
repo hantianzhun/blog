@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html data-color-mode="light" data-dark-theme="dark" data-light-theme="light" lang="zh-CN">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href='https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/Primer/21.0.7/primer.css' rel='stylesheet' />
+    <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekVercount.js'></script>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/118879111?v=4"><script>
+        let theme = localStorage.getItem("meek_theme") || "light";
+        document.documentElement.setAttribute("data-color-mode", theme);
+    </script>
+<meta name="description" content="## 1.使用MySQL Installer安装
+
+### 1.1下载MySQL Installer
+
+| 1.[MySQL Installer下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/),下载不带web的安装程序 |  2.点击下载，出现如下界面，点击最下面的no thank，会进行下载  |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.01.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.02.png' style='zoom:50%;' /> |
+
+> [!TIP]
+>
+> 但是上述安装程序有部分版本没有，安装完会多一个MySQL Installer，强迫症狂喜
+>
+
+### 1.2MySQL Installer安装
+
+|                      1.双击打开安装程序                      |          2.一般选Server only，想自定义就选最后一项           |         3.上一张图点击下一步，这张点击执行(Execute)          |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.03.png' style='zoom: 50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.04.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.05.png' style='zoom:50%;' /> |
+| 4.这是成功了，若是失败一般是Windows的C++库的问题，装一个就好了 |               5.上一张图点击下一步，这一张也是               | 6.设置端口号和数据库配置，一般默认即可，若之前装过，需改动port |
+| <img src='https://hantianzhun.github.io/blog/issues16.06.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.07.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.08.png' style='zoom:50%;' /> |
+|     7.第一种需Navicat15+，改了加密方式，第二种则没有限制     |            8.输入root用户的密码，两遍，点击下一步            |             9.这个是注册开机服务项，一般默认即可             |
+| <img src='https://hantianzhun.github.io/blog/issues16.09.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.10.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.11.png' style='zoom:50%;' /> |
+| 10.点击执行(Execute)[这步前面不小心漏了一步，不重要，自用默认和第三项都行] |              11.全打上对勾就是好了，点击Finish               |               12.显示MySQL状态，点击下一步即可               |
+| <img src='https://hantianzhun.github.io/blog/issues16.12.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.13.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.14.png' style='zoom:50%;' /> |
+|             13.可查看安装log，点击Finish结束安装             |              14.安装后就是有一个MySQL Installer              |              15.可以单独卸载MySQL Installer解决              |
+| <img src='https://hantianzhun.github.io/blog/issues16.15.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.16.png'  /> |                                                              |
+
+## 2.使用MySQL Server.exe安装
+
+### 2.1下载MySQL Server.exe
+
+| 1.[MySQL Server.exe下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击MSI进行下载 |              2.点击最下面的no thank，会进行下载              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.17.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.18.png' style='zoom:50%;' /> |
+
+> [!TIP]
+>
+> 有些版本有MySQL Sever的MSI安装程序，有些只有ZIP，ZIP看第三种方法
+
+### 2.2MySQL Server.exe安装
+
+#### 2.2.1MySQL 8
+
+|                      1.双击打开安装程序                      |                      2.同意并点击下一步                      |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.19.png'  /> | <img src='https://hantianzhun.github.io/blog/issues16.20.png'  /> |
+| 3.一般选典型，也可选第二个自定义但只改安装路径，除非懂每一项的作用 |                          4.点击安装                          |
+| <img src='https://hantianzhun.github.io/blog/issues16.21.png'  /> | <img src='https://hantianzhun.github.io/blog/issues16.22.png'  /> |
+|                5.默认勾选进行配置，点击Finish                |                         6.点击下一步                         |
+| <img src='https://hantianzhun.github.io/blog/issues16.23.png'  /> | <img src='https://hantianzhun.github.io/blog/issues16.24.png' style='zoom:50%;' /> |
+|                     7.可选数据库存放位置                     |                8.可配置类型和端口号，一般默认                |
+| <img src='https://hantianzhun.github.io/blog/issues16.25.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.26.png' style='zoom:50%;' /> |
+|                       9.root用户的密码                       |                    10.安装MySQL自启动服务                    |
+| <img src='https://hantianzhun.github.io/blog/issues16.27.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.28.png' style='zoom:50%;' /> |
+|          11.自行选择，和我一样也行(上面忘记截图了)           |                   12.示例数据库，自行选择                    |
+| <img src='https://hantianzhun.github.io/blog/issues16.29.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.30.png' style='zoom:50%;' /> |
+|                    13.点击执行，进行安装                     |                   14.安装完成，点击下一步                    |
+| <img src='https://hantianzhun.github.io/blog/issues16.31.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.32.png' style='zoom:50%;' /> |
+|               15.整个MySQL安装成功，点击Finish               |                                                              |
+| <img src='https://hantianzhun.github.io/blog/issues16.33.png' style='zoom:50%;' /> |                                                              |
+
+#### 2.2.2MySQL 5
+
+|               1.在典型安装后，自动弹出这个弹窗               |                         2.点击下一步                         |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.34.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.35.png' style='zoom:50%;' /> |
+|             3.默认勾选启动数据库配置，点击finish             |                         4.点击下一步                         |
+| <img src='https://hantianzhun.github.io/blog/issues16.36.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.37.png' style='zoom:50%;' /> |
+|   5.第一次安装选择和我一样的标准安装，第一种自定义自行摸索   |               6.安装MySQL服务，默认勾选自启动                |
+| <img src='https://hantianzhun.github.io/blog/issues16.38.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.39.png' style='zoom:50%;' /> |
+|          7.root用户密码，可勾选远程访问允许root用户          |                          8.点击执行                          |
+| <img src='https://hantianzhun.github.io/blog/issues16.40.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.41.png' style='zoom:50%;' /> |
+|                    9.安装完毕，点击finish                    |                                                              |
+| <img src='https://hantianzhun.github.io/blog/issues16.42.png' style='zoom:50%;' /> |                                                              |
+
+## 3.使用MySQL Server.ZIP安装
+
+### 3.1下载MySQL Server.ZIP
+
+| 1.[MySQL Server.zip下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击ZIP进行下载，不要下debug |              2.点击最下面的no thank，会进行下载              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.17.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.18.png' style='zoom:50%;' /> |
+
+### 3.2MySQL Server.ZIP安装
+
+> [!TIP]
+>
+> [https://wwwe.lanzouq.com/ik7yi2ydalgh 密码:3c5t](https://wwwe.lanzouq.com/ik7yi2ydalgh)
+>
+> 也可以看看上面Claude生成的教程，有5.7.44和8.x版本
+
+#### 3.2.1解压和配置环境变量
+
+|                    1.解压到想要存放的目录                    |                      2.配置系统环境变量                      |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.43.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.44.png'/> |
+
+#### 3.2.2.A在MySQL 5解压目录新建my.ini
+
+```ini
+[mysqld]
+# 设置mysql的安装目录
+basedir='D:/mysql-5.7.44-winx64'
+# 设置mysql数据库的数据的存放目录
+datadir='D:/mysql-5.7.44-winx64/data'
+# 设置默认使用的端口
+port=3306
+# 允许最大连接数
+max_connections=200
+# 允许连接失败的次数
+max_connect_errors=10
+# 服务端使用的字符集（5.7版本推荐utf8mb4）
+character-set-server=utf8mb4
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# MySQL 5.7 特有配置
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8mb4
+
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8mb4
+```
+
+#### 3.2.2.B在MySQL 8解压目录新建my.ini
+
+```ini
+[mysqld]
+# 设置mysql的安装目录
+basedir='D:/mysql-8.4.5-winx64'
+# 设置mysql数据库的数据的存放目录
+datadir='D:/mysql-8.4.5-winx64/data'
+# 设置默认使用的端口
+port=3306
+# 允许最大连接数
+max_connections=200
+# 允许连接失败的次数
+max_connect_errors=10
+# 服务端使用的字符集
+character-set-server=utf8mb4
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 默认使用'mysql_native_password'插件认证
+default_authentication_plugin=mysql_native_password
+
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8mb4
+
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8mb4
+```
+
+#### 3.2.3 初始化数据库
+
+```cmd
+# 以管理员身份打开命令提示符，执行：
+
+# 切换到mysql的bin目录（示例）
+D:
+cd D:/mysql-5.7.44-winx64/bin
+
+# 初始化数据库（会生成临时密码）
+mysqld --initialize --console
+```
+
+**重要：** 记录输出中的临时密码，类似：
+
+```cmd
+A temporary password is generated for root@localhost: kT7!mN9pQ2xR
+```
+
+#### 3.2.4安装 MySQL 服务
+
+```cmd
+# 继续在管理员命令提示符中执行：
+
+# 安装MySQL服务
+mysqld --install MySQL
+
+# 设置开机自启
+sc config MySQL start= auto
+
+# 启动MySQL服务
+net start MySQL
+```
+
+### 3.3首次登录和密码设置
+
+#### 3.3.1登录MySQL
+
+```cmd
+mysql -u root -p
+
+# 输入刚才记录的临时密码
+```
+
+#### 3.3.2修改root密码
+
+```sql
+-- 修改密码（将 'your_new_password' 替换为您的新密码）
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
+
+-- 刷新权限
+FLUSH PRIVILEGES;
+
+-- 退出
+EXIT;
+```
+
+### 3.4验证安装
+
+#### 3.4.1重新登录测试
+
+```cmd
+mysql -u root -p
+
+# 使用新密码登录
+```
+
+#### 3.4.2查看版本信息
+
+```sql
+SELECT VERSION();
+```
+
+#### 3.4.3查看数据库
+
+```sql
+SHOW DATABASES;
+```
+
+## 4.使用Navicat连接MySQL
+
+|                      1.打开Navicat软件                       |                      2.选择MySQL数据库                       |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.45.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.46.png' style='zoom:50%;' /> |
+|          3.连接名随意，输入root账户的密码，点击确定          |         4.即可看到默认的数据库，可新建数据库再创建表         |
+| <img src='https://hantianzhun.github.io/blog/issues16.47.png' style='zoom: 50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.48.png' style='zoom:50%;' /> |
+
+。">
+<meta property="og:title" content="Windows10安装MySQL">
+<meta property="og:description" content="## 1.使用MySQL Installer安装
+
+### 1.1下载MySQL Installer
+
+| 1.[MySQL Installer下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/),下载不带web的安装程序 |  2.点击下载，出现如下界面，点击最下面的no thank，会进行下载  |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.01.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.02.png' style='zoom:50%;' /> |
+
+> [!TIP]
+>
+> 但是上述安装程序有部分版本没有，安装完会多一个MySQL Installer，强迫症狂喜
+>
+
+### 1.2MySQL Installer安装
+
+|                      1.双击打开安装程序                      |          2.一般选Server only，想自定义就选最后一项           |         3.上一张图点击下一步，这张点击执行(Execute)          |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.03.png' style='zoom: 50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.04.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.05.png' style='zoom:50%;' /> |
+| 4.这是成功了，若是失败一般是Windows的C++库的问题，装一个就好了 |               5.上一张图点击下一步，这一张也是               | 6.设置端口号和数据库配置，一般默认即可，若之前装过，需改动port |
+| <img src='https://hantianzhun.github.io/blog/issues16.06.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.07.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.08.png' style='zoom:50%;' /> |
+|     7.第一种需Navicat15+，改了加密方式，第二种则没有限制     |            8.输入root用户的密码，两遍，点击下一步            |             9.这个是注册开机服务项，一般默认即可             |
+| <img src='https://hantianzhun.github.io/blog/issues16.09.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.10.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.11.png' style='zoom:50%;' /> |
+| 10.点击执行(Execute)[这步前面不小心漏了一步，不重要，自用默认和第三项都行] |              11.全打上对勾就是好了，点击Finish               |               12.显示MySQL状态，点击下一步即可               |
+| <img src='https://hantianzhun.github.io/blog/issues16.12.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.13.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.14.png' style='zoom:50%;' /> |
+|             13.可查看安装log，点击Finish结束安装             |              14.安装后就是有一个MySQL Installer              |              15.可以单独卸载MySQL Installer解决              |
+| <img src='https://hantianzhun.github.io/blog/issues16.15.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.16.png'  /> |                                                              |
+
+## 2.使用MySQL Server.exe安装
+
+### 2.1下载MySQL Server.exe
+
+| 1.[MySQL Server.exe下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击MSI进行下载 |              2.点击最下面的no thank，会进行下载              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.17.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.18.png' style='zoom:50%;' /> |
+
+> [!TIP]
+>
+> 有些版本有MySQL Sever的MSI安装程序，有些只有ZIP，ZIP看第三种方法
+
+### 2.2MySQL Server.exe安装
+
+#### 2.2.1MySQL 8
+
+|                      1.双击打开安装程序                      |                      2.同意并点击下一步                      |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.19.png'  /> | <img src='https://hantianzhun.github.io/blog/issues16.20.png'  /> |
+| 3.一般选典型，也可选第二个自定义但只改安装路径，除非懂每一项的作用 |                          4.点击安装                          |
+| <img src='https://hantianzhun.github.io/blog/issues16.21.png'  /> | <img src='https://hantianzhun.github.io/blog/issues16.22.png'  /> |
+|                5.默认勾选进行配置，点击Finish                |                         6.点击下一步                         |
+| <img src='https://hantianzhun.github.io/blog/issues16.23.png'  /> | <img src='https://hantianzhun.github.io/blog/issues16.24.png' style='zoom:50%;' /> |
+|                     7.可选数据库存放位置                     |                8.可配置类型和端口号，一般默认                |
+| <img src='https://hantianzhun.github.io/blog/issues16.25.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.26.png' style='zoom:50%;' /> |
+|                       9.root用户的密码                       |                    10.安装MySQL自启动服务                    |
+| <img src='https://hantianzhun.github.io/blog/issues16.27.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.28.png' style='zoom:50%;' /> |
+|          11.自行选择，和我一样也行(上面忘记截图了)           |                   12.示例数据库，自行选择                    |
+| <img src='https://hantianzhun.github.io/blog/issues16.29.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.30.png' style='zoom:50%;' /> |
+|                    13.点击执行，进行安装                     |                   14.安装完成，点击下一步                    |
+| <img src='https://hantianzhun.github.io/blog/issues16.31.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.32.png' style='zoom:50%;' /> |
+|               15.整个MySQL安装成功，点击Finish               |                                                              |
+| <img src='https://hantianzhun.github.io/blog/issues16.33.png' style='zoom:50%;' /> |                                                              |
+
+#### 2.2.2MySQL 5
+
+|               1.在典型安装后，自动弹出这个弹窗               |                         2.点击下一步                         |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.34.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.35.png' style='zoom:50%;' /> |
+|             3.默认勾选启动数据库配置，点击finish             |                         4.点击下一步                         |
+| <img src='https://hantianzhun.github.io/blog/issues16.36.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.37.png' style='zoom:50%;' /> |
+|   5.第一次安装选择和我一样的标准安装，第一种自定义自行摸索   |               6.安装MySQL服务，默认勾选自启动                |
+| <img src='https://hantianzhun.github.io/blog/issues16.38.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.39.png' style='zoom:50%;' /> |
+|          7.root用户密码，可勾选远程访问允许root用户          |                          8.点击执行                          |
+| <img src='https://hantianzhun.github.io/blog/issues16.40.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.41.png' style='zoom:50%;' /> |
+|                    9.安装完毕，点击finish                    |                                                              |
+| <img src='https://hantianzhun.github.io/blog/issues16.42.png' style='zoom:50%;' /> |                                                              |
+
+## 3.使用MySQL Server.ZIP安装
+
+### 3.1下载MySQL Server.ZIP
+
+| 1.[MySQL Server.zip下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击ZIP进行下载，不要下debug |              2.点击最下面的no thank，会进行下载              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.17.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.18.png' style='zoom:50%;' /> |
+
+### 3.2MySQL Server.ZIP安装
+
+> [!TIP]
+>
+> [https://wwwe.lanzouq.com/ik7yi2ydalgh 密码:3c5t](https://wwwe.lanzouq.com/ik7yi2ydalgh)
+>
+> 也可以看看上面Claude生成的教程，有5.7.44和8.x版本
+
+#### 3.2.1解压和配置环境变量
+
+|                    1.解压到想要存放的目录                    |                      2.配置系统环境变量                      |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.43.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.44.png'/> |
+
+#### 3.2.2.A在MySQL 5解压目录新建my.ini
+
+```ini
+[mysqld]
+# 设置mysql的安装目录
+basedir='D:/mysql-5.7.44-winx64'
+# 设置mysql数据库的数据的存放目录
+datadir='D:/mysql-5.7.44-winx64/data'
+# 设置默认使用的端口
+port=3306
+# 允许最大连接数
+max_connections=200
+# 允许连接失败的次数
+max_connect_errors=10
+# 服务端使用的字符集（5.7版本推荐utf8mb4）
+character-set-server=utf8mb4
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# MySQL 5.7 特有配置
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8mb4
+
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8mb4
+```
+
+#### 3.2.2.B在MySQL 8解压目录新建my.ini
+
+```ini
+[mysqld]
+# 设置mysql的安装目录
+basedir='D:/mysql-8.4.5-winx64'
+# 设置mysql数据库的数据的存放目录
+datadir='D:/mysql-8.4.5-winx64/data'
+# 设置默认使用的端口
+port=3306
+# 允许最大连接数
+max_connections=200
+# 允许连接失败的次数
+max_connect_errors=10
+# 服务端使用的字符集
+character-set-server=utf8mb4
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+# 默认使用'mysql_native_password'插件认证
+default_authentication_plugin=mysql_native_password
+
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8mb4
+
+[client]
+# 设置mysql客户端连接服务端时默认使用的端口
+port=3306
+default-character-set=utf8mb4
+```
+
+#### 3.2.3 初始化数据库
+
+```cmd
+# 以管理员身份打开命令提示符，执行：
+
+# 切换到mysql的bin目录（示例）
+D:
+cd D:/mysql-5.7.44-winx64/bin
+
+# 初始化数据库（会生成临时密码）
+mysqld --initialize --console
+```
+
+**重要：** 记录输出中的临时密码，类似：
+
+```cmd
+A temporary password is generated for root@localhost: kT7!mN9pQ2xR
+```
+
+#### 3.2.4安装 MySQL 服务
+
+```cmd
+# 继续在管理员命令提示符中执行：
+
+# 安装MySQL服务
+mysqld --install MySQL
+
+# 设置开机自启
+sc config MySQL start= auto
+
+# 启动MySQL服务
+net start MySQL
+```
+
+### 3.3首次登录和密码设置
+
+#### 3.3.1登录MySQL
+
+```cmd
+mysql -u root -p
+
+# 输入刚才记录的临时密码
+```
+
+#### 3.3.2修改root密码
+
+```sql
+-- 修改密码（将 'your_new_password' 替换为您的新密码）
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
+
+-- 刷新权限
+FLUSH PRIVILEGES;
+
+-- 退出
+EXIT;
+```
+
+### 3.4验证安装
+
+#### 3.4.1重新登录测试
+
+```cmd
+mysql -u root -p
+
+# 使用新密码登录
+```
+
+#### 3.4.2查看版本信息
+
+```sql
+SELECT VERSION();
+```
+
+#### 3.4.3查看数据库
+
+```sql
+SHOW DATABASES;
+```
+
+## 4.使用Navicat连接MySQL
+
+|                      1.打开Navicat软件                       |                      2.选择MySQL数据库                       |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| <img src='https://hantianzhun.github.io/blog/issues16.45.png' style='zoom:50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.46.png' style='zoom:50%;' /> |
+|          3.连接名随意，输入root账户的密码，点击确定          |         4.即可看到默认的数据库，可新建数据库再创建表         |
+| <img src='https://hantianzhun.github.io/blog/issues16.47.png' style='zoom: 50%;' /> | <img src='https://hantianzhun.github.io/blog/issues16.48.png' style='zoom:50%;' /> |
+
+。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://blog.587459.xyz/post/16.html">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
+<title>Windows10安装MySQL</title>
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
+
+</head>
+<style>
+body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;padding: 45px;font-size: 16px;font-family: sans-serif;line-height: 1.25;}
+#header{display:flex;padding-bottom:8px;border-bottom: 1px solid var(--borderColor-muted, var(--color-border-muted));margin-bottom: 16px;}
+#footer {margin-top:64px; text-align: center;font-size: small;}
+
+</style>
+
+<style>
+.postTitle{margin: auto 0;font-size:40px;font-weight:bold;}
+.title-right{display:flex;margin:auto 0 0 auto;}
+.title-right .circle{padding: 14px 16px;margin-right:8px;}
+#postBody{border-bottom: 1px solid var(--color-border-default);padding-bottom:36px;}
+#postBody hr{height:2px;}
+#cmButton{height:48px;margin-top:48px;}
+#comments{margin-top:64px;}
+.g-emoji{font-size:24px;}
+@media (max-width: 600px) {
+    body {padding: 8px;}
+    .postTitle{font-size:24px;}
+}
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
+</style>
+<style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style>
+
+
+
+<body>
+    <div id="header">
+<h1 class="postTitle">Windows10安装MySQL</h1>
+<div class="title-right">
+    <a href="http://blog.587459.xyz" id="buttonHome" class="btn btn-invisible circle" title="首页">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathHome" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+    <a href="https://github.com/hantianzhun/blog/issues/16" target="_blank" class="btn btn-invisible circle" title="Issue">
+        <svg class="octicon" width="16" height="16">
+            <path id="pathIssue" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+    
+
+    <a class="btn btn-invisible circle" onclick="modeSwitch();" title="切换主题">
+        <svg class="octicon" width="16" height="16" >
+            <path id="themeSwitch" fill-rule="evenodd"></path>
+        </svg>
+    </a>
+
+</div>
+</div>
+    <div id="content">
+<div class="markdown-body" id="postBody"><h2>1.使用MySQL Installer安装</h2>
+<h3>1.1下载MySQL Installer</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.<a href="https://dev.mysql.com/downloads/installer/" rel="nofollow">MySQL Installer下载链接(点击即可跳转)</a>,下载不带web的安装程序</th>
+<th align="center">2.点击下载，出现如下界面，点击最下面的no thank，会进行下载</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/08807b5c6fd8d7999ac37e15916a4738db2673348d4285f89fb1b32a75a1ac99/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30312e706e67"><img src="https://camo.githubusercontent.com/08807b5c6fd8d7999ac37e15916a4738db2673348d4285f89fb1b32a75a1ac99/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30312e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.01.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6500010d5878f570304c99ae1c750e06429a7c29bca532cd27cec41d3bb8e38c/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30322e706e67"><img src="https://camo.githubusercontent.com/6500010d5878f570304c99ae1c750e06429a7c29bca532cd27cec41d3bb8e38c/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30322e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.02.png" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>但是上述安装程序有部分版本没有，安装完会多一个MySQL Installer，强迫症狂喜</p>
+</div>
+<h3>1.2MySQL Installer安装</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.双击打开安装程序</th>
+<th align="center">2.一般选Server only，想自定义就选最后一项</th>
+<th align="center">3.上一张图点击下一步，这张点击执行(Execute)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/aed19dbeb83959efd791eea4558af10ca0c2b317eea382548f603d91ebb85abb/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30332e706e67"><img src="https://camo.githubusercontent.com/aed19dbeb83959efd791eea4558af10ca0c2b317eea382548f603d91ebb85abb/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30332e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.03.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/50c5efe65600e0c31f7ff9aec6ddfcdaeeeb2ddcf382f7fc56dc16daf1894d16/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30342e706e67"><img src="https://camo.githubusercontent.com/50c5efe65600e0c31f7ff9aec6ddfcdaeeeb2ddcf382f7fc56dc16daf1894d16/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30342e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.04.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c234b58f662a3ada438070fff8ffb50d99c779648e9ee99d624a10adee32296b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30352e706e67"><img src="https://camo.githubusercontent.com/c234b58f662a3ada438070fff8ffb50d99c779648e9ee99d624a10adee32296b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30352e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.05.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">4.这是成功了，若是失败一般是Windows的C++库的问题，装一个就好了</td>
+<td align="center">5.上一张图点击下一步，这一张也是</td>
+<td align="center">6.设置端口号和数据库配置，一般默认即可，若之前装过，需改动port</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f171f408e9f36bcd8de632cfbc3101e3ea8be0da1891616d15a8ab237f514cb9/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30362e706e67"><img src="https://camo.githubusercontent.com/f171f408e9f36bcd8de632cfbc3101e3ea8be0da1891616d15a8ab237f514cb9/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30362e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.06.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/254343e370a1ebe6e860655e13810507a3b0081a262a9b2f9d34f42b4dea72e6/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30372e706e67"><img src="https://camo.githubusercontent.com/254343e370a1ebe6e860655e13810507a3b0081a262a9b2f9d34f42b4dea72e6/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30372e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.07.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1924b620497254116b388da95c8f6c42c84e13d67e2e6b2fba68a8b0b95d67c4/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30382e706e67"><img src="https://camo.githubusercontent.com/1924b620497254116b388da95c8f6c42c84e13d67e2e6b2fba68a8b0b95d67c4/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30382e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.08.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">7.第一种需Navicat15+，改了加密方式，第二种则没有限制</td>
+<td align="center">8.输入root用户的密码，两遍，点击下一步</td>
+<td align="center">9.这个是注册开机服务项，一般默认即可</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/1f4f5fe988da92b695afadb110d7163c95a9ffbbe9faf5b23308380dea5cbc6b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30392e706e67"><img src="https://camo.githubusercontent.com/1f4f5fe988da92b695afadb110d7163c95a9ffbbe9faf5b23308380dea5cbc6b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e30392e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.09.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/208bb1c80062065580349c240dd4392187d59fb98f41bc8150d354e6c29645df/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31302e706e67"><img src="https://camo.githubusercontent.com/208bb1c80062065580349c240dd4392187d59fb98f41bc8150d354e6c29645df/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31302e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.10.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/4e00c0315cf49e76faf15b0babb195adb743e6330eeb876d9c57fdb9f2b9a687/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31312e706e67"><img src="https://camo.githubusercontent.com/4e00c0315cf49e76faf15b0babb195adb743e6330eeb876d9c57fdb9f2b9a687/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31312e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.11.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">10.点击执行(Execute)[这步前面不小心漏了一步，不重要，自用默认和第三项都行]</td>
+<td align="center">11.全打上对勾就是好了，点击Finish</td>
+<td align="center">12.显示MySQL状态，点击下一步即可</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3876a7da36026835d8a7dccf57261a960a4b6ca44d63719a5369f16f7df15a64/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31322e706e67"><img src="https://camo.githubusercontent.com/3876a7da36026835d8a7dccf57261a960a4b6ca44d63719a5369f16f7df15a64/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31322e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.12.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/bb0e30fbba0f054c8bdee8aedb0626664ea3002792575e9b9a72c62723d2589f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31332e706e67"><img src="https://camo.githubusercontent.com/bb0e30fbba0f054c8bdee8aedb0626664ea3002792575e9b9a72c62723d2589f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31332e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.13.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/818694ea7f0fa869a23e01f1754308ae57e64cee0e550718b48a91b494d3f75d/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31342e706e67"><img src="https://camo.githubusercontent.com/818694ea7f0fa869a23e01f1754308ae57e64cee0e550718b48a91b494d3f75d/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31342e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.14.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">13.可查看安装log，点击Finish结束安装</td>
+<td align="center">14.安装后就是有一个MySQL Installer</td>
+<td align="center">15.可以单独卸载MySQL Installer解决</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5712c08193a805cbcb5a794b92281616f6e8252ff49169ae3a1bf31814c9d747/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31352e706e67"><img src="https://camo.githubusercontent.com/5712c08193a805cbcb5a794b92281616f6e8252ff49169ae3a1bf31814c9d747/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31352e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.15.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9a70dd4d7e1a382eb630476cb8c64bb3eaeae5da5f190d8250bab1efb0291a22/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31362e706e67"><img src="https://camo.githubusercontent.com/9a70dd4d7e1a382eb630476cb8c64bb3eaeae5da5f190d8250bab1efb0291a22/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31362e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.16.png" style="max-width: 100%;"></a></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2>2.使用MySQL Server.exe安装</h2>
+<h3>2.1下载MySQL Server.exe</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.<a href="https://dev.mysql.com/downloads/installer/" rel="nofollow">MySQL Server.exe下载链接(点击即可跳转)</a>，点击MSI进行下载</th>
+<th align="center">2.点击最下面的no thank，会进行下载</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ff37269239f56ff95cf25c965a208be91fe7ac7e18da2c158ecb4b489b6ff5ca/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31372e706e67"><img src="https://camo.githubusercontent.com/ff37269239f56ff95cf25c965a208be91fe7ac7e18da2c158ecb4b489b6ff5ca/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31372e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.17.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7c54b65423c19aff0d15b1c4b5893b73b4bf54f9f5f347e5e6515adc647cf7ec/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31382e706e67"><img src="https://camo.githubusercontent.com/7c54b65423c19aff0d15b1c4b5893b73b4bf54f9f5f347e5e6515adc647cf7ec/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31382e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.18.png" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p>有些版本有MySQL Sever的MSI安装程序，有些只有ZIP，ZIP看第三种方法</p>
+</div>
+<h3>2.2MySQL Server.exe安装</h3>
+<h4>2.2.1MySQL 8</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.双击打开安装程序</th>
+<th align="center">2.同意并点击下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/32af60d6d19392c18b3fed906283e999660e6f4a0e57fd7620599117523e333b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31392e706e67"><img src="https://camo.githubusercontent.com/32af60d6d19392c18b3fed906283e999660e6f4a0e57fd7620599117523e333b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31392e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.19.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/21b81bcb1065632fd81d272dd5d45255d34b0dfd35300cb8045702180c3d5549/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32302e706e67"><img src="https://camo.githubusercontent.com/21b81bcb1065632fd81d272dd5d45255d34b0dfd35300cb8045702180c3d5549/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32302e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.20.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">3.一般选典型，也可选第二个自定义但只改安装路径，除非懂每一项的作用</td>
+<td align="center">4.点击安装</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/dc6d8e30f6c489679a57fc281970c3a208f2fc6e5e9fa6262fce96ce906247e3/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32312e706e67"><img src="https://camo.githubusercontent.com/dc6d8e30f6c489679a57fc281970c3a208f2fc6e5e9fa6262fce96ce906247e3/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32312e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.21.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/b841a0309a751dafd50bf4c31030e41ee9e9191b048974734568e8cbaa7a28fb/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32322e706e67"><img src="https://camo.githubusercontent.com/b841a0309a751dafd50bf4c31030e41ee9e9191b048974734568e8cbaa7a28fb/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32322e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.22.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">5.默认勾选进行配置，点击Finish</td>
+<td align="center">6.点击下一步</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ae7949c6cc678d6937398621be02c0745f9e5442f11203d24d7f7b68297aae19/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32332e706e67"><img src="https://camo.githubusercontent.com/ae7949c6cc678d6937398621be02c0745f9e5442f11203d24d7f7b68297aae19/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32332e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.23.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/732d46252712b1597212c6a84b149a23ea851345ce14517d6e9eeedc06fd4489/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32342e706e67"><img src="https://camo.githubusercontent.com/732d46252712b1597212c6a84b149a23ea851345ce14517d6e9eeedc06fd4489/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32342e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.24.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">7.可选数据库存放位置</td>
+<td align="center">8.可配置类型和端口号，一般默认</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/695bcd91ac3d24aa06a7c02707a37f080217de283ebc471262241a5a26b7b9a3/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32352e706e67"><img src="https://camo.githubusercontent.com/695bcd91ac3d24aa06a7c02707a37f080217de283ebc471262241a5a26b7b9a3/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32352e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.25.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/bb347dd76a11de9a2a6fb9b7f2cd0c719da8d89410b5a8a0d57ce7bf9800367c/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32362e706e67"><img src="https://camo.githubusercontent.com/bb347dd76a11de9a2a6fb9b7f2cd0c719da8d89410b5a8a0d57ce7bf9800367c/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32362e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.26.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">9.root用户的密码</td>
+<td align="center">10.安装MySQL自启动服务</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f59c8cf7bbe8ca5e9c0e8e5bbbf15f947a4086175b8ac1cc420e6d9275c3f316/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32372e706e67"><img src="https://camo.githubusercontent.com/f59c8cf7bbe8ca5e9c0e8e5bbbf15f947a4086175b8ac1cc420e6d9275c3f316/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32372e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.27.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7b40783d509817b17638e788250a470b28256aa9ee7b3b48af6ad51bcc36b176/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32382e706e67"><img src="https://camo.githubusercontent.com/7b40783d509817b17638e788250a470b28256aa9ee7b3b48af6ad51bcc36b176/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32382e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.28.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">11.自行选择，和我一样也行(上面忘记截图了)</td>
+<td align="center">12.示例数据库，自行选择</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/95e2583d82fe39893b37ab7e265a358dbc0ed32be884cacc6ca5f14ceacb0dcc/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32392e706e67"><img src="https://camo.githubusercontent.com/95e2583d82fe39893b37ab7e265a358dbc0ed32be884cacc6ca5f14ceacb0dcc/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e32392e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.29.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/04fcd8d92454fbaf95148a260266256adbc544bd0707659113c43e54ce1d4a0e/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33302e706e67"><img src="https://camo.githubusercontent.com/04fcd8d92454fbaf95148a260266256adbc544bd0707659113c43e54ce1d4a0e/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33302e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.30.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">13.点击执行，进行安装</td>
+<td align="center">14.安装完成，点击下一步</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7f26657eee87b5276cf7d8a48ee905fa44874df5f226b1f8f127fb81c304df03/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33312e706e67"><img src="https://camo.githubusercontent.com/7f26657eee87b5276cf7d8a48ee905fa44874df5f226b1f8f127fb81c304df03/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33312e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.31.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0b6976988cbe6659a24efc0b69a5abca376aeee54670c92df27d9e38023f54db/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33322e706e67"><img src="https://camo.githubusercontent.com/0b6976988cbe6659a24efc0b69a5abca376aeee54670c92df27d9e38023f54db/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33322e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.32.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">15.整个MySQL安装成功，点击Finish</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/870f7d2aa7249668c55e4e64c119bc56c8102507c5f839071833e83f7202213c/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33332e706e67"><img src="https://camo.githubusercontent.com/870f7d2aa7249668c55e4e64c119bc56c8102507c5f839071833e83f7202213c/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33332e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.33.png" style="max-width: 100%;"></a></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4>2.2.2MySQL 5</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.在典型安装后，自动弹出这个弹窗</th>
+<th align="center">2.点击下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c1b5b72978792237e011af6612d99c0c618483d33a152da0301994e638ab8f33/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33342e706e67"><img src="https://camo.githubusercontent.com/c1b5b72978792237e011af6612d99c0c618483d33a152da0301994e638ab8f33/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33342e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.34.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9e0525d990e8d0a457710ca25db14d4b1bdb2b13d9a34bd93dc593f141d1e09a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33352e706e67"><img src="https://camo.githubusercontent.com/9e0525d990e8d0a457710ca25db14d4b1bdb2b13d9a34bd93dc593f141d1e09a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33352e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.35.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">3.默认勾选启动数据库配置，点击finish</td>
+<td align="center">4.点击下一步</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/3bb688d36dde98cf445fce9fecb07fc3f4ff1c1305b6221310020094caa5839f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33362e706e67"><img src="https://camo.githubusercontent.com/3bb688d36dde98cf445fce9fecb07fc3f4ff1c1305b6221310020094caa5839f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33362e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.36.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/5e09d4148862ddb22e076823753159b15f6372363aacd0f97b76870fc944584f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33372e706e67"><img src="https://camo.githubusercontent.com/5e09d4148862ddb22e076823753159b15f6372363aacd0f97b76870fc944584f/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33372e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.37.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">5.第一次安装选择和我一样的标准安装，第一种自定义自行摸索</td>
+<td align="center">6.安装MySQL服务，默认勾选自启动</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/9ad7aecefd23d11c34c209156ee78ebc649507e90c5c5cc93e29b052c7a3c599/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33382e706e67"><img src="https://camo.githubusercontent.com/9ad7aecefd23d11c34c209156ee78ebc649507e90c5c5cc93e29b052c7a3c599/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33382e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.38.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/15c4be0b0babbe8ae58bc7c0b95b3a13d7050357abb42f58080a6656c9db6ac8/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33392e706e67"><img src="https://camo.githubusercontent.com/15c4be0b0babbe8ae58bc7c0b95b3a13d7050357abb42f58080a6656c9db6ac8/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e33392e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.39.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">7.root用户密码，可勾选远程访问允许root用户</td>
+<td align="center">8.点击执行</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/f7146bfb8a8f782cce12526dd8983a20ae93686a1a4661fcf703ebdc717ca1ad/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34302e706e67"><img src="https://camo.githubusercontent.com/f7146bfb8a8f782cce12526dd8983a20ae93686a1a4661fcf703ebdc717ca1ad/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34302e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.40.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d4c0c9ee9da99b459545004d226873255ffd8d37d7d2632c17f2aa9a27b55c46/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34312e706e67"><img src="https://camo.githubusercontent.com/d4c0c9ee9da99b459545004d226873255ffd8d37d7d2632c17f2aa9a27b55c46/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34312e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.41.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">9.安装完毕，点击finish</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/0c77b63ed5c0f61c16b2c415f595936508c18b95641bb161b19d5563e7aea772/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34322e706e67"><img src="https://camo.githubusercontent.com/0c77b63ed5c0f61c16b2c415f595936508c18b95641bb161b19d5563e7aea772/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34322e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.42.png" style="max-width: 100%;"></a></td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h2>3.使用MySQL Server.ZIP安装</h2>
+<h3>3.1下载MySQL Server.ZIP</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.<a href="https://dev.mysql.com/downloads/installer/" rel="nofollow">MySQL Server.zip下载链接(点击即可跳转)</a>，点击ZIP进行下载，不要下debug</th>
+<th align="center">2.点击最下面的no thank，会进行下载</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/ff37269239f56ff95cf25c965a208be91fe7ac7e18da2c158ecb4b489b6ff5ca/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31372e706e67"><img src="https://camo.githubusercontent.com/ff37269239f56ff95cf25c965a208be91fe7ac7e18da2c158ecb4b489b6ff5ca/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31372e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.17.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/7c54b65423c19aff0d15b1c4b5893b73b4bf54f9f5f347e5e6515adc647cf7ec/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31382e706e67"><img src="https://camo.githubusercontent.com/7c54b65423c19aff0d15b1c4b5893b73b4bf54f9f5f347e5e6515adc647cf7ec/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e31382e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.18.png" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>3.2MySQL Server.ZIP安装</h3>
+<div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
+<p><a href="https://wwwe.lanzouq.com/ik7yi2ydalgh" rel="nofollow">https://wwwe.lanzouq.com/ik7yi2ydalgh 密码:3c5t</a></p>
+<p>也可以看看上面Claude生成的教程，有5.7.44和8.x版本</p>
+</div>
+<h4>3.2.1解压和配置环境变量</h4>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.解压到想要存放的目录</th>
+<th align="center">2.配置系统环境变量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/18cd86fd04255dfea0cd779cc308054299b6747473e3dedc22c4249e2fa6368d/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34332e706e67"><img src="https://camo.githubusercontent.com/18cd86fd04255dfea0cd779cc308054299b6747473e3dedc22c4249e2fa6368d/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34332e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.43.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/e5a431aacc715e9e1340496af5319be5c26fc47990ba3c26a62ce834c34bca3a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34342e706e67"><img src="https://camo.githubusercontent.com/e5a431aacc715e9e1340496af5319be5c26fc47990ba3c26a62ce834c34bca3a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34342e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.44.png" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h4>3.2.2.A在MySQL 5解压目录新建my.ini</h4>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[mysqld]</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql的安装目录</span>
+<span class="pl-k">basedir</span>=<span class="pl-s"><span class="pl-pds">"</span>D:/mysql-5.7.44-winx64<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql数据库的数据的存放目录</span>
+<span class="pl-k">datadir</span>=<span class="pl-s"><span class="pl-pds">"</span>D:/mysql-5.7.44-winx64/data<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> 设置默认使用的端口</span>
+<span class="pl-k">port</span>=3306
+<span class="pl-c"><span class="pl-c">#</span> 允许最大连接数</span>
+<span class="pl-k">max_connections</span>=200
+<span class="pl-c"><span class="pl-c">#</span> 允许连接失败的次数</span>
+<span class="pl-k">max_connect_errors</span>=10
+<span class="pl-c"><span class="pl-c">#</span> 服务端使用的字符集（5.7版本推荐utf8mb4）</span>
+<span class="pl-k">character-set-server</span>=utf8mb4
+<span class="pl-c"><span class="pl-c">#</span> 创建新表时将使用的默认存储引擎</span>
+<span class="pl-k">default-storage-engine</span>=INNODB
+<span class="pl-c"><span class="pl-c">#</span> MySQL 5.7 特有配置</span>
+<span class="pl-k">sql_mode</span>=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+<span class="pl-en">[mysql]</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql客户端默认字符集</span>
+<span class="pl-k">default-character-set</span>=utf8mb4
+
+<span class="pl-en">[client]</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql客户端连接服务端时默认使用的端口</span>
+<span class="pl-k">port</span>=3306
+<span class="pl-k">default-character-set</span>=utf8mb4</pre></div>
+<h4>3.2.2.B在MySQL 8解压目录新建my.ini</h4>
+<div class="highlight highlight-source-ini"><pre class="notranslate"><span class="pl-en">[mysqld]</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql的安装目录</span>
+<span class="pl-k">basedir</span>=<span class="pl-s"><span class="pl-pds">"</span>D:/mysql-8.4.5-winx64<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql数据库的数据的存放目录</span>
+<span class="pl-k">datadir</span>=<span class="pl-s"><span class="pl-pds">"</span>D:/mysql-8.4.5-winx64/data<span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> 设置默认使用的端口</span>
+<span class="pl-k">port</span>=3306
+<span class="pl-c"><span class="pl-c">#</span> 允许最大连接数</span>
+<span class="pl-k">max_connections</span>=200
+<span class="pl-c"><span class="pl-c">#</span> 允许连接失败的次数</span>
+<span class="pl-k">max_connect_errors</span>=10
+<span class="pl-c"><span class="pl-c">#</span> 服务端使用的字符集</span>
+<span class="pl-k">character-set-server</span>=utf8mb4
+<span class="pl-c"><span class="pl-c">#</span> 创建新表时将使用的默认存储引擎</span>
+<span class="pl-k">default-storage-engine</span>=INNODB
+<span class="pl-c"><span class="pl-c">#</span> 默认使用"mysql_native_password"插件认证</span>
+<span class="pl-k">default_authentication_plugin</span>=mysql_native_password
+
+<span class="pl-en">[mysql]</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql客户端默认字符集</span>
+<span class="pl-k">default-character-set</span>=utf8mb4
+
+<span class="pl-en">[client]</span>
+<span class="pl-c"><span class="pl-c">#</span> 设置mysql客户端连接服务端时默认使用的端口</span>
+<span class="pl-k">port</span>=3306
+<span class="pl-k">default-character-set</span>=utf8mb4</pre></div>
+<h4>3.2.3 初始化数据库</h4>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate"># 以管理员身份打开命令提示符，执行：
+
+# 切换到mysql的bin目录（示例）
+D:
+<span class="pl-k">cd</span> D:/mysql-5.7.44-winx64/bin
+
+# 初始化数据库（会生成临时密码）
+mysqld --initialize --console</pre></div>
+<p><strong>重要：</strong> 记录输出中的临时密码，类似：</p>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate">A temporary password is generated <span class="pl-k">for</span> root<span class="pl-k">@</span>localhost: kT7!mN9pQ2xR</pre></div>
+<h4>3.2.4安装 MySQL 服务</h4>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate"># 继续在管理员命令提示符中执行：
+
+# 安装MySQL服务
+mysqld --install MySQL
+
+# 设置开机自启
+<span class="pl-k">sc</span> config MySQL start= auto
+
+# 启动MySQL服务
+<span class="pl-k">net start</span> MySQL</pre></div>
+<h3>3.3首次登录和密码设置</h3>
+<h4>3.3.1登录MySQL</h4>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate">mysql -u root -p
+
+# 输入刚才记录的临时密码</pre></div>
+<h4>3.3.2修改root密码</h4>
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">--</span> 修改密码（将 'your_new_password' 替换为您的新密码）</span>
+<span class="pl-k">ALTER</span> <span class="pl-k">USER</span> <span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>@<span class="pl-s"><span class="pl-pds">'</span>localhost<span class="pl-pds">'</span></span> IDENTIFIED BY <span class="pl-s"><span class="pl-pds">'</span>your_new_password<span class="pl-pds">'</span></span>;
+
+<span class="pl-c"><span class="pl-c">--</span> 刷新权限</span>
+FLUSH PRIVILEGES;
+
+<span class="pl-c"><span class="pl-c">--</span> 退出</span>
+EXIT;</pre></div>
+<h3>3.4验证安装</h3>
+<h4>3.4.1重新登录测试</h4>
+<div class="highlight highlight-source-batchfile"><pre class="notranslate">mysql -u root -p
+
+# 使用新密码登录</pre></div>
+<h4>3.4.2查看版本信息</h4>
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-k">SELECT</span> VERSION();</pre></div>
+<h4>3.4.3查看数据库</h4>
+<div class="highlight highlight-source-sql"><pre class="notranslate">SHOW DATABASES;</pre></div>
+<h2>4.使用Navicat连接MySQL</h2>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th align="center">1.打开Navicat软件</th>
+<th align="center">2.选择MySQL数据库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/a699587ab8d87c9f96140e2cdaebb7825a85a853a3c97a533b4746cf3302c896/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34352e706e67"><img src="https://camo.githubusercontent.com/a699587ab8d87c9f96140e2cdaebb7825a85a853a3c97a533b4746cf3302c896/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34352e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.45.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/550ccb12097264a242a0c211788ae3f9f74698dc57c33b9405efafc636fe3624/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34362e706e67"><img src="https://camo.githubusercontent.com/550ccb12097264a242a0c211788ae3f9f74698dc57c33b9405efafc636fe3624/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34362e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.46.png" style="max-width: 100%;"></a></td>
+</tr>
+<tr>
+<td align="center">3.连接名随意，输入root账户的密码，点击确定</td>
+<td align="center">4.即可看到默认的数据库，可新建数据库再创建表</td>
+</tr>
+<tr>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/d990ec6007cc465060dbd7061592b297afa3c413e403d5db68939a5528c6e395/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34372e706e67"><img src="https://camo.githubusercontent.com/d990ec6007cc465060dbd7061592b297afa3c413e403d5db68939a5528c6e395/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34372e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.47.png" style="max-width: 100%;"></a></td>
+<td align="center"><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/462df11456ec04c61f6a194e9a819fa9add7f5b55f9a18225dba6748562588c1/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34382e706e67"><img src="https://camo.githubusercontent.com/462df11456ec04c61f6a194e9a819fa9add7f5b55f9a18225dba6748562588c1/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331362e34382e706e67" data-canonical-src="https://hantianzhun.github.io/blog/issues16.48.png" style="max-width: 100%;"></a></td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table></div>
+<div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
+
+<button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
+<div class="comments" id="comments"></div>
+
+</div>
+    <div id="footer"><div id="footer1">Copyright © <span id="copyrightYear"></span> <a href="http://blog.587459.xyz">枕上诗书闲的博客</a></div>
+<div id="footer2">
+    <span id="runday"></span><span>Powered by <a href="https://meekdai.com/Gmeek.html" target="_blank">Gmeek</a></span>
+</div>
+
+<script>
+var now=new Date();
+document.getElementById("copyrightYear").innerHTML=now.getFullYear();
+
+if("08/20/2024"!=""){
+    var startSite=new Date("08/20/2024");
+    var diff=now.getTime()-startSite.getTime();
+    var diffDay=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("runday").innerHTML="网站运行"+diffDay+"天"+" • ";
+}
+</script></div>
+</body>
+<script>
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var utterancesLoad=0;
+
+let themeSettings={
+    "dark": ["dark","moon","#00f0ff","dark-blue"],
+    "light": ["light","sun","#ff5000","github-light"],
+    "auto": ["auto","sync","","preferred-color-scheme"]
+};
+function changeTheme(mode, icon, color, utheme){
+    document.documentElement.setAttribute("data-color-mode",mode);
+    document.getElementById("themeSwitch").setAttribute("d",value=IconList[icon]);
+    document.getElementById("themeSwitch").parentNode.style.color=color;
+    if(utterancesLoad==1){utterancesTheme(utheme);}
+}
+function modeSwitch(){
+    let currentMode=document.documentElement.getAttribute('data-color-mode');
+    let newMode = currentMode === "light" ? "dark" : currentMode === "dark" ? "auto" : "light";
+    localStorage.setItem("meek_theme", newMode);
+    if(themeSettings[newMode]){
+        changeTheme(...themeSettings[newMode]);
+    }
+}
+function utterancesTheme(theme){
+    const message={type:'set-theme',theme: theme};
+    const iframe=document.getElementsByClassName('utterances-frame')[0];
+    iframe.contentWindow.postMessage(message,'https://utteranc.es');
+}
+if(themeSettings[theme]){changeTheme(...themeSettings[theme]);}
+console.log("\n %c Gmeek last https://github.com/Meekdai/Gmeek \n","padding:5px 0;background:#02d81d;color:#fff");
+</script>
+
+<script>
+document.getElementById("pathHome").setAttribute("d",IconList["home"]);
+document.getElementById("pathIssue").setAttribute("d",IconList["github"]);
+
+
+
+function openComments(){
+    cm=document.getElementById("comments");
+    cmButton=document.getElementById("cmButton");
+    cmButton.innerHTML="loading";
+    span=document.createElement("span");
+    span.setAttribute("class","AnimatedEllipsis");
+    cmButton.appendChild(span);
+
+    script=document.createElement("script");
+    script.setAttribute("src","https://utteranc.es/client.js");
+    script.setAttribute("repo","hantianzhun/blog");
+    script.setAttribute("issue-term","title");
+    
+    if(localStorage.getItem("meek_theme")=="dark"){script.setAttribute("theme","dark-blue");}
+    else if(localStorage.getItem("meek_theme")=="light") {script.setAttribute("theme","github-light");}
+    else{script.setAttribute("theme","preferred-color-scheme");}
+    
+    script.setAttribute("crossorigin","anonymous");
+    script.setAttribute("async","");
+    cm.appendChild(script);
+
+    int=self.setInterval("iFrameLoading()",200);
+}
+
+function iFrameLoading(){
+    var utterances=document.getElementsByClassName('utterances');
+    if(utterances.length==1){
+        if(utterances[0].style.height!=""){
+            utterancesLoad=1;
+            int=window.clearInterval(int);
+            document.getElementById("cmButton").style.display="none";
+            console.log("utterances Load OK");
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
+
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
+
+</script>
+<script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
+
+</html>
