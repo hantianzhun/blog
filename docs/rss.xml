@@ -1,5 +1,39 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Mon, 09 Jun 2025 13:12:28 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10安装MySQL</title><link>http://blog.587459.xyz/post/16.html</link><description>## 1.使用MySQL Installer安装
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Mon, 09 Jun 2025 13:14:16 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows安装PostgreSQL</title><link>http://blog.587459.xyz/post/17.html</link><description>## 1.下载PostgreSQL安装程序
+
+| 1.[PostgreSQL下载链接(点击即可跳转)](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) |             2.点击版本旁边的Windows下载按钮即可              |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.01.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.02.png' style='zoom:50%;' /&gt; |
+
+## 2.点击安装程序进行安装
+
+|                        1.双击安装程序                        |                       2.自定义安装目录                       |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.03.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.04.png' style='zoom:50%;' /&gt; |
+|                          3.默认全选                          |                         4.点击下一步                         |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.05.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.06.png' style='zoom:50%;' /&gt; |
+|                       5.设置数据库密码                       |               6.端口默认即可，有需要可自行修改               |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.07.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.08.png' style='zoom:50%;' /&gt; |
+|                        7.一般默认即可                        |                         8.点击下一步                         |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.09.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.10.png' style='zoom:50%;' /&gt; |
+|                         9.点击下一步                         |         10.不需要安装额外软件需取消勾选，点击finish          |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.11.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.12.png' style='zoom:50%;' /&gt; |
+
+## 3.连接PostgreSQL数据库
+
+### 3.1使用安装时附带的pAdmin4连接
+
+|                          1.点击打开                          | 2.默认为english，点击File-&gt;Pref-&gt;Miscel-&gt;User-&gt;lang选择Chinese(Simplified) |
+| :----------------------------------------------------------: | :----------------------------------------------------------: |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.13.png'  /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.14.png' style='zoom: 50%;' /&gt; |
+|             3.点击保存，到如下界面，点击Refresh              |                    4.重启后，出现如下界面                    |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.15.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.16.png' style='zoom:50%;' /&gt; |
+|       5.点击Server，弹出的窗口输入密码，可勾选保存密码       |             6.在数据库架构public下的表可以创建表             |
+| &lt;img src='https://hantianzhun.github.io/blog/issues17.17.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues17.18.png' style='zoom:50%;' /&gt; |
+
+&gt; [!TIP]
+&gt;
+&gt; **说实话，用惯了Navicat这一下子给我脑子整的嗡嗡的，主要是不了解其他的也用不了。</description><guid isPermaLink="true">http://blog.587459.xyz/post/17.html</guid><pubDate>Mon, 09 Jun 2025 13:13:48 +0000</pubDate></item><item><title>Windows10安装MySQL</title><link>http://blog.587459.xyz/post/16.html</link><description>## 1.使用MySQL Installer安装
 
 ### 1.1下载MySQL Installer
 
