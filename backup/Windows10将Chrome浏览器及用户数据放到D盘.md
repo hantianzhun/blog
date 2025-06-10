@@ -12,7 +12,7 @@
 
 |           1.chrome_updater.exe移入此目录，双击打开           |         2.直接点击下载安装，再点击创建快捷方式          |
 | :----------------------------------------------------------: | :-----------------------------------------------------: |
-| <img src="https://hantianzhun.github.io/blog/issues18.01.png" style="zoom: 67%;" /> | ![](https://hantianzhun.github.io/blog/issues18.02.png) |
+| <img src="https://hantianzhun.github.io/blog/issues18.01.png"/> | <img src="https://hantianzhun.github.io/blog/issues18.01.png"/>  |
 
 ## 3.安装后在此目录会有App、Cache、Data目录
 
