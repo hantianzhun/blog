@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GitHub 文件加速</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      padding: 40px 30px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 40px;
+      font-weight: 600;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    input.url {
+      padding: 14px 20px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      transition: border-color 0.3s ease;
+    }
+
+    input.url:focus {
+      outline: none;
+      border-color: #00bfb3;
+      box-shadow: 0 0 8px #00bfb3aa;
+    }
+
+    button.btn {
+      padding: 14px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      background-color: #00bfb3;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button.btn:hover {
+      background-color: #009e8e;
+      transform: translateY(-2px);
+    }
+
+    p.footer-text {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #666;
+      text-align: center;
+    }
+
+    p.footer-text a {
+      color: #3294ea;
+      text-decoration: none;
+    }
+
+    p.footer-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式 */
+    @media (max-width: 480px) {
+      .container {
+        padding: 30px 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+      }
+
+      input.url,
+      button.btn {
+        font-size: 14px;
+        padding: 12px 16px;
+      }
+    }
+  </style>
+
+  <script>
+    function toSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementsByName('q')[0].value.trim();
+      if (input) {
+        const base = location.href.substr(0, location.href.lastIndexOf('/') + 1);
+        window.open(base + input, '_blank');
+      }
+      return false;
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>GitHub 文件加速</h1>
+    <form onsubmit="toSubmit(event)">
+      <input class="url" name="q" type="text" placeholder="粘贴 GitHub 文件链接"
+        pattern="^((https|http):\/\/)?(github\.com\/.+?\/.+?\/(?:releases|archive|blob|raw|suites)|((?:raw|gist)\.(?:githubusercontent|github)\.com))\/.+$"
+        required />
+      <button type="submit" class="btn">立即下载</button>
+    </form>
+    <p class="footer-text">
+      项目基于 Cloudflare Workers，开源于 GitHub
+      <a href="https://github.com/hunshcn/gh-proxy" target="_blank" rel="noopener noreferrer">hunshcn/gh-proxy</a>
+    </p>
+  </div>
+</body>
+
+</html>
