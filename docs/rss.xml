@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Tue, 10 Jun 2025 12:51:08 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>http://blog.587459.xyz/post/18.html</link><description>## 1.下载chrome_updater
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Sun, 24 Aug 2025 13:08:27 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>http://blog.587459.xyz/post/18.html</link><description>## 1.下载chrome_updater
 
 根据架构下载，一般的电脑都是下amd64的，是在不知道建议先搜一下自己电脑cpu的架构。</description><guid isPermaLink="true">http://blog.587459.xyz/post/18.html</guid><pubDate>Tue, 10 Jun 2025 12:50:43 +0000</pubDate></item><item><title>Windows安装PostgreSQL</title><link>http://blog.587459.xyz/post/17.html</link><description>## 1.下载PostgreSQL安装程序
 
@@ -1716,8 +1716,7 @@ https://wwwe.lanzouq.com/ibQ6728pr7mh&#13;
 
 ### 1.1 在github上面进行下载
 
-普通手机用户请下载armv8a(64位)版本，太古老的手机可以使用armv7a(32位)版本，X86等特殊设备可以下载对应的版本。</description><guid isPermaLink="true">http://blog.587459.xyz/post/2.html</guid><pubDate>Thu, 29 Aug 2024 06:00:16 +0000</pubDate></item><item><title>本博客发表文章及Markdown语法</title><link>http://blog.587459.xyz/post/1.html</link><description># 一、本博客文章的发表&#13;
-&#13;
-## 1.访问github&#13;
-&#13;
-**访问[写作地址](https://github.com/hantianzhun/hantianzhun.github.io)，可以得到如下页面，此时最好先登录github账号。</description><guid isPermaLink="true">http://blog.587459.xyz/post/1.html</guid><pubDate>Thu, 29 Aug 2024 05:32:36 +0000</pubDate></item></channel></rss>
+普通手机用户请下载armv8a(64位)版本，太古老的手机可以使用armv7a(32位)版本，X86等特殊设备可以下载对应的版本。</description><guid isPermaLink="true">http://blog.587459.xyz/post/2.html</guid><pubDate>Thu, 29 Aug 2024 06:00:16 +0000</pubDate></item><item><title>Markdown语法</title><link>http://blog.587459.xyz/post/1.html</link><description># Markdown语法
+
+&gt; [!NOTE]
+&gt; Markdown是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成结构化的HTML。</description><guid isPermaLink="true">http://blog.587459.xyz/post/1.html</guid><pubDate>Thu, 29 Aug 2024 05:32:36 +0000</pubDate></item></channel></rss>
