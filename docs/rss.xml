@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Sun, 24 Aug 2025 13:08:27 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>http://blog.587459.xyz/post/18.html</link><description>## 1.下载chrome_updater
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>http://blog.587459.xyz</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>http://blog.587459.xyz</link></image><lastBuildDate>Sun, 31 Aug 2025 08:37:37 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>http://blog.587459.xyz/post/18.html</link><description>## 1.下载chrome_updater
 
 根据架构下载，一般的电脑都是下amd64的，是在不知道建议先搜一下自己电脑cpu的架构。</description><guid isPermaLink="true">http://blog.587459.xyz/post/18.html</guid><pubDate>Tue, 10 Jun 2025 12:50:43 +0000</pubDate></item><item><title>Windows安装PostgreSQL</title><link>http://blog.587459.xyz/post/17.html</link><description>## 1.下载PostgreSQL安装程序
 
@@ -1645,17 +1645,18 @@ metadata_expire=6h&#13;
 enabled=0&#13;
 ```&#13;
 &#13;
-### b.运行 `yum makecache` 更新缓存。</description><guid isPermaLink="true">http://blog.587459.xyz/post/7.html</guid><pubDate>Mon, 11 Nov 2024 06:24:25 +0000</pubDate></item><item><title>临时邮箱的使用</title><link>http://blog.587459.xyz/post/6.html</link><description>## 一、几个临时邮箱地址&#13;
-&#13;
-1. [tempmail](https://tempmail.plus/zh) 可随用随丢&#13;
-2. [临时邮件](https://mail.tm/zh) 可一直使用的临时邮箱&#13;
-3. [临时教育邮箱 ](https://mail.sunls.de/) 可以尝试注册某些需要教育邮箱的网站&#13;
-4. [一次性电子邮件](https://mail.td/zh)&#13;
-5. [仅提供临时邮箱接收邮件](https://mail.loli.vet/)&#13;
-&#13;
-## 二、临时邮箱的使用&#13;
-&#13;
-&gt; [!TIP]&#13;
+### b.运行 `yum makecache` 更新缓存。</description><guid isPermaLink="true">http://blog.587459.xyz/post/7.html</guid><pubDate>Mon, 11 Nov 2024 06:24:25 +0000</pubDate></item><item><title>临时邮箱的使用</title><link>http://blog.587459.xyz/post/6.html</link><description>## 一、几个临时邮箱地址
+
+1. [tempmail](https://tempmail.plus/zh) 可随用随丢
+2. [临时邮件](https://mail.tm/zh) 可一直使用的临时邮箱
+3. [临时教育邮箱 ](https://mail.sunls.de/) 可以尝试注册某些需要教育邮箱的网站
+4. [一次性电子邮件](https://mail.td/zh)
+5. [仅提供临时邮箱接收邮件](https://mail.loli.vet/)
+6. [本人根据开源项目搭建的](https://mail.hanli.qzz.io/)
+
+## 二、临时邮箱的使用
+
+&gt; [!TIP]
 &gt; 临时邮箱一般都为接验证码使用，我只以上述第五个演示接码操作。</description><guid isPermaLink="true">http://blog.587459.xyz/post/6.html</guid><pubDate>Tue, 01 Oct 2024 05:19:07 +0000</pubDate></item><item><title>Android端压缩与解压</title><link>http://blog.587459.xyz/post/5.html</link><description>## 1.安装软件&#13;
 &#13;
 ### 1.1两款软件&#13;
