@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog/</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog/</link></image><lastBuildDate>Mon, 08 Sep 2025 14:07:48 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>https://hantianzhun.github.io/blog//post/18.html</link><description>## 1.下载chrome_updater
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://blog.587459.xyz/</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://blog.587459.xyz/</link></image><lastBuildDate>Wed, 10 Sep 2025 14:50:44 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>https://blog.587459.xyz//post/18.html</link><description>## 1.下载chrome_updater
 
-根据架构下载，一般的电脑都是下amd64的，是在不知道建议先搜一下自己电脑cpu的架构。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/18.html</guid><pubDate>Tue, 10 Jun 2025 12:50:43 +0000</pubDate></item><item><title>Windows安装PostgreSQL</title><link>https://hantianzhun.github.io/blog//post/17.html</link><description>## 1.下载PostgreSQL安装程序
+根据架构下载，一般的电脑都是下amd64的，是在不知道建议先搜一下自己电脑cpu的架构。</description><guid isPermaLink="true">https://blog.587459.xyz//post/18.html</guid><pubDate>Tue, 10 Jun 2025 12:50:43 +0000</pubDate></item><item><title>Windows安装PostgreSQL</title><link>https://blog.587459.xyz//post/17.html</link><description>## 1.下载PostgreSQL安装程序
 
 | 1.[PostgreSQL下载链接(点击即可跳转)](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) |             2.点击版本旁边的Windows下载按钮即可              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
@@ -35,7 +35,7 @@
 
 &gt; [!TIP]
 &gt;
-&gt; **说实话，用惯了Navicat这一下子给我脑子整的嗡嗡的，主要是不了解其他的也用不了。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/17.html</guid><pubDate>Mon, 09 Jun 2025 13:13:48 +0000</pubDate></item><item><title>Windows10安装MySQL</title><link>https://hantianzhun.github.io/blog//post/16.html</link><description>## 1.使用MySQL Installer安装
+&gt; **说实话，用惯了Navicat这一下子给我脑子整的嗡嗡的，主要是不了解其他的也用不了。</description><guid isPermaLink="true">https://blog.587459.xyz//post/17.html</guid><pubDate>Mon, 09 Jun 2025 13:13:48 +0000</pubDate></item><item><title>Windows10安装MySQL</title><link>https://blog.587459.xyz//post/16.html</link><description>## 1.使用MySQL Installer安装
 
 ### 1.1下载MySQL Installer
 
@@ -281,12 +281,12 @@ SHOW DATABASES;
 |          3.连接名随意，输入root账户的密码，点击确定          |         4.即可看到默认的数据库，可新建数据库再创建表         |
 | &lt;img src='https://hantianzhun.github.io/blog/issues16.47.png' style='zoom: 50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.48.png' style='zoom:50%;' /&gt; |
 
-。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/16.html</guid><pubDate>Mon, 09 Jun 2025 13:07:16 +0000</pubDate></item><item><title>grep和sed及awk使用</title><link>https://hantianzhun.github.io/blog//post/15.html</link><description>## 一、shell环境与常用命令
+。</description><guid isPermaLink="true">https://blog.587459.xyz//post/16.html</guid><pubDate>Mon, 09 Jun 2025 13:07:16 +0000</pubDate></item><item><title>grep和sed及awk使用</title><link>https://blog.587459.xyz//post/15.html</link><description>## 一、shell环境与常用命令
 
 ### 1、Linux下有许多shell环境
 
 ```shell
-1、Bash (Bourne Again Shell)：最广泛使用的 shell，功能强大且兼容 Bourne shell (sh)。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/15.html</guid><pubDate>Fri, 24 Jan 2025 12:34:35 +0000</pubDate></item><item><title>python部署+Jmeter安装</title><link>https://hantianzhun.github.io/blog//post/14.html</link><description># 1.python项目部署
+1、Bash (Bourne Again Shell)：最广泛使用的 shell，功能强大且兼容 Bourne shell (sh)。</description><guid isPermaLink="true">https://blog.587459.xyz//post/15.html</guid><pubDate>Fri, 24 Jan 2025 12:34:35 +0000</pubDate></item><item><title>python部署+Jmeter安装</title><link>https://blog.587459.xyz//post/14.html</link><description># 1.python项目部署
 
 ## 1.1下载Python安装包
 
@@ -357,11 +357,11 @@ python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --
   - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
 
 - 使用jmeter.bat启动
-  1. 打开 JMeter 的安装目录，找到 `bin` 文件夹。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/14.html</guid><pubDate>Fri, 17 Jan 2025 15:35:01 +0000</pubDate></item><item><title>数据库学习笔记</title><link>https://hantianzhun.github.io/blog//post/13.html</link><description>## **1. 为什么要学习数据库？在工作中数据库的作用**
+  1. 打开 JMeter 的安装目录，找到 `bin` 文件夹。</description><guid isPermaLink="true">https://blog.587459.xyz//post/14.html</guid><pubDate>Fri, 17 Jan 2025 15:35:01 +0000</pubDate></item><item><title>数据库学习笔记</title><link>https://blog.587459.xyz//post/13.html</link><description>## **1. 为什么要学习数据库？在工作中数据库的作用**
 
 ### 1.1作用
 
-- 数据库用于存储和管理数据。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/13.html</guid><pubDate>Fri, 17 Jan 2025 15:29:03 +0000</pubDate></item><item><title>Linux部署</title><link>https://hantianzhun.github.io/blog//post/12.html</link><description># 1.禅道开源版
+- 数据库用于存储和管理数据。</description><guid isPermaLink="true">https://blog.587459.xyz//post/13.html</guid><pubDate>Fri, 17 Jan 2025 15:29:03 +0000</pubDate></item><item><title>Linux部署</title><link>https://blog.587459.xyz//post/12.html</link><description># 1.禅道开源版
 
 ## 1.找到官网
 
@@ -612,7 +612,7 @@ FLUSH PRIVILEGES;
 ## 2.6测试过程中发现bug
 
 - 提交bug-----&gt;开发修改bug，提交一个新的xx.war------&gt;测试拿到包，停止服务，把最新的xx.war复制到webapps目录下，启动服务，测试
-- 在项目组中发包的频率：一般项目迭代周期： 二周。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/12.html</guid><pubDate>Fri, 17 Jan 2025 15:25:46 +0000</pubDate></item><item><title>Java环境变量配置</title><link>https://hantianzhun.github.io/blog//post/11.html</link><description>## 1.下载JDK
+- 在项目组中发包的频率：一般项目迭代周期： 二周。</description><guid isPermaLink="true">https://blog.587459.xyz//post/12.html</guid><pubDate>Fri, 17 Jan 2025 15:25:46 +0000</pubDate></item><item><title>Java环境变量配置</title><link>https://blog.587459.xyz//post/11.html</link><description>## 1.下载JDK
 
 首先我们需要下载 java 开发工具包 JDK，下载地址：[Oracle 中国 Java 下载](https://www.oracle.com/cn/java/technologies/downloads/) [按住ctrl点击链接即可打开]
 
@@ -642,9 +642,9 @@ FLUSH PRIVILEGES;
 
 - 在 '系统变量' 中设置 3 项属性
 - JAVA_HOME、PATH、CLASSPATH(大小写无所谓,但是要与path里面引用的一致)
-- 若已存在则点击'编辑'，不存在则点击'新建'。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/11.html</guid><pubDate>Fri, 17 Jan 2025 15:07:36 +0000</pubDate></item><item><title>Navicat的历史版本</title><link>https://hantianzhun.github.io/blog//post/10.html</link><description>## 1.通过固定链接下载
+- 若已存在则点击'编辑'，不存在则点击'新建'。</description><guid isPermaLink="true">https://blog.587459.xyz//post/11.html</guid><pubDate>Fri, 17 Jan 2025 15:07:36 +0000</pubDate></item><item><title>Navicat的历史版本</title><link>https://blog.587459.xyz//post/10.html</link><description>## 1.通过固定链接下载
 
-### Navicat的官网提供了部分历史版本的下载链接，你可以根据需要选择对应版本下载。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/10.html</guid><pubDate>Fri, 17 Jan 2025 14:47:50 +0000</pubDate></item><item><title>Linux基础知识和命令</title><link>https://hantianzhun.github.io/blog//post/9.html</link><description># Linux基础知识和命令
+### Navicat的官网提供了部分历史版本的下载链接，你可以根据需要选择对应版本下载。</description><guid isPermaLink="true">https://blog.587459.xyz//post/10.html</guid><pubDate>Fri, 17 Jan 2025 14:47:50 +0000</pubDate></item><item><title>Linux基础知识和命令</title><link>https://blog.587459.xyz//post/9.html</link><description># Linux基础知识和命令
 
 # 1.为什么要学习Linux，Linux在工作中用来干什么？
 
@@ -1067,7 +1067,7 @@ man 命令 '查看帮忙命令' = 命令 --help
 
 # 10.DD命令
 
-`dd`命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/9.html</guid><pubDate>Mon, 06 Jan 2025 12:34:25 +0000</pubDate></item><item><title>MySQL数据库的练习</title><link>https://hantianzhun.github.io/blog//post/8.html</link><description>### 1.导入exam-utf8（无外键）数据库&#13;
+`dd`命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。</description><guid isPermaLink="true">https://blog.587459.xyz//post/9.html</guid><pubDate>Mon, 06 Jan 2025 12:34:25 +0000</pubDate></item><item><title>MySQL数据库的练习</title><link>https://blog.587459.xyz//post/8.html</link><description>### 1.导入exam-utf8（无外键）数据库&#13;
 &#13;
 &gt; [!TIP]&#13;
 &gt; 导入数据库是为了方便后面的查询练习&#13;
@@ -1338,7 +1338,7 @@ INSERT INTO dept(dname,loc) VALUES('财务部',NULL); &#13;
 ```sql&#13;
 # 外键约束：&#13;
 # 保证引用的完整性&#13;
-# RESTRIC：如果子表中存在与父表相关联的记录，则阻止父表的更新或删除操作。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/8.html</guid><pubDate>Sun, 17 Nov 2024 23:05:19 +0000</pubDate></item><item><title>开源镜像站及部分Linux换源</title><link>https://hantianzhun.github.io/blog//post/7.html</link><description># 一、国内常用的开源镜像站&#13;
+# RESTRIC：如果子表中存在与父表相关联的记录，则阻止父表的更新或删除操作。</description><guid isPermaLink="true">https://blog.587459.xyz//post/8.html</guid><pubDate>Sun, 17 Nov 2024 23:05:19 +0000</pubDate></item><item><title>开源镜像站及部分Linux换源</title><link>https://blog.587459.xyz//post/7.html</link><description># 一、国内常用的开源镜像站&#13;
 &#13;
 - 网易：http://mirrors.163.com/&#13;
 - 搜狐：http://mirrors.sohu.com/&#13;
@@ -1645,7 +1645,7 @@ metadata_expire=6h&#13;
 enabled=0&#13;
 ```&#13;
 &#13;
-### b.运行 `yum makecache` 更新缓存。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/7.html</guid><pubDate>Mon, 11 Nov 2024 06:24:25 +0000</pubDate></item><item><title>临时邮箱的使用</title><link>https://hantianzhun.github.io/blog//post/6.html</link><description>## 一、几个临时邮箱地址
+### b.运行 `yum makecache` 更新缓存。</description><guid isPermaLink="true">https://blog.587459.xyz//post/7.html</guid><pubDate>Mon, 11 Nov 2024 06:24:25 +0000</pubDate></item><item><title>临时邮箱的使用</title><link>https://blog.587459.xyz//post/6.html</link><description>## 一、几个临时邮箱地址
 
 1. [tempmail](https://tempmail.plus/zh) 可随用随丢
 2. [临时邮件](https://mail.tm/zh) 可一直使用的临时邮箱
@@ -1656,7 +1656,7 @@ enabled=0&#13;
 ## 二、临时邮箱的使用
 
 &gt; [!TIP]
-&gt; 临时邮箱一般都为接验证码使用，我只以上述第五个演示接码操作。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/6.html</guid><pubDate>Tue, 01 Oct 2024 05:19:07 +0000</pubDate></item><item><title>Android端压缩与解压</title><link>https://hantianzhun.github.io/blog//post/5.html</link><description>## 1.安装软件&#13;
+&gt; 临时邮箱一般都为接验证码使用，我只以上述第五个演示接码操作。</description><guid isPermaLink="true">https://blog.587459.xyz//post/6.html</guid><pubDate>Tue, 01 Oct 2024 05:19:07 +0000</pubDate></item><item><title>Android端压缩与解压</title><link>https://blog.587459.xyz//post/5.html</link><description>## 1.安装软件&#13;
 &#13;
 ### 1.1两款软件&#13;
 &#13;
@@ -1677,9 +1677,9 @@ enabled=0&#13;
 &gt;&#13;
 &gt; mt管理器其免费功能已经够用 **！！！！**&#13;
 &gt;&#13;
-&gt; **如果出现zip文件乱码的，可以尝试mt管理器解压。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/5.html</guid><pubDate>Sun, 08 Sep 2024 06:39:02 +0000</pubDate></item><item><title> 阅读源仓库的使用
+&gt; **如果出现zip文件乱码的，可以尝试mt管理器解压。</description><guid isPermaLink="true">https://blog.587459.xyz//post/5.html</guid><pubDate>Sun, 08 Sep 2024 06:39:02 +0000</pubDate></item><item><title> 阅读源仓库的使用
 
-</title><link>https://hantianzhun.github.io/blog//post/4.html</link><description>## 一、访问网址&#13;
+</title><link>https://blog.587459.xyz//post/4.html</link><description>## 一、访问网址&#13;
 ### [源仓库](https://www.yckceo.com/yuedu/index/index.html)的地址&#13;
 &#13;
 | 访问网址之后的界面 | 1.点书源合集 |  2.合适的点进去，网络导入复制 |&#13;
@@ -1689,7 +1689,7 @@ enabled=0&#13;
 ## 二、导入书源&#13;
 &#13;
 导入书源请看[这里](https://blog.hanli.us.kg/post/3.html#2.导入书源)&#13;
-。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/4.html</guid><pubDate>Tue, 03 Sep 2024 08:33:45 +0000</pubDate></item><item><title>Android端开源阅读安装及导入书源</title><link>https://hantianzhun.github.io/blog//post/3.html</link><description>## 1.安装软件&#13;
+。</description><guid isPermaLink="true">https://blog.587459.xyz//post/4.html</guid><pubDate>Tue, 03 Sep 2024 08:33:45 +0000</pubDate></item><item><title>Android端开源阅读安装及导入书源</title><link>https://blog.587459.xyz//post/3.html</link><description>## 1.安装软件&#13;
 &#13;
 ### 1.1 在github上面进行下载&#13;
 &#13;
@@ -1712,11 +1712,11 @@ https://wwwe.lanzouq.com/ibQ6728pr7mh&#13;
 |                             图一                             |                             图二                             |&#13;
 &#13;
 &gt; [!TIP]&#13;
-&gt; 此时上图图二可能会白屏，是因为缩放问题，从外面双指向里捏合就能看到上述图片。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/3.html</guid><pubDate>Sat, 31 Aug 2024 09:41:06 +0000</pubDate></item><item><title>Android端clash的安装与基础使用</title><link>https://hantianzhun.github.io/blog//post/2.html</link><description>## 1.安装软件
+&gt; 此时上图图二可能会白屏，是因为缩放问题，从外面双指向里捏合就能看到上述图片。</description><guid isPermaLink="true">https://blog.587459.xyz//post/3.html</guid><pubDate>Sat, 31 Aug 2024 09:41:06 +0000</pubDate></item><item><title>Android端clash的安装与基础使用</title><link>https://blog.587459.xyz//post/2.html</link><description>## 1.安装软件
 
 ### 1.1 在github上面进行下载
 
-普通手机用户请下载armv8a(64位)版本，太古老的手机可以使用armv7a(32位)版本，X86等特殊设备可以下载对应的版本。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/2.html</guid><pubDate>Thu, 29 Aug 2024 06:00:16 +0000</pubDate></item><item><title>Markdown语法</title><link>https://hantianzhun.github.io/blog//post/1.html</link><description># Markdown语法
+普通手机用户请下载armv8a(64位)版本，太古老的手机可以使用armv7a(32位)版本，X86等特殊设备可以下载对应的版本。</description><guid isPermaLink="true">https://blog.587459.xyz//post/2.html</guid><pubDate>Thu, 29 Aug 2024 06:00:16 +0000</pubDate></item><item><title>Markdown语法</title><link>https://blog.587459.xyz//post/1.html</link><description># Markdown语法
 
 &gt; [!NOTE]
-&gt; Markdown是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成结构化的HTML。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog//post/1.html</guid><pubDate>Thu, 29 Aug 2024 05:32:36 +0000</pubDate></item></channel></rss>
+&gt; Markdown是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档，然后转换成结构化的HTML。</description><guid isPermaLink="true">https://blog.587459.xyz//post/1.html</guid><pubDate>Thu, 29 Aug 2024 05:32:36 +0000</pubDate></item></channel></rss>
