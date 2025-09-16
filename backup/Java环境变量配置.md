@@ -53,7 +53,7 @@
 
 选择"高级"选项卡，点击"环境变量"
 
-<img src="./issues11.06.png"  />
+<img src="https://hantianzhun.github.io/blog/issues11.06.png"  />
 
 出现如下图所示的画面：
 
