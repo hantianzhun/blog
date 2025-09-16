@@ -10,6 +10,9 @@
 
 ![](https://hantianzhun.github.io/blog/issues14.02.png)
 
+> [!NOTE]
+> 仅安装pip就可以
+
 ![](https://hantianzhun.github.io/blog/issues14.03.png)
 
 - **点击install，完成后弹出的界面点击close即可**
@@ -58,7 +61,7 @@ python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --
 > 安装配置环境变量之后JDK改位置和环境变量，双击Jmeter会无法使用
 
 - 配置环境变量，验证是否部署成功  java -version
-  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+  - 详情可见：[01_Java环境变量配置](https://blog.587459.xyz/post/11.html) [按住ctrl点击链接即可打开]
 
 - 双击`安装目录/bin/ApacheJMeter.jar`即可打开中文界面的Jmeter
 
@@ -66,7 +69,7 @@ python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --
 
 - 解压到想要的文件夹
 - 配置环境变量，验证是否部署成功  java -version
-  - 详情可见：[01_Java环境变量配置](./01_Java环境变量配置.md) [按住ctrl点击链接即可打开]
+  - 详情可见：[01_Java环境变量配置](https://blog.587459.xyz/post/11.html) [按住ctrl点击链接即可打开]
 
 - 使用jmeter.bat启动
   1. 打开 JMeter 的安装目录，找到 `bin` 文件夹。
