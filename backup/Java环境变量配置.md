@@ -78,6 +78,10 @@
 	%JAVA_HOME%\jre\bin
 ```
 
+> [!NOTE]
+> Java17之后仅需要JAVA_HOME,Path里面仅%JAVA_HOME%\bin
+
+
 #### 2.1.3测试JDK是否并配置安装成功
 
 1、"开始"->"运行"，键入"cmd"；
