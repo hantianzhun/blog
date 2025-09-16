@@ -16,7 +16,11 @@
 
 ## 3.安装后在此目录会有App、Cache、Data目录
 
-## 4.在快捷方式的目标处更改
+## 4.1方法一：安装chrome++即可
+
+## 4.2方法二：改快捷方式和注册表
+
+### 4.2.1在快捷方式的目标处更改
 
 ```shell
 "D:\Program Files\Chrome\App\chrome.exe" --user-data-dir="D:\Program Files\Chrome\Data" --user-cache-dir="D:\Program Files\Chrome\Cache"
@@ -26,7 +30,7 @@
 >
 > 可以将旧的data目录("C:\Users\usernme\AppData\Local\Google\Chrome\User Data")复制放到`D:\Program Files\Chrome\Data`，应该可以保数据
 
-## 5.更改注册表以可以让其他软件调用
+### 4.2.2.更改注册表以可以让其他软件调用
 
 ```cmd
 # chrome
