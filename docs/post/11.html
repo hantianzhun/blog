@@ -77,7 +77,7 @@
 <meta property="og:url" content="https://hantianzhun.github.io/blog/post/11.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
 <title>Java环境变量配置</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -101,17 +101,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     body {padding: 8px;}
     .postTitle{font-size:24px;}
 }
-.copy-feedback {
-    display: none;
-    position: absolute;
-    top: 10px;
-    right: 50px;
-    color: var(--color-fg-on-emphasis);
-    background-color: var(--color-fg-muted);
-    border-radius: 3px;
-    padding: 5px 8px;
-    font-size: 12px;
-}
+
 </style>
 <style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-note {border-left-color:var(--borderColor-accent-emphasis, var(--color-accent-emphasis));background-color:var(--color-accent-subtle);}.markdown-alert.markdown-alert-note .markdown-alert-title {color: var(--fgColor-accent,var(--color-accent-fg));}</style>
 
@@ -200,16 +190,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>若已存在则点击"编辑"，不存在则点击"新建"。</li>
 </ul>
 <p><strong>变量设置参数如下：</strong></p>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>变量名<span class="pl-pds">'</span></span> JAVA_HOME
-<span class="pl-s"><span class="pl-pds">'</span>变量值<span class="pl-pds">'</span></span> D:<span class="pl-cce">\P</span>rogram Files<span class="pl-cce">\J</span>ava<span class="pl-cce">\j</span>dk     <span class="pl-c"><span class="pl-c">#</span>要根据自己的实际路径配置</span>
+<pre lang="shell" class="notranslate"><code class="notranslate">'变量名' JAVA_HOME
+'变量值' D:\Program Files\Java\jdk     #要根据自己的实际路径配置
 
-<span class="pl-s"><span class="pl-pds">'</span>变量名<span class="pl-pds">'</span></span> CLASSPATH
-<span class="pl-s"><span class="pl-pds">'</span>变量值<span class="pl-pds">'</span></span> <span class="pl-c1">.</span><span class="pl-k">;</span>%JAVA_HOME%<span class="pl-cce">\l</span>ib<span class="pl-cce">\d</span>t.jar<span class="pl-k">;</span>%JAVA_HOME%<span class="pl-cce">\l</span>ib<span class="pl-cce">\t</span>ools.jar<span class="pl-k">;</span>   <span class="pl-c"><span class="pl-c">#</span>#记得前面有个'.'</span>
+'变量名' CLASSPATH
+'变量值' .;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;   ##记得前面有个'.'
 
-<span class="pl-s"><span class="pl-pds">'</span>变量名<span class="pl-pds">'</span></span> Path <span class="pl-s"><span class="pl-pds">'</span>Windows10Path变成一条一条，分开添加<span class="pl-pds">'</span></span>
-<span class="pl-s"><span class="pl-pds">'</span>变量值<span class="pl-pds">'</span></span>
-	%JAVA_HOME%<span class="pl-cce">\b</span>in
-	%JAVA_HOME%<span class="pl-cce">\j</span>re<span class="pl-cce">\b</span>in</pre></div>
+'变量名' Path 'Windows10Path变成一条一条，分开添加'
+'变量值'
+	%JAVA_HOME%\bin
+	%JAVA_HOME%\jre\bin
+</code></pre>
 <div class="markdown-alert markdown-alert-note"><p class="markdown-alert-title"><svg class="octicon octicon-info mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p><p>Java17之后仅需要JAVA_HOME,Path里面仅%JAVA_HOME%\bin</p>
 </div>
 <h4>2.1.3测试JDK是否并配置安装成功</h4>
@@ -219,27 +210,29 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8b75c1405f5e9af90b9359e4b49b291523637aaddc726159603a2cdd814db627/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331312e30392e706e67"><img src="https://camo.githubusercontent.com/8b75c1405f5e9af90b9359e4b49b291523637aaddc726159603a2cdd814db627/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331312e30392e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues11.09.png" style="max-width: 100%;"></a></p>
 <h3>2.2Linux</h3>
 <h4>2.2.1CentOS7</h4>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 使用vim打开配置文件</span>
+<pre lang="shell" class="notranslate"><code class="notranslate"># 使用vim打开配置文件
 vim /etc/profile
-<span class="pl-c"><span class="pl-c">#</span> 添加以下内容</span>
-JAVA_HOME=/2020-5-28/jdk1.8.0_151 <span class="pl-c"><span class="pl-c">#</span>路径与解压路径保持一致</span>
-JRE_HOME=/2020-5-28/jdk1.8.0_151/jre <span class="pl-c"><span class="pl-c">#</span>路径与解压路径保持一致CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib</span>
-PATH=<span class="pl-smi">$PATH</span>:<span class="pl-smi">$JAVA_HOME</span>/bin:<span class="pl-smi">$JRE_HOME</span>/bin
-<span class="pl-k">export</span> JAVA_HOME JRE_HOME CLASS_PATH PATH
-<span class="pl-c"><span class="pl-c">#</span> 更新配置文件</span>
-<span class="pl-c1">source</span> /etc/profile</pre></div>
+# 添加以下内容
+JAVA_HOME=/2020-5-28/jdk1.8.0_151 #路径与解压路径保持一致
+JRE_HOME=/2020-5-28/jdk1.8.0_151/jre #路径与解压路径保持一致CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+export JAVA_HOME JRE_HOME CLASS_PATH PATH
+# 更新配置文件
+source /etc/profile
+</code></pre>
 <h4>2.2.2Debian12</h4>
 <p><strong>AI告诉我</strong></p>
 <blockquote>
 <p>使用以下就可以满足大部分Java环境</p>
 </blockquote>
-<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 使用vim打开配置文件</span>
+<pre lang="shell" class="notranslate"><code class="notranslate"># 使用vim打开配置文件
 vim /etc/profile
-<span class="pl-c"><span class="pl-c">#</span> 添加以下内容</span>
-<span class="pl-k">export</span> JAVA_HOME=/opt/jdk1.8.0_431
-<span class="pl-k">export</span> PATH=<span class="pl-smi">$JAVA_HOME</span>/bin:<span class="pl-smi">$PATH</span>
-<span class="pl-c"><span class="pl-c">#</span> 更新配置文件</span>
-<span class="pl-c1">source</span> /etc/profile</pre></div>
+# 添加以下内容
+export JAVA_HOME=/opt/jdk1.8.0_431
+export PATH=$JAVA_HOME/bin:$PATH
+# 更新配置文件
+source /etc/profile
+</code></pre>
 <h4>2.2.3测试JDK是否安装并配置成功</h4>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/75f6f86b97115d091daae2bd7fc2b2a97adde17acf4f03faed36d80294f684ce/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331312e31302e706e67"><img src="https://camo.githubusercontent.com/75f6f86b97115d091daae2bd7fc2b2a97adde17acf4f03faed36d80294f684ce/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331312e31302e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues11.10.png" style="max-width: 100%;"></a></p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/8e3b621de2db0422206f03588f6e2e2aff105bba4f9ae7d2414cebc22d513c89/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331312e31312e706e67"><img src="https://camo.githubusercontent.com/8e3b621de2db0422206f03588f6e2e2aff105bba4f9ae7d2414cebc22d513c89/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331312e31312e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues11.11.png" style="max-width: 100%;"></a></p>
@@ -268,7 +261,7 @@ if("08/20/2024"!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -341,70 +334,7 @@ function iFrameLoading(){
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const createClipboardHTML = (codeContent, additionalClasses = '') => `
-        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
-        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
-            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
-                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
-                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
-            </clipboard-copy>
-            <div class="copy-feedback">Copied!</div>
-        </div>
-    `;
 
-    const handleCodeElements = (selector = '') => {
-        document.querySelectorAll(selector).forEach(codeElement => {
-            const codeContent = codeElement.innerHTML;
-            const newStructure = document.createElement('div');
-            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
-            newStructure.innerHTML = createClipboardHTML(codeContent);
-
-            const parentElement = codeElement.parentElement;
-            if (selector.includes('highlight')) {
-                parentElement.insertBefore(newStructure, codeElement.nextSibling);
-                parentElement.removeChild(codeElement);
-            } else {
-                parentElement.parentElement.replaceChild(newStructure, parentElement);
-            }
-        });
-    };
-
-    handleCodeElements('pre.notranslate > code.notranslate');
-    handleCodeElements('div.highlight > pre.notranslate');
-
-    let currentFeedback = null;
-    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
-        copyButton.addEventListener('click', () => {
-            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
-            const tempTextArea = document.createElement('textarea');
-            tempTextArea.value = codeContent;
-            document.body.appendChild(tempTextArea);
-            tempTextArea.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempTextArea);
-
-            const copyIcon = copyButton.querySelector('.octicon-copy');
-            const checkIcon = copyButton.querySelector('.octicon-check');
-            const copyFeedback = copyButton.nextElementSibling;
-
-            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
-            currentFeedback = copyFeedback;
-
-            copyIcon.classList.add('d-none');
-            checkIcon.classList.remove('d-none');
-            copyFeedback.style.display = 'block';
-            copyButton.style.borderColor = 'var(--color-success-fg)';
-
-            setTimeout(() => {
-                copyIcon.classList.remove('d-none');
-                checkIcon.classList.add('d-none');
-                copyFeedback.style.display = 'none';
-                copyButton.style.borderColor = '';
-            }, 2000);
-        });
-    });
-});
 
 </script>
 <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
