@@ -559,7 +559,7 @@ INSERT INTO dept(dname,loc) VALUES('财务部',NULL);
 <meta property="og:url" content="https://hantianzhun.github.io/blog/post/8.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
 <title>MySQL数据库的练习</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -583,7 +583,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     body {padding: 8px;}
     .postTitle{font-size:24px;}
 }
-
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 </style>
 <style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-tip {border-left-color:var(--borderColor-success-emphasis, var(--color-success-emphasis));background-color:var(--color-success-subtle);}.markdown-alert.markdown-alert-tip .markdown-alert-title {color: var(--fgColor-success,var(--color-success-fg));}</style>
 
@@ -618,481 +628,474 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <div class="markdown-body" id="postBody"><h3>1.导入exam-utf8（无外键）数据库</h3>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>导入数据库是为了方便后面的查询练习</p>
 </div>
-<pre lang="sql" class="notranslate"><code class="notranslate">DROP database IF EXISTS exam;
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-k">DROP</span> <span class="pl-k">database</span> IF EXISTS exam;
 
-CREATE DATABASE IF NOT EXISTS exam CHARSET=utf8;  
+<span class="pl-k">CREATE</span> <span class="pl-k">DATABASE</span> <span class="pl-en">IF</span> NOT EXISTS exam CHARSET<span class="pl-k">=</span>utf8;  
 
 USE exam;
 
-/*创建部门表*/
-CREATE TABLE dept(
-deptno INT PRIMARY KEY,
-dname VARCHAR(50),
-loc VARCHAR(50)
+<span class="pl-c"><span class="pl-c">/*</span>创建部门表<span class="pl-c">*/</span></span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+dname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">50</span>),
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">50</span>)
 );
 
-/*创建雇员表*/
-CREATE TABLE emp(
-empno INT PRIMARY KEY,
-ename VARCHAR(50),
-job VARCHAR(50),
-mgr INT,
-hiredate DATE,
-sal DECIMAL(7,2),
-COMM DECIMAL(7,2),
-deptno INT
+<span class="pl-c"><span class="pl-c">/*</span>创建雇员表<span class="pl-c">*/</span></span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">emp</span>(
+empno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+ename <span class="pl-k">VARCHAR</span>(<span class="pl-c1">50</span>),
+job <span class="pl-k">VARCHAR</span>(<span class="pl-c1">50</span>),
+mgr <span class="pl-k">INT</span>,
+hiredate <span class="pl-k">DATE</span>,
+sal <span class="pl-k">DECIMAL</span>(<span class="pl-c1">7</span>,<span class="pl-c1">2</span>),
+COMM <span class="pl-k">DECIMAL</span>(<span class="pl-c1">7</span>,<span class="pl-c1">2</span>),
+deptno <span class="pl-k">INT</span>
 );
 
-/*创建工资等级表*/
-CREATE TABLE salgrade(
-grade INT PRIMARY KEY,
-losal INT,
-hisal INT
+<span class="pl-c"><span class="pl-c">/*</span>创建工资等级表<span class="pl-c">*/</span></span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">salgrade</span>(
+grade <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+losal <span class="pl-k">INT</span>,
+hisal <span class="pl-k">INT</span>
 );
 
-/*创建学生表*/
-CREATE TABLE stu(
-sid INT PRIMARY KEY,
-sname VARCHAR(50),
-age INT,
-gander VARCHAR(10),
-province VARCHAR(50),
-tuition INT
+<span class="pl-c"><span class="pl-c">/*</span>创建学生表<span class="pl-c">*/</span></span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">stu</span>(
+sid <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+sname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">50</span>),
+age <span class="pl-k">INT</span>,
+gander <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>),
+province <span class="pl-k">VARCHAR</span>(<span class="pl-c1">50</span>),
+tuition <span class="pl-k">INT</span>
 );
 
-/*插入dept表数据*/
-INSERT INTO dept VALUES (10, '教研部', '北京');
-INSERT INTO dept VALUES (20, '学工部', '上海');
-INSERT INTO dept VALUES (30, '销售部', '广州');
-INSERT INTO dept VALUES (40, '财务部', '武汉');
+<span class="pl-c"><span class="pl-c">/*</span>插入dept表数据<span class="pl-c">*/</span></span>
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span> (<span class="pl-c1">10</span>, <span class="pl-s"><span class="pl-pds">'</span>教研部<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span> (<span class="pl-c1">20</span>, <span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span> (<span class="pl-c1">30</span>, <span class="pl-s"><span class="pl-pds">'</span>销售部<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span> (<span class="pl-c1">40</span>, <span class="pl-s"><span class="pl-pds">'</span>财务部<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>武汉<span class="pl-pds">'</span></span>);
 
-/*插入emp表数据*/
-INSERT INTO emp VALUES (1009, '曾阿牛', '董事长', NULL, '2001-11-17', 50000, NULL, 10);
-INSERT INTO emp VALUES (1004, '刘备', '经理', 1009, '2001-04-02', 29750, NULL, 20);
-INSERT INTO emp VALUES (1006, '关羽', '经理', 1009, '2001-05-01', 28500, NULL, 30);
-INSERT INTO emp VALUES (1007, '张飞', '经理', 1009, '2001-09-01', 24500, NULL, 10);
-INSERT INTO emp VALUES (1008, '诸葛亮', '分析师', 1004, '2007-04-19', 30000, NULL, 20);
-INSERT INTO emp VALUES (1013, '庞统', '分析师', 1004, '2001-12-03', 30000, NULL, 20);
-INSERT INTO emp VALUES (1002, '黛绮丝', '销售员', 1006, '2001-02-20', 16000, 3000, 30);
-INSERT INTO emp VALUES (1003, '殷天正', '销售员', 1006, '2001-02-22', 12500, 5000, 30);
-INSERT INTO emp VALUES (1005, '谢逊', '销售员', 1006, '2001-09-28', 12500, 14000, 30);
-INSERT INTO emp VALUES (1010, '韦一笑', '销售员', 1006, '2001-09-08', 15000, 0, 30);
-INSERT INTO emp VALUES (1012, '程普', '文员', 1006, '2001-12-03', 9500, NULL, 30);
-INSERT INTO emp VALUES (1014, '黄盖', '文员', 1007, '2002-01-23', 13000, NULL, 10);
-INSERT INTO emp VALUES (1011, '周泰', '文员', 1008, '2007-05-23', 11000, NULL, 20);
+<span class="pl-c"><span class="pl-c">/*</span>插入emp表数据<span class="pl-c">*/</span></span>
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1009</span>, <span class="pl-s"><span class="pl-pds">'</span>曾阿牛<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>董事长<span class="pl-pds">'</span></span>, <span class="pl-k">NULL</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-11-17<span class="pl-pds">'</span></span>, <span class="pl-c1">50000</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">10</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1004</span>, <span class="pl-s"><span class="pl-pds">'</span>刘备<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>, <span class="pl-c1">1009</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-04-02<span class="pl-pds">'</span></span>, <span class="pl-c1">29750</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">20</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1006</span>, <span class="pl-s"><span class="pl-pds">'</span>关羽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>, <span class="pl-c1">1009</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-05-01<span class="pl-pds">'</span></span>, <span class="pl-c1">28500</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">30</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1007</span>, <span class="pl-s"><span class="pl-pds">'</span>张飞<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>, <span class="pl-c1">1009</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-09-01<span class="pl-pds">'</span></span>, <span class="pl-c1">24500</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">10</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1008</span>, <span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>分析师<span class="pl-pds">'</span></span>, <span class="pl-c1">1004</span>, <span class="pl-s"><span class="pl-pds">'</span>2007-04-19<span class="pl-pds">'</span></span>, <span class="pl-c1">30000</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">20</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1013</span>, <span class="pl-s"><span class="pl-pds">'</span>庞统<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>分析师<span class="pl-pds">'</span></span>, <span class="pl-c1">1004</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-12-03<span class="pl-pds">'</span></span>, <span class="pl-c1">30000</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">20</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1002</span>, <span class="pl-s"><span class="pl-pds">'</span>黛绮丝<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>销售员<span class="pl-pds">'</span></span>, <span class="pl-c1">1006</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-02-20<span class="pl-pds">'</span></span>, <span class="pl-c1">16000</span>, <span class="pl-c1">3000</span>, <span class="pl-c1">30</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1003</span>, <span class="pl-s"><span class="pl-pds">'</span>殷天正<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>销售员<span class="pl-pds">'</span></span>, <span class="pl-c1">1006</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-02-22<span class="pl-pds">'</span></span>, <span class="pl-c1">12500</span>, <span class="pl-c1">5000</span>, <span class="pl-c1">30</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1005</span>, <span class="pl-s"><span class="pl-pds">'</span>谢逊<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>销售员<span class="pl-pds">'</span></span>, <span class="pl-c1">1006</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-09-28<span class="pl-pds">'</span></span>, <span class="pl-c1">12500</span>, <span class="pl-c1">14000</span>, <span class="pl-c1">30</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1010</span>, <span class="pl-s"><span class="pl-pds">'</span>韦一笑<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>销售员<span class="pl-pds">'</span></span>, <span class="pl-c1">1006</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-09-08<span class="pl-pds">'</span></span>, <span class="pl-c1">15000</span>, <span class="pl-c1">0</span>, <span class="pl-c1">30</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1012</span>, <span class="pl-s"><span class="pl-pds">'</span>程普<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>, <span class="pl-c1">1006</span>, <span class="pl-s"><span class="pl-pds">'</span>2001-12-03<span class="pl-pds">'</span></span>, <span class="pl-c1">9500</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">30</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1014</span>, <span class="pl-s"><span class="pl-pds">'</span>黄盖<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>, <span class="pl-c1">1007</span>, <span class="pl-s"><span class="pl-pds">'</span>2002-01-23<span class="pl-pds">'</span></span>, <span class="pl-c1">13000</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">10</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1011</span>, <span class="pl-s"><span class="pl-pds">'</span>周泰<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>, <span class="pl-c1">1008</span>, <span class="pl-s"><span class="pl-pds">'</span>2007-05-23<span class="pl-pds">'</span></span>, <span class="pl-c1">11000</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">20</span>);
 
 
-INSERT INTO emp VALUES (1001, '甘宁', '文员', 1013, '2000-12-17', 8000, NULL, 20);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span> (<span class="pl-c1">1001</span>, <span class="pl-s"><span class="pl-pds">'</span>甘宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>, <span class="pl-c1">1013</span>, <span class="pl-s"><span class="pl-pds">'</span>2000-12-17<span class="pl-pds">'</span></span>, <span class="pl-c1">8000</span>, <span class="pl-k">NULL</span>, <span class="pl-c1">20</span>);
 
-/*插入salgrade表数据*/
-INSERT INTO salgrade VALUES (1, 7000, 12000);
-INSERT INTO salgrade VALUES (2, 12010, 14000);
-INSERT INTO salgrade VALUES (3, 14010, 20000);
-INSERT INTO salgrade VALUES (4, 20010, 30000);
-INSERT INTO salgrade VALUES (5, 30010, 99990);
+<span class="pl-c"><span class="pl-c">/*</span>插入salgrade表数据<span class="pl-c">*/</span></span>
+<span class="pl-k">INSERT INTO</span> salgrade <span class="pl-k">VALUES</span> (<span class="pl-c1">1</span>, <span class="pl-c1">7000</span>, <span class="pl-c1">12000</span>);
+<span class="pl-k">INSERT INTO</span> salgrade <span class="pl-k">VALUES</span> (<span class="pl-c1">2</span>, <span class="pl-c1">12010</span>, <span class="pl-c1">14000</span>);
+<span class="pl-k">INSERT INTO</span> salgrade <span class="pl-k">VALUES</span> (<span class="pl-c1">3</span>, <span class="pl-c1">14010</span>, <span class="pl-c1">20000</span>);
+<span class="pl-k">INSERT INTO</span> salgrade <span class="pl-k">VALUES</span> (<span class="pl-c1">4</span>, <span class="pl-c1">20010</span>, <span class="pl-c1">30000</span>);
+<span class="pl-k">INSERT INTO</span> salgrade <span class="pl-k">VALUES</span> (<span class="pl-c1">5</span>, <span class="pl-c1">30010</span>, <span class="pl-c1">99990</span>);
 
-/*插入stu表数据*/
-INSERT INTO `stu` VALUES ('1', '王永', '23', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('2', '张雷', '25', '男', '辽宁', '2500');
-INSERT INTO `stu` VALUES ('3', '李强', '22', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('4', '宋永合', '25', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('5', '叙美丽', '23', '女', '北京', '1000');
-INSERT INTO `stu` VALUES ('6', '陈宁', '22', '女', '山东', '2500');
-INSERT INTO `stu` VALUES ('7', '王丽', '21', '女', '北京', '1600');
-INSERT INTO `stu` VALUES ('8', '李永', '23', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('9', '张玲', '23', '女', '广州', '2500');
-INSERT INTO `stu` VALUES ('10', '啊历', '18', '男', '山西', '3500');
-INSERT INTO `stu` VALUES ('11', '王刚', '23', '男', '湖北', '4500');
-INSERT INTO `stu` VALUES ('12', '陈永', '24', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('13', '李雷', '24', '男', '辽宁', '2500');
-INSERT INTO `stu` VALUES ('14', '李沿', '22', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('15', '王小明', '25', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('16', '王小丽', '23', '女', '北京', '1000');
-INSERT INTO `stu` VALUES ('17', '唐宁', '22', '女', '山东', '2500');
-INSERT INTO `stu` VALUES ('18', '唐丽', '21', '女', '北京', '1600');
-INSERT INTO `stu` VALUES ('19', '啊永', '23', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('20', '唐玲', '23', '女', '广州', '2500');
-INSERT INTO `stu` VALUES ('21', '叙刚', '18', '男', '山西', '3500');
-INSERT INTO `stu` VALUES ('22', '王累', '23', '男', '湖北', '4500');
-INSERT INTO `stu` VALUES ('23', '赵安', '23', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('24', '关雷', '25', '男', '辽宁', '2500');
-INSERT INTO `stu` VALUES ('25', '李字', '22', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('26', '叙安国', '25', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('27', '陈浩难', '23', '女', '北京', '1000');
-INSERT INTO `stu` VALUES ('28', '陈明', '22', '女', '山东', '2500');
-INSERT INTO `stu` VALUES ('29', '孙丽', '21', '女', '北京', '1600');
-INSERT INTO `stu` VALUES ('30', '李治国', '23', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('31', '张娜', '23', '女', '广州', '2500');
-INSERT INTO `stu` VALUES ('32', '安强', '18', '男', '山西', '3500');
-INSERT INTO `stu` VALUES ('33', '王欢', '23', '男', '湖北', '4500');
-INSERT INTO `stu` VALUES ('34', '周天乐', '23', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('35', '关雷', '25', '男', '辽宁', '2500');
-INSERT INTO `stu` VALUES ('36', '吴强', '22', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('37', '吴合国', '25', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('38', '正小和', '23', '女', '北京', '1000');
-INSERT INTO `stu` VALUES ('39', '吴丽', '22', '女', '山东', '2500');
-INSERT INTO `stu` VALUES ('40', '冯含', '21', '女', '北京', '1600');
-INSERT INTO `stu` VALUES ('41', '陈冬', '23', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('42', '关玲', '23', '女', '广州', '2500');
-INSERT INTO `stu` VALUES ('43', '包利', '18', '男', '山西', '3500');
-INSERT INTO `stu` VALUES ('44', '威刚', '23', '男', '湖北', '4500');
-INSERT INTO `stu` VALUES ('45', '李永', '23', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('46', '张关雷', '25', '男', '辽宁', '2500');
-INSERT INTO `stu` VALUES ('47', '送小强', '22', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('48', '关动林', '25', '男', '北京', '1500');
-INSERT INTO `stu` VALUES ('49', '苏小哑', '23', '女', '北京', '1000');
-INSERT INTO `stu` VALUES ('50', '赵宁', '22', '女', '山东', '2500');
-INSERT INTO `stu` VALUES ('51', '陈丽', '21', '女', '北京', '1600');
-INSERT INTO `stu` VALUES ('52', '钱小刚', '23', '男', '北京', '3500');
-INSERT INTO `stu` VALUES ('53', '艾林', '23', '女', '广州', '2500');
-INSERT INTO `stu` VALUES ('54', '郭林', '18', '男', '山西', '3500');
-INSERT INTO `stu` VALUES ('55', '周制强', '23', '男', '湖北', '4500');
-</code></pre>
+<span class="pl-c"><span class="pl-c">/*</span>插入stu表数据<span class="pl-c">*/</span></span>
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>1<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王永<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>张雷<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>辽宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>3<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李强<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>4<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>宋永合<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>5<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>叙美丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1000<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>6<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>陈宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山东<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>7<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>21<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1600<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>8<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李永<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>9<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>张玲<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>10<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>啊历<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>18<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山西<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>11<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王刚<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>湖北<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>4500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>12<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>陈永<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>24<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>13<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李雷<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>24<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>辽宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>14<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李沿<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>15<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王小明<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>16<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王小丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1000<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>17<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>唐宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山东<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>18<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>唐丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>21<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1600<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>19<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>啊永<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>20<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>唐玲<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>21<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>叙刚<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>18<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山西<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王累<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>湖北<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>4500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>赵安<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>24<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>关雷<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>辽宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李字<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>26<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>叙安国<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>27<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>陈浩难<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1000<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>28<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>陈明<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山东<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>29<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>孙丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>21<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1600<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>30<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李治国<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>31<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>张娜<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>32<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>安强<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>18<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山西<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>33<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>王欢<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>湖北<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>4500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>34<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>周天乐<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>35<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>关雷<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>辽宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>36<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>吴强<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>37<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>吴合国<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>38<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>正小和<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1000<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>39<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>吴丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山东<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>40<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>冯含<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>21<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1600<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>41<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>陈冬<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>42<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>关玲<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>43<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>包利<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>18<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山西<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>44<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>威刚<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>湖北<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>4500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>45<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>李永<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>46<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>张关雷<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>辽宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>47<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>送小强<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>48<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>关动林<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>25<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>49<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>苏小哑<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1000<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>50<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>赵宁<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>22<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山东<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>51<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>陈丽<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>21<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>1600<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>52<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>钱小刚<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>53<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>艾林<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>女<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>2500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>54<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>郭林<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>18<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>山西<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>3500<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> <span class="pl-s"><span class="pl-pds">`</span>stu<span class="pl-pds">`</span></span> <span class="pl-k">VALUES</span> (<span class="pl-s"><span class="pl-pds">'</span>55<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>周制强<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>23<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>男<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>湖北<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>4500<span class="pl-pds">'</span></span>);</pre></div>
 <h3>2.创建数据库表</h3>
-<pre lang="sql" class="notranslate"><code class="notranslate">-- 注释：
--- 单行注释
-# 单行注释
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">--</span> 注释：</span>
+<span class="pl-c"><span class="pl-c">--</span> 单行注释</span>
+<span class="pl-c"><span class="pl-c">#</span> 单行注释</span>
 
-/*
-多行注释
-多行注释
-多行注释
-*/
+<span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c">多行注释</span>
+<span class="pl-c">多行注释</span>
+<span class="pl-c">多行注释</span>
+<span class="pl-c"><span class="pl-c">*/</span></span>
 
-# 创建库的语句：
-# CREATE DATABASE 库名称;
-CREATE DATABASE mmb;
-USE mmb;  -- 使用库
+<span class="pl-c"><span class="pl-c">#</span> 创建库的语句：</span>
+<span class="pl-c"><span class="pl-c">#</span> CREATE DATABASE 库名称;</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">DATABASE</span> <span class="pl-en">mmb</span>;
+USE mmb;  <span class="pl-c"><span class="pl-c">--</span> 使用库</span>
 
-# 创建表
-/*
-CREATE TABLE 表名称(
-列名1 类型 约束,
-列名2 类型 约束,
-……
-列名N 类型 约束
-)CHARSET=utf8;
-*/
-# 数据类型：
-# 数值：
-# int
-# float  decimail
-# 字符：char / varchar
-# 日期时间: date / datetime
+<span class="pl-c"><span class="pl-c">#</span> 创建表</span>
+<span class="pl-c"><span class="pl-c">/*</span></span>
+<span class="pl-c">CREATE TABLE 表名称(</span>
+<span class="pl-c">列名1 类型 约束,</span>
+<span class="pl-c">列名2 类型 约束,</span>
+<span class="pl-c">……</span>
+<span class="pl-c">列名N 类型 约束</span>
+<span class="pl-c">)CHARSET=utf8;</span>
+<span class="pl-c"><span class="pl-c">*/</span></span>
+<span class="pl-c"><span class="pl-c">#</span> 数据类型：</span>
+<span class="pl-c"><span class="pl-c">#</span> 数值：</span>
+<span class="pl-c"><span class="pl-c">#</span> int</span>
+<span class="pl-c"><span class="pl-c">#</span> float  decimail</span>
+<span class="pl-c"><span class="pl-c">#</span> 字符：char / varchar</span>
+<span class="pl-c"><span class="pl-c">#</span> 日期时间: date / datetime</span>
 
-CREATE DATABASE IF NOT EXISTS oneday;
+<span class="pl-k">CREATE</span> <span class="pl-k">DATABASE</span> <span class="pl-en">IF</span> NOT EXISTS oneday;
 
 USE oneday;
 
-CREATE TABLE dept(
-deptno INT PRIMARY KEY AUTO_INCREMENT,
-deptname VARCHAR(10) UNIQUE NOT NULL,
-loc VARCHAR(20) NOT NULL DEFAULT '北京'
-)CHARSET=utf8;
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span> AUTO_INCREMENT,
+deptname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>) UNIQUE <span class="pl-k">NOT NULL</span>,
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>) <span class="pl-k">NOT NULL</span> DEFAULT <span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept(deptname,loc) VALUES('销售部','北京');
-INSERT INTO dept(deptname,loc) VALUES('人事部','上海');
-INSERT INTO dept(deptname) VALUES('研发部');
-INSERT INTO dept(deptno,deptname,loc) VALUES(4,'外包部','深圳');
-</code></pre>
+<span class="pl-k">INSERT INTO</span> dept(deptname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>销售部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept(deptname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>人事部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept(deptname) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>研发部<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept(deptno,deptname,loc) <span class="pl-k">VALUES</span>(<span class="pl-c1">4</span>,<span class="pl-s"><span class="pl-pds">'</span>外包部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>深圳<span class="pl-pds">'</span></span>);</pre></div>
 <h3>3.主键自增、唯一、非空、默认值</h3>
-<pre lang="sql" class="notranslate"><code class="notranslate"># 主键约束：
-# 唯一、非空、一个表最多一个主键
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 主键约束：</span>
+<span class="pl-c"><span class="pl-c">#</span> 唯一、非空、一个表最多一个主键</span>
 
-CREATE TABLE dept(
-deptno INT PRIMARY KEY,
-dname VARCHAR(10),
-loc VARCHAR(20)
-)CHARSET=utf8;
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+dname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>),
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>)
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept VALUES(10,'教研部','北京');
-INSERT INTO dept VALUES(20,'学工部','上海');
-INSERT INTO dept VALUES(NULL,NULL,NULL);
-INSERT INTO dept VALUES(20,NULL,NULL);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">10</span>,<span class="pl-s"><span class="pl-pds">'</span>教研部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">20</span>,<span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-k">NULL</span>,<span class="pl-k">NULL</span>,<span class="pl-k">NULL</span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">20</span>,<span class="pl-k">NULL</span>,<span class="pl-k">NULL</span>);
 
-# 主键自增：数据类型一般是整数
-# PRIMARY KEY 主键  AUTO_INCREMENT 自增
-CREATE TABLE dept(
-deptno INT PRIMARY KEY AUTO_INCREMENT,
-dname VARCHAR(10),
-loc VARCHAR(20)
-)CHARSET=utf8;
+<span class="pl-c"><span class="pl-c">#</span> 主键自增：数据类型一般是整数</span>
+<span class="pl-c"><span class="pl-c">#</span> PRIMARY KEY 主键  AUTO_INCREMENT 自增</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span> AUTO_INCREMENT,
+dname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>),
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>)
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept(dname,loc) VALUES('教研部','北京');
-INSERT INTO dept(dname,loc) VALUES('学工部','上海');
-INSERT INTO dept VALUES(30,'销售部','广州');
-INSERT INTO dept(deptno,dname,loc)VALUES(31,'财务部','武汉');
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>教研部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">30</span>,<span class="pl-s"><span class="pl-pds">'</span>销售部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>广州<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept(deptno,dname,loc)<span class="pl-k">VALUES</span>(<span class="pl-c1">31</span>,<span class="pl-s"><span class="pl-pds">'</span>财务部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>武汉<span class="pl-pds">'</span></span>);
 
-# 唯一约束：
-# 值必须是唯一的、一个表可以有多个唯一约束、值可以为空
-CREATE TABLE dept(
-deptno INT PRIMARY KEY AUTO_INCREMENT,
-dname VARCHAR(10) UNIQUE,
-loc VARCHAR(20)
-)CHARSET=utf8;
+<span class="pl-c"><span class="pl-c">#</span> 唯一约束：</span>
+<span class="pl-c"><span class="pl-c">#</span> 值必须是唯一的、一个表可以有多个唯一约束、值可以为空</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span> AUTO_INCREMENT,
+dname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>) UNIQUE,
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>)
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept(dname,loc) VALUES('教研部','北京');  # 只能执行1次
-INSERT INTO dept(dname,loc) VALUES('学工部','上海');  
-INSERT INTO dept(dname,loc) VALUES(NULL,'上海');  
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>教研部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);  <span class="pl-c"><span class="pl-c">#</span> 只能执行1次</span>
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);  
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-k">NULL</span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);  
 
-# 非空约束
-# not null
-CREATE TABLE dept(
-deptno INT PRIMARY KEY AUTO_INCREMENT,
-dname VARCHAR(10) UNIQUE NOT NULL,
-loc VARCHAR(20)
-)CHARSET=utf8;
+<span class="pl-c"><span class="pl-c">#</span> 非空约束</span>
+<span class="pl-c"><span class="pl-c">#</span> not null</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span> AUTO_INCREMENT,
+dname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>) UNIQUE <span class="pl-k">NOT NULL</span>,
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>)
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept(dname,loc) VALUES('教研部','北京');  # 只能执行1次
-INSERT INTO dept(dname,loc) VALUES('学工部','上海');  
-INSERT INTO dept(dname,loc) VALUES('','上海');  
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>教研部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);  <span class="pl-c"><span class="pl-c">#</span> 只能执行1次</span>
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);  
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);  
 
-# NULL : 空
-# ''   : 空字符串
+<span class="pl-c"><span class="pl-c">#</span> NULL : 空</span>
+<span class="pl-c"><span class="pl-c">#</span> ''   : 空字符串</span>
 
-CREATE TABLE dept(
-deptno INT PRIMARY KEY AUTO_INCREMENT,
-dname VARCHAR(10) UNIQUE NOT NULL,
-loc VARCHAR(20) NOT NULL DEFAULT ''
-)CHARSET=utf8;
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span> AUTO_INCREMENT,
+dname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>) UNIQUE <span class="pl-k">NOT NULL</span>,
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>) <span class="pl-k">NOT NULL</span> DEFAULT <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept(dname,loc) VALUES('教研部','北京'); 
-INSERT INTO dept(dname) VALUES('学工部'); 
-INSERT INTO dept(dname,loc) VALUES('财务部',NULL); 
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>教研部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>); 
+<span class="pl-k">INSERT INTO</span> dept(dname) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>); 
+<span class="pl-k">INSERT INTO</span> dept(dname,loc) <span class="pl-k">VALUES</span>(<span class="pl-s"><span class="pl-pds">'</span>财务部<span class="pl-pds">'</span></span>,<span class="pl-k">NULL</span>); 
 
-# 主键自增、唯一、非空、默认值：
-# 主键：唯一、非空、一个表最多只有一个
-# 唯一：唯一、可以有多个唯一约束、可以为NULL
-# 非空：不能为空
-# 默认值：不指定值的情况使用默认值
-# 主键 + 自增
-# 唯一 + 非空
-# 非空 + 默认值
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 主键自增、唯一、非空、默认值：</span>
+<span class="pl-c"><span class="pl-c">#</span> 主键：唯一、非空、一个表最多只有一个</span>
+<span class="pl-c"><span class="pl-c">#</span> 唯一：唯一、可以有多个唯一约束、可以为NULL</span>
+<span class="pl-c"><span class="pl-c">#</span> 非空：不能为空</span>
+<span class="pl-c"><span class="pl-c">#</span> 默认值：不指定值的情况使用默认值</span>
+<span class="pl-c"><span class="pl-c">#</span> 主键 + 自增</span>
+<span class="pl-c"><span class="pl-c">#</span> 唯一 + 非空</span>
+<span class="pl-c"><span class="pl-c">#</span> 非空 + 默认值</span></pre></div>
 <h3>4.外键约束</h3>
-<pre lang="sql" class="notranslate"><code class="notranslate"># 外键约束：
-# 保证引用的完整性
-# RESTRIC：如果子表中存在与父表相关联的记录，则阻止父表的更新或删除操作。这种方式会阻止任何可能导致数据不一致的操作。
-# CASCAD：当父表中的记录被删除或更新时，子表中所有相关的记录也会被自动删除或更新。这种方式适用于确保数据的一致性。
-# SET DEFAUL：当父表中的记录被更新时，子表中对应的外键字段将被设置为一个默认值。这种方式适用于需要将外键设置为某个默认值的情况。
-# SET NUL：当父表中的记录被删除或更新时，子表中对应的记录的外键字段将被设置为NULL。这种方式适用于子表中允许有空值的情况。
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 外键约束：</span>
+<span class="pl-c"><span class="pl-c">#</span> 保证引用的完整性</span>
+<span class="pl-c"><span class="pl-c">#</span> RESTRIC：如果子表中存在与父表相关联的记录，则阻止父表的更新或删除操作。这种方式会阻止任何可能导致数据不一致的操作。</span>
+<span class="pl-c"><span class="pl-c">#</span> CASCAD：当父表中的记录被删除或更新时，子表中所有相关的记录也会被自动删除或更新。这种方式适用于确保数据的一致性。</span>
+<span class="pl-c"><span class="pl-c">#</span> SET DEFAUL：当父表中的记录被更新时，子表中对应的外键字段将被设置为一个默认值。这种方式适用于需要将外键设置为某个默认值的情况。</span>
+<span class="pl-c"><span class="pl-c">#</span> SET NUL：当父表中的记录被删除或更新时，子表中对应的记录的外键字段将被设置为NULL。这种方式适用于子表中允许有空值的情况。</span>
 
-# 主表 部门表
-CREATE TABLE dept(
-deptno INT PRIMARY KEY,
-deptname VARCHAR(10),
-loc VARCHAR(20)
-)CHARSET=utf8;
+<span class="pl-c"><span class="pl-c">#</span> 主表 部门表</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">dept</span>(
+deptno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+deptname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>),
+loc <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>)
+)CHARSET<span class="pl-k">=</span>utf8;
 
-# 从表 员工表1
-CREATE TABLE emp(
-empno INT PRIMARY KEY,
-empname VARCHAR(20) NOT NULL,
-job VARCHAR(10) NOT NULL,
-mgr INT,
-hiredate DATE,
-sal DECIMAL(9,2),
-COMM DECIMAL(9,2),
-deptno INT,
-FOREIGN KEY(deptno) REFERENCES dept(deptno)
-)CHARSET=utf8;
+<span class="pl-c"><span class="pl-c">#</span> 从表 员工表1</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">emp</span>(
+empno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+empname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>) <span class="pl-k">NOT NULL</span>,
+job <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>) <span class="pl-k">NOT NULL</span>,
+mgr <span class="pl-k">INT</span>,
+hiredate <span class="pl-k">DATE</span>,
+sal <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
+COMM <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
+deptno <span class="pl-k">INT</span>,
+<span class="pl-k">FOREIGN KEY</span>(deptno) <span class="pl-k">REFERENCES</span> dept(deptno)
+)CHARSET<span class="pl-k">=</span>utf8;
 
-INSERT INTO dept VALUES(10,'销售部','北京');
-INSERT INTO dept VALUES(20,'人事部','上海');
-INSERT INTO dept VALUES(30,'研发部','深圳');
-INSERT INTO dept VALUES(40,'外包部','深圳');
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">10</span>,<span class="pl-s"><span class="pl-pds">'</span>销售部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>北京<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">20</span>,<span class="pl-s"><span class="pl-pds">'</span>人事部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>上海<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">30</span>,<span class="pl-s"><span class="pl-pds">'</span>研发部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>深圳<span class="pl-pds">'</span></span>);
+<span class="pl-k">INSERT INTO</span> dept <span class="pl-k">VALUES</span>(<span class="pl-c1">40</span>,<span class="pl-s"><span class="pl-pds">'</span>外包部<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>深圳<span class="pl-pds">'</span></span>);
 
-INSERT INTO emp VALUES(1000,'张三','经理',NULL,'2000-01-01',100000.00,NULL,20);
-INSERT INTO emp VALUES(1001,'李四','销售员',1004,'2014-09-10',6000.00,10000.00,10);
-INSERT INTO emp VALUES(1002,'王五','文员',NULL,'2007-10-10',7000.00,NULL,40);
-INSERT INTO emp VALUES(1003,'赵六','开发',NULL,'2020-01-01',10000.00,NULL,30);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span>(<span class="pl-c1">1000</span>,<span class="pl-s"><span class="pl-pds">'</span>张三<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>,<span class="pl-k">NULL</span>,<span class="pl-s"><span class="pl-pds">'</span>2000-01-01<span class="pl-pds">'</span></span>,<span class="pl-c1">100000</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">20</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span>(<span class="pl-c1">1001</span>,<span class="pl-s"><span class="pl-pds">'</span>李四<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>销售员<span class="pl-pds">'</span></span>,<span class="pl-c1">1004</span>,<span class="pl-s"><span class="pl-pds">'</span>2014-09-10<span class="pl-pds">'</span></span>,<span class="pl-c1">6000</span>.<span class="pl-c1">00</span>,<span class="pl-c1">10000</span>.<span class="pl-c1">00</span>,<span class="pl-c1">10</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span>(<span class="pl-c1">1002</span>,<span class="pl-s"><span class="pl-pds">'</span>王五<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>,<span class="pl-k">NULL</span>,<span class="pl-s"><span class="pl-pds">'</span>2007-10-10<span class="pl-pds">'</span></span>,<span class="pl-c1">7000</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">40</span>);
+<span class="pl-k">INSERT INTO</span> emp <span class="pl-k">VALUES</span>(<span class="pl-c1">1003</span>,<span class="pl-s"><span class="pl-pds">'</span>赵六<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>开发<span class="pl-pds">'</span></span>,<span class="pl-k">NULL</span>,<span class="pl-s"><span class="pl-pds">'</span>2020-01-01<span class="pl-pds">'</span></span>,<span class="pl-c1">10000</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">30</span>);
 
-# 从表 员工表2
-CREATE TABLE emp2(
-empno INT PRIMARY KEY,
-empname VARCHAR(20) NOT NULL,
-job VARCHAR(10) NOT NULL,
-mgr INT,
-hiredate DATE,
-sal DECIMAL(9,2),
-COMM DECIMAL(9,2),
-deptno INT,
-FOREIGN KEY(deptno) REFERENCES dept(deptno) ON DELETE CASCADE ON UPDATE CASCADE)CHARSET=utf8;
-#ON DELETE CASCADE ON UPDATE CASCADE 代表在主表有删除和更新时，从表会对应的删除记录和更新记录
+<span class="pl-c"><span class="pl-c">#</span> 从表 员工表2</span>
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> <span class="pl-en">emp2</span>(
+empno <span class="pl-k">INT</span> <span class="pl-k">PRIMARY KEY</span>,
+empname <span class="pl-k">VARCHAR</span>(<span class="pl-c1">20</span>) <span class="pl-k">NOT NULL</span>,
+job <span class="pl-k">VARCHAR</span>(<span class="pl-c1">10</span>) <span class="pl-k">NOT NULL</span>,
+mgr <span class="pl-k">INT</span>,
+hiredate <span class="pl-k">DATE</span>,
+sal <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
+COMM <span class="pl-k">DECIMAL</span>(<span class="pl-c1">9</span>,<span class="pl-c1">2</span>),
+deptno <span class="pl-k">INT</span>,
+<span class="pl-k">FOREIGN KEY</span>(deptno) <span class="pl-k">REFERENCES</span> dept(deptno) <span class="pl-k">ON DELETE CASCADE</span> <span class="pl-k">ON</span> <span class="pl-k">UPDATE</span> CASCADE)CHARSET<span class="pl-k">=</span>utf8;
+<span class="pl-c"><span class="pl-c">#</span>ON DELETE CASCADE ON UPDATE CASCADE 代表在主表有删除和更新时，从表会对应的删除记录和更新记录</span>
 
-INSERT INTO emp2 VALUES(1007,'张飞','经理',1009,'2001-09-01',24500.00,NULL,10);
-INSERT INTO emp2 VALUES(1008,'诸葛亮','分析师',1004,'2007-04-19',30000.00 ,NULL,20);
-INSERT INTO emp2 VALUES(1013,'庞统','分析师',1004,'2001-12-03',30000.00 ,NULL,20);
-</code></pre>
+<span class="pl-k">INSERT INTO</span> emp2 <span class="pl-k">VALUES</span>(<span class="pl-c1">1007</span>,<span class="pl-s"><span class="pl-pds">'</span>张飞<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>经理<span class="pl-pds">'</span></span>,<span class="pl-c1">1009</span>,<span class="pl-s"><span class="pl-pds">'</span>2001-09-01<span class="pl-pds">'</span></span>,<span class="pl-c1">24500</span>.<span class="pl-c1">00</span>,<span class="pl-k">NULL</span>,<span class="pl-c1">10</span>);
+<span class="pl-k">INSERT INTO</span> emp2 <span class="pl-k">VALUES</span>(<span class="pl-c1">1008</span>,<span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>分析师<span class="pl-pds">'</span></span>,<span class="pl-c1">1004</span>,<span class="pl-s"><span class="pl-pds">'</span>2007-04-19<span class="pl-pds">'</span></span>,<span class="pl-c1">30000</span>.<span class="pl-c1">00</span> ,<span class="pl-k">NULL</span>,<span class="pl-c1">20</span>);
+<span class="pl-k">INSERT INTO</span> emp2 <span class="pl-k">VALUES</span>(<span class="pl-c1">1013</span>,<span class="pl-s"><span class="pl-pds">'</span>庞统<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>分析师<span class="pl-pds">'</span></span>,<span class="pl-c1">1004</span>,<span class="pl-s"><span class="pl-pds">'</span>2001-12-03<span class="pl-pds">'</span></span>,<span class="pl-c1">30000</span>.<span class="pl-c1">00</span> ,<span class="pl-k">NULL</span>,<span class="pl-c1">20</span>);</pre></div>
 <h3>5.内外连接</h3>
-<pre lang="sql" class="notranslate"><code class="notranslate"># 连接查询：把多个表连接成一个表
-# 连接查询关键点： 表与表的关系、笛卡尔积+连接条件、内连接和外连接
-# 表与表的关系：有关系的表才可以连接
-# 一对一： 一个人     	 一个身份号码
-# 一对多： 部门(主)      员工(从)
-# 多对多： 用户	  订单	 商品
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 连接查询：把多个表连接成一个表</span>
+<span class="pl-c"><span class="pl-c">#</span> 连接查询关键点： 表与表的关系、笛卡尔积+连接条件、内连接和外连接</span>
+<span class="pl-c"><span class="pl-c">#</span> 表与表的关系：有关系的表才可以连接</span>
+<span class="pl-c"><span class="pl-c">#</span> 一对一： 一个人     	 一个身份号码</span>
+<span class="pl-c"><span class="pl-c">#</span> 一对多： 部门(主)      员工(从)</span>
+<span class="pl-c"><span class="pl-c">#</span> 多对多： 用户	  订单	 商品</span>
 
-# 笛卡尔积+连接条件
-# A={a,b}  B={1,2,3}  --&gt; {a1,a2,a3,b1,b2,b3}  
-SELECT * FROM emp,dept;
+<span class="pl-c"><span class="pl-c">#</span> 笛卡尔积+连接条件</span>
+<span class="pl-c"><span class="pl-c">#</span> A={a,b}  B={1,2,3}  --&gt; {a1,a2,a3,b1,b2,b3}  </span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp,dept;
 
-# 集合的运算符：
-# dept  {10,20,30,40}
-# emp   {10,20,30}
-# 连接： 内连接、外连接
+<span class="pl-c"><span class="pl-c">#</span> 集合的运算符：</span>
+<span class="pl-c"><span class="pl-c">#</span> dept  {10,20,30,40}</span>
+<span class="pl-c"><span class="pl-c">#</span> emp   {10,20,30}</span>
+<span class="pl-c"><span class="pl-c">#</span> 连接： 内连接、外连接</span>
 
-# 交集：{10,20,30}
-SELECT * FROM emp,dept WHERE emp.deptno=dept.deptno; 
+<span class="pl-c"><span class="pl-c">#</span> 交集：{10,20,30}</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp,dept <span class="pl-k">WHERE</span> <span class="pl-c1">emp</span>.<span class="pl-c1">deptno</span><span class="pl-k">=</span><span class="pl-c1">dept</span>.<span class="pl-c1">deptno</span>; 
 
-SELECT * FROM emp AS e,dept AS d WHERE e.`deptno`=d.`deptno`;
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">AS</span> e,dept <span class="pl-k">AS</span> d <span class="pl-k">WHERE</span> e.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>d.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>;
 
-SELECT * FROM emp,salgrade;
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp,salgrade;
 
-SELECT * FROM emp,salgrade WHERE sal&gt;=losal AND sal&lt;=hisal;
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp,salgrade <span class="pl-k">WHERE</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal;
 
-SELECT * FROM emp AS e,dept AS d,salgrade WHERE e.deptno=d.deptno AND (sal&gt;=losal AND sal&lt;=hisal);
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">AS</span> e,dept <span class="pl-k">AS</span> d,salgrade <span class="pl-k">WHERE</span> <span class="pl-c1">e</span>.<span class="pl-c1">deptno</span><span class="pl-k">=</span><span class="pl-c1">d</span>.<span class="pl-c1">deptno</span> <span class="pl-k">AND</span> (sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal);
 
-# 交集：{10,20,30}
-# 内连接
-SELECT * FROM emp AS e
-JOIN dept AS d ON
-e.`deptno`=d.`deptno`
-JOIN salgrade AS s ON
-e.sal&gt;=s.losal AND e.sal&lt;=s.hisal;
+<span class="pl-c"><span class="pl-c">#</span> 交集：{10,20,30}</span>
+<span class="pl-c"><span class="pl-c">#</span> 内连接</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">AS</span> e
+<span class="pl-k">JOIN</span> dept <span class="pl-k">AS</span> d <span class="pl-k">ON</span>
+e.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>d.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">JOIN</span> salgrade <span class="pl-k">AS</span> s <span class="pl-k">ON</span>
+<span class="pl-c1">e</span>.<span class="pl-c1">sal</span><span class="pl-k">&gt;=</span><span class="pl-c1">s</span>.<span class="pl-c1">losal</span> <span class="pl-k">AND</span> <span class="pl-c1">e</span>.<span class="pl-c1">sal</span><span class="pl-k">&lt;=</span><span class="pl-c1">s</span>.<span class="pl-c1">hisal</span>;
 
-# 并集：{10,20,30,40}
-# 外连接
-SELECT * FROM emp RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`; -- 右外连接
+<span class="pl-c"><span class="pl-c">#</span> 并集：{10,20,30,40}</span>
+<span class="pl-c"><span class="pl-c">#</span> 外连接</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>; <span class="pl-c"><span class="pl-c">--</span> 右外连接</span>
 
-SELECT * FROM dept LEFT JOIN emp ON dept.`deptno`=emp.`deptno`; -- 左外连接
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> dept <span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">ON</span> dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>; <span class="pl-c"><span class="pl-c">--</span> 左外连接</span>
 
--- 补集：{40}
-SELECT * FROM emp RIGHT JOIN dept ON emp.`deptno`=dept.`deptno` WHERE emp.`deptno` IS NULL; -- 右外连接
+<span class="pl-c"><span class="pl-c">--</span> 补集：{40}</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span> <span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span> IS <span class="pl-k">NULL</span>; <span class="pl-c"><span class="pl-c">--</span> 右外连接</span>
 
-SELECT * FROM dept LEFT JOIN emp ON dept.`deptno`=emp.`deptno` WHERE emp.`deptno` IS NULL; -- 左外连接
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> dept <span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">ON</span> dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span> <span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span> IS <span class="pl-k">NULL</span>; <span class="pl-c"><span class="pl-c">--</span> 左外连接</span>
 
-# 上级 1  员工 多
-# 笛卡尔积 + 条件
-# 思考 是否需要使用外连接
-SELECT * FROM emp JOIN emp AS e;
+<span class="pl-c"><span class="pl-c">#</span> 上级 1  员工 多</span>
+<span class="pl-c"><span class="pl-c">#</span> 笛卡尔积 + 条件</span>
+<span class="pl-c"><span class="pl-c">#</span> 思考 是否需要使用外连接</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">JOIN</span> emp <span class="pl-k">AS</span> e;
 
-SELECT * FROM emp JOIN emp AS e ON emp.mgr=e.`empno`;
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> <span class="pl-c1">emp</span>.<span class="pl-c1">mgr</span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>;
 
-SELECT * FROM emp LEFT JOIN emp AS e ON emp.mgr=e.`empno`; -- 左外连接把员工看成左边，有一个员工没有上级，左边表多
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> <span class="pl-c1">emp</span>.<span class="pl-c1">mgr</span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>; <span class="pl-c"><span class="pl-c">--</span> 左外连接把员工看成左边，有一个员工没有上级，左边表多</span>
 
-SELECT emp.ename,IFNULL(e.`ename`,'') AS mgr_name FROM emp LEFT JOIN emp AS e ON emp.mgr=e.`empno`;
+<span class="pl-k">SELECT</span> <span class="pl-c1">emp</span>.<span class="pl-c1">ename</span>,IFNULL(e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>) <span class="pl-k">AS</span> mgr_name <span class="pl-k">FROM</span> emp <span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> <span class="pl-c1">emp</span>.<span class="pl-c1">mgr</span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>;
 
-# 表与表的关系：
-# 笛卡尔积 + 条件
-# 是否需要使用外连接
-# 连接后可以看成是一个表
+<span class="pl-c"><span class="pl-c">#</span> 表与表的关系：</span>
+<span class="pl-c"><span class="pl-c">#</span> 笛卡尔积 + 条件</span>
+<span class="pl-c"><span class="pl-c">#</span> 是否需要使用外连接</span>
+<span class="pl-c"><span class="pl-c">#</span> 连接后可以看成是一个表</span>
 
-# 把三个表连接起来，不要丢失数据也不要多余数据
-SELECT * FROM emp AS e
-RIGHT JOIN dept AS d ON
-e.`deptno`=d.`deptno`
-LEFT JOIN salgrade AS s ON
-e.sal&gt;=s.losal AND e.sal&lt;=s.hisal; -- emp和dept连接可能部门会没有员工，所以使用右连接，连接后左边的表比工资范围表大，使用左连接
-# WHERE / GROUP BY / HAVING / ORDER BY / LIMIT
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 把三个表连接起来，不要丢失数据也不要多余数据</span>
+<span class="pl-k">SELECT</span> <span class="pl-k">*</span> <span class="pl-k">FROM</span> emp <span class="pl-k">AS</span> e
+<span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">AS</span> d <span class="pl-k">ON</span>
+e.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>d.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">LEFT JOIN</span> salgrade <span class="pl-k">AS</span> s <span class="pl-k">ON</span>
+<span class="pl-c1">e</span>.<span class="pl-c1">sal</span><span class="pl-k">&gt;=</span><span class="pl-c1">s</span>.<span class="pl-c1">losal</span> <span class="pl-k">AND</span> <span class="pl-c1">e</span>.<span class="pl-c1">sal</span><span class="pl-k">&lt;=</span><span class="pl-c1">s</span>.<span class="pl-c1">hisal</span>; <span class="pl-c"><span class="pl-c">--</span> emp和dept连接可能部门会没有员工，所以使用右连接，连接后左边的表比工资范围表大，使用左连接</span>
+<span class="pl-c"><span class="pl-c">#</span> WHERE / GROUP BY / HAVING / ORDER BY / LIMIT</span></pre></div>
 <h4>5.1内外连接查询练习</h4>
-<pre lang="sql" class="notranslate"><code class="notranslate"># 1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址
-SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`;
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1.查询所有员工的编号、姓名、部门编号、部门名称和部门地址</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>loc<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>;
 
-# 2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址
-SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE emp.`job`='文员';
+<span class="pl-c"><span class="pl-c">#</span> 2.查询所有文员的编号、姓名、部门编号、部门名称和部门地址</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>loc<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>job<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>文员<span class="pl-pds">'</span></span>;
 
-# 3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序
-SELECT emp.`empno`,emp.`ename`,emp.`deptno`,dept.`dname`,dept.`loc` FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-ORDER BY emp.`sal`;
+<span class="pl-c"><span class="pl-c">#</span> 3.查询所有员工的编号、姓名、部门编号、部门名称和部门地址，结果按照员工的工资升序排序</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>loc<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">ORDER BY</span> emp.<span class="pl-s"><span class="pl-pds">`</span>sal<span class="pl-pds">`</span></span>;
 
-# 4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级
-SELECT emp.`ename`,dept.`dname`,emp.`sal`,salgrade.`grade` FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-JOIN salgrade ON sal&gt;=losal AND sal&lt;=hisal
-WHERE grade&gt;2;
+<span class="pl-c"><span class="pl-c">#</span> 4.查询工资等级为2级以上的员工姓名、部门名称、工资和工资等级</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>sal<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
+<span class="pl-k">WHERE</span> grade<span class="pl-k">&gt;</span><span class="pl-c1">2</span>;
 
-# 5.查询每个部门的部门名称和部门员工人数
-SELECT dname,COUNT(emp.`empno`) AS total FROM emp
-RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`
-GROUP BY dept.`deptno`;
+<span class="pl-c"><span class="pl-c">#</span> 5.查询每个部门的部门名称和部门员工人数</span>
+<span class="pl-k">SELECT</span> dname,<span class="pl-c1">COUNT</span>(emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>) <span class="pl-k">AS</span> total <span class="pl-k">FROM</span> emp
+<span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">GROUP BY</span> dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>;
 
-# 6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数
-SELECT dname,COUNT(emp.`empno`) AS total FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-GROUP BY dept.`deptno`
-HAVING total&gt;3;
+<span class="pl-c"><span class="pl-c">#</span> 6.查询每个部门的部门名称和部门员工人数，结果只显示人数大于3人的部门名称和部门员工人数</span>
+<span class="pl-k">SELECT</span> dname,<span class="pl-c1">COUNT</span>(emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>) <span class="pl-k">AS</span> total <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">GROUP BY</span> dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">HAVING</span> total<span class="pl-k">&gt;</span><span class="pl-c1">3</span>;
 
-# 7.查询工资等级为2级的员工姓名和工资等级
-SELECT emp.`ename`,salgrade.`grade` FROM emp
-JOIN salgrade ON sal&gt;=losal AND sal&lt;=hisal
-WHERE grade=2;
+<span class="pl-c"><span class="pl-c">#</span> 7.查询工资等级为2级的员工姓名和工资等级</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
+<span class="pl-k">WHERE</span> grade<span class="pl-k">=</span><span class="pl-c1">2</span>;
 
-# 8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级
-SELECT emp.`ename`,IFNULL(e.`ename`,'') AS mgr_name,dept.`dname`,salgrade.`grade` FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-JOIN salgrade ON sal&gt;=losal AND sal&lt;=hisal
-LEFT JOIN emp AS e ON emp.`mgr`=e.`empno`;
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 8.查询所有员工姓名、上级领导姓名、部门名称、和工资等级</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,IFNULL(e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,<span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>) <span class="pl-k">AS</span> mgr_name,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span>,salgrade.<span class="pl-s"><span class="pl-pds">`</span>grade<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">JOIN</span> salgrade <span class="pl-k">ON</span> sal<span class="pl-k">&gt;=</span>losal <span class="pl-k">AND</span> sal<span class="pl-k">&lt;=</span>hisal
+<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>;</pre></div>
 <h3>6.子查询</h3>
-<pre lang="sql" class="notranslate"><code class="notranslate"># 1.查询工资高于殷天正并且低于诸葛亮的员工
-SELECT ename,sal FROM emp WHERE sal&gt;(SELECT sal FROM emp WHERE ename='殷天正')
-AND sal&lt;(SELECT sal FROM emp WHERE ename='诸葛亮');
+<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 1.查询工资高于殷天正并且低于诸葛亮的员工</span>
+<span class="pl-k">SELECT</span> ename,sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> sal<span class="pl-k">&gt;</span>(<span class="pl-k">SELECT</span> sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>殷天正<span class="pl-pds">'</span></span>)
+<span class="pl-k">AND</span> sal<span class="pl-k">&lt;</span>(<span class="pl-k">SELECT</span> sal <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>);
 
-# 2.查询工资最高的员工姓名、工作和工资
-SELECT ename,job,sal FROM emp
-WHERE sal=(SELECT MAX(sal) FROM emp);
+<span class="pl-c"><span class="pl-c">#</span> 2.查询工资最高的员工姓名、工作和工资</span>
+<span class="pl-k">SELECT</span> ename,job,sal <span class="pl-k">FROM</span> emp
+<span class="pl-k">WHERE</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp);
 
-# 3.查询工资最低的员工姓名、工作和工资
-SELECT ename,job,sal FROM emp
-WHERE sal=(SELECT MIN(sal) FROM emp);
+<span class="pl-c"><span class="pl-c">#</span> 3.查询工资最低的员工姓名、工作和工资</span>
+<span class="pl-k">SELECT</span> ename,job,sal <span class="pl-k">FROM</span> emp
+<span class="pl-k">WHERE</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MIN</span>(sal) <span class="pl-k">FROM</span> emp);
 
-# 4.查询"学工部"工资最高的员工姓名、工作和工资
-SELECT ename,job,sal FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE dept.`dname`='学工部'
-AND sal=(SELECT MAX(sal) FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE dept.`dname`='学工部')
+<span class="pl-c"><span class="pl-c">#</span> 4.查询"学工部"工资最高的员工姓名、工作和工资</span>
+<span class="pl-k">SELECT</span> ename,job,sal <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>
+<span class="pl-k">AND</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>)
 
-# 5.查询"学工部"工资最高的员工姓名、工作、工资、部门名称和部门人数
-SELECT ename,job,sal,dname,COUNT(empno) AS total FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE dept.`dname`='学工部'
-AND sal=(SELECT MAX(sal) FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE dept.`dname`='学工部')
+<span class="pl-c"><span class="pl-c">#</span> 5.查询"学工部"工资最高的员工姓名、工作、工资、部门名称和部门人数</span>
+<span class="pl-k">SELECT</span> ename,job,sal,dname,<span class="pl-c1">COUNT</span>(empno) <span class="pl-k">AS</span> total <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>
+<span class="pl-k">AND</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>学工部<span class="pl-pds">'</span></span>)
 
-# 6.查询与"刘备"或"诸葛亮"从事相同工作的员工
-SELECT ename,job FROM emp
-WHERE job IN (SELECT job FROM emp WHERE ename='刘备' OR ename='诸葛亮');
+<span class="pl-c"><span class="pl-c">#</span> 6.查询与"刘备"或"诸葛亮"从事相同工作的员工</span>
+<span class="pl-k">SELECT</span> ename,job <span class="pl-k">FROM</span> emp
+<span class="pl-k">WHERE</span> job <span class="pl-k">IN</span> (<span class="pl-k">SELECT</span> job <span class="pl-k">FROM</span> emp <span class="pl-k">WHERE</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>刘备<span class="pl-pds">'</span></span> <span class="pl-k">OR</span> ename<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>诸葛亮<span class="pl-pds">'</span></span>);
 
-# 7.查询入职日期早于上级的员工编号、姓名、工资
-SELECT emp.`empno`,emp.`ename`,emp.sal FROM emp
-LEFT JOIN emp AS e
-ON emp.`mgr`=e.`empno`
-WHERE emp.`hiredate` &lt; e.`hiredate`;
+<span class="pl-c"><span class="pl-c">#</span> 7.查询入职日期早于上级的员工编号、姓名、工资</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,<span class="pl-c1">emp</span>.<span class="pl-c1">sal</span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e
+<span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>hiredate<span class="pl-pds">`</span></span> <span class="pl-k">&lt;</span> e.<span class="pl-s"><span class="pl-pds">`</span>hiredate<span class="pl-pds">`</span></span>;
 
-# 8.查询上级为"刘备"的员工
-SELECT emp.`ename`,emp.`mgr`,e.`ename` FROM emp
-LEFT JOIN emp AS e
-ON emp.`mgr`=e.`empno`
-WHERE e.`ename`='刘备';
+<span class="pl-c"><span class="pl-c">#</span> 8.查询上级为"刘备"的员工</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span>,e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">LEFT JOIN</span> emp <span class="pl-k">AS</span> e
+<span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>mgr<span class="pl-pds">`</span></span><span class="pl-k">=</span>e.<span class="pl-s"><span class="pl-pds">`</span>empno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> e.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span><span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>刘备<span class="pl-pds">'</span></span>;
 
-# 9.查询工资最高员工所在的部门名称
-SELECT emp.`ename`,dept.`dname` FROM emp
-JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE sal=(SELECT MAX(sal) FROM emp)
+<span class="pl-c"><span class="pl-c">#</span> 9.查询工资最高员工所在的部门名称</span>
+<span class="pl-k">SELECT</span> emp.<span class="pl-s"><span class="pl-pds">`</span>ename<span class="pl-pds">`</span></span>,dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> sal<span class="pl-k">=</span>(<span class="pl-k">SELECT</span> <span class="pl-c1">MAX</span>(sal) <span class="pl-k">FROM</span> emp)
 
-# 10.查询没有员工的部门名称
-SELECT dept.`dname` FROM emp
-RIGHT JOIN dept ON emp.`deptno`=dept.`deptno`
-WHERE emp.`deptno` IS NULL;
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span> 10.查询没有员工的部门名称</span>
+<span class="pl-k">SELECT</span> dept.<span class="pl-s"><span class="pl-pds">`</span>dname<span class="pl-pds">`</span></span> <span class="pl-k">FROM</span> emp
+<span class="pl-k">RIGHT JOIN</span> dept <span class="pl-k">ON</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span><span class="pl-k">=</span>dept.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span>
+<span class="pl-k">WHERE</span> emp.<span class="pl-s"><span class="pl-pds">`</span>deptno<span class="pl-pds">`</span></span> IS <span class="pl-k">NULL</span>;</pre></div>
 <div class="markdown-alert markdown-alert-tip"><p class="markdown-alert-title"><svg class="octicon octicon-light-bulb mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p><p>子查询7 8 10没有使用子查询方法，可自行使用</p>
 </div></div>
 <div style="font-size:small;margin-top:8px;float:right;">转载请注明出处</div>
@@ -1119,7 +1122,7 @@ if("08/20/2024"!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -1192,7 +1195,70 @@ function iFrameLoading(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
 
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
 </script>
 <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
