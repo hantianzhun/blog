@@ -29,7 +29,7 @@
 
 ### 2.1下载MySQL Server.exe
 
-| 1.[MySQL Server.exe下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击MSI进行下载 |              2.点击最下面的no thank，会进行下载              |
+| 1.[MySQL Server.exe下载链接(点击即可跳转)](https://dev.mysql.com/downloads/mysql/)，点击MSI进行下载 |              2.点击最下面的no thank，会进行下载              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://hantianzhun.github.io/blog/issues16.17.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.18.png" style="zoom:50%;" /> |
 
@@ -77,7 +77,7 @@
 
 ### 3.1下载MySQL Server.ZIP
 
-| 1.[MySQL Server.zip下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击ZIP进行下载，不要下debug |              2.点击最下面的no thank，会进行下载              |
+| 1.[MySQL Server.zip下载链接(点击即可跳转)](https://dev.mysql.com/downloads/mysql/)，点击ZIP进行下载，不要下debug |              2.点击最下面的no thank，会进行下载              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img src="https://hantianzhun.github.io/blog/issues16.17.png" style="zoom:50%;" /> | <img src="https://hantianzhun.github.io/blog/issues16.18.png" style="zoom:50%;" /> |
 

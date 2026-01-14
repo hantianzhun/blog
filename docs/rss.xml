@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Tue, 16 Sep 2025 15:59:28 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>https://hantianzhun.github.io/blog/post/18.html</link><description>## 1.下载chrome_updater
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>枕上诗书闲的博客</title><link>https://hantianzhun.github.io/blog</link><description>个人使用的一个博客</description><copyright>枕上诗书闲的博客</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://avatars.githubusercontent.com/u/118879111?v=4</url><title>avatar</title><link>https://hantianzhun.github.io/blog</link></image><lastBuildDate>Wed, 14 Jan 2026 02:37:31 +0000</lastBuildDate><managingEditor>枕上诗书闲的博客</managingEditor><ttl>60</ttl><webMaster>枕上诗书闲的博客</webMaster><item><title>Windows10将Chrome浏览器及用户数据放到D盘</title><link>https://hantianzhun.github.io/blog/post/18.html</link><description>## 1.下载chrome_updater
 
 根据架构下载，一般的电脑都是下amd64的，是在不知道建议先搜一下自己电脑cpu的架构。</description><guid isPermaLink="true">https://hantianzhun.github.io/blog/post/18.html</guid><pubDate>Tue, 10 Jun 2025 12:50:43 +0000</pubDate></item><item><title>Windows安装PostgreSQL</title><link>https://hantianzhun.github.io/blog/post/17.html</link><description>## 1.下载PostgreSQL安装程序
 
@@ -66,7 +66,7 @@
 
 ### 2.1下载MySQL Server.exe
 
-| 1.[MySQL Server.exe下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击MSI进行下载 |              2.点击最下面的no thank，会进行下载              |
+| 1.[MySQL Server.exe下载链接(点击即可跳转)](https://dev.mysql.com/downloads/mysql/)，点击MSI进行下载 |              2.点击最下面的no thank，会进行下载              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | &lt;img src='https://hantianzhun.github.io/blog/issues16.17.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.18.png' style='zoom:50%;' /&gt; |
 
@@ -114,7 +114,7 @@
 
 ### 3.1下载MySQL Server.ZIP
 
-| 1.[MySQL Server.zip下载链接(点击即可跳转)](https://dev.mysql.com/downloads/installer/)，点击ZIP进行下载，不要下debug |              2.点击最下面的no thank，会进行下载              |
+| 1.[MySQL Server.zip下载链接(点击即可跳转)](https://dev.mysql.com/downloads/mysql/)，点击ZIP进行下载，不要下debug |              2.点击最下面的no thank，会进行下载              |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | &lt;img src='https://hantianzhun.github.io/blog/issues16.17.png' style='zoom:50%;' /&gt; | &lt;img src='https://hantianzhun.github.io/blog/issues16.18.png' style='zoom:50%;' /&gt; |
 
