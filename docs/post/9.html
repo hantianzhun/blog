@@ -863,7 +863,7 @@ man 命令 '查看帮忙命令' = 命令 --help
 <meta property="og:url" content="https://hantianzhun.github.io/blog/post/9.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
 <title>Linux基础知识和命令</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -887,7 +887,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     body {padding: 8px;}
     .postTitle{font-size:24px;}
 }
-
+.copy-feedback {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--color-fg-on-emphasis);
+    background-color: var(--color-fg-muted);
+    border-radius: 3px;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 </style>
 <style>.markdown-alert{padding:0.5rem 1rem;margin-bottom:1rem;border-left:.25em solid var(--borderColor-default,var(--color-border-default));}.markdown-alert .markdown-alert-title {display:flex;font-weight:var(--base-text-weight-medium,500);align-items:center;line-height:1;}.markdown-alert>:first-child {margin-top:0;}.markdown-alert>:last-child {margin-bottom:0;}</style><style>.markdown-alert.markdown-alert-warning {border-left-color:var(--borderColor-attention-emphasis, var(--color-attention-emphasis));background-color:var(--color-attention-subtle);}.markdown-alert.markdown-alert-warning .markdown-alert-title {color: var(--fgColor-attention,var(--color-attention-fg));}</style>
 
@@ -991,9 +1001,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h1>6.远程连接、换源、安装软件包</h1>
 <h2>6.1使用<code class="notranslate">ip address</code>or<code class="notranslate">ifconfig</code>命令查看IP地址</h2>
 <h2>6.2如果不能上网，解决办法？</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">cd /etc/sysconfig/network-scripts
-vi ifcfg-ens33#后半网卡名可不同
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> /etc/sysconfig/network-scripts
+vi ifcfg-ens33#后半网卡名可不同</pre></div>
 <ul>
 <li>
 <p>进入后将光标移动到最下面，然后输入<code class="notranslate">i</code></p>
@@ -1003,80 +1012,73 @@ vi ifcfg-ens33#后半网卡名可不同
 </li>
 </ul>
 <h2>6.3如果源不可用，解决办法？</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">#CentOS7换源
-curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>CentOS7换源</span>
+curl -o /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</pre></div>
 <h2>6.4出现command  not  found如何解决？</h2>
 <ul>
 <li>尝试安装使用的命令、例：<code class="notranslate">yum install ifconfig</code></li>
 <li>提示包不存在可使用yum search 命令、例：<code class="notranslate">yum search ifconfig</code></li>
 </ul>
 <h2>6.5yum的作用</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">#在线下载并安装
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>在线下载并安装</span>
 yum search 安装包的包名
-yum -y install 安装包名
-</code></pre>
+yum -y install 安装包名</pre></div>
 <h2>6.6linux获取文件</h2>
 <ol>
 <li>使用ftp进行上传</li>
 <li>在linux使用rz命令</li>
 <li>在线下载</li>
 </ol>
-<pre lang="shell" class="notranslate"><code class="notranslate">wget  [URL] ---&gt;文件保存为原始文件名
-curl -O [URL] ---&gt;文件保存为原始文件名
-curl -o [filename] [URL] ---&gt;文件保存并重命名为[filename]
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">wget  [URL] ---<span class="pl-k">&gt;</span>文件保存为原始文件名
+curl -O [URL] ---<span class="pl-k">&gt;</span>文件保存为原始文件名
+curl -o [filename] [URL] ---<span class="pl-k">&gt;</span>文件保存并重命名为[filename]</pre></div>
 <h1>7.Linux文件管理系统</h1>
-<pre lang="shell" class="notranslate"><code class="notranslate">#目录结构树
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>目录结构树</span>
 /etc     存放配置相关的文件      /etc/profile 环境变量 /etc/sysconfig/newrok-Scripts 网卡配置
 /bin     存放的是可执行的命令文件     启动服务器
 /sbin    存放的是root用户的可执行的命令文件
 /root    是root用户的家目录
 /home    是普通用户的家目录
 /opt     存放的是临时文件相关的一些目录
-/mnt     存放的是挂载文件相关的目录
-</code></pre>
+/mnt     存放的是挂载文件相关的目录</pre></div>
 <h1>8.Linux基本命令</h1>
 <h2>8.1目录相关的命令</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">'创建文件夹' mkdir 文件夹名1
-'创建多个文件夹' mkdir 文件夹1 文件夹2
-'创建多层级的文件' mkdir -p A/B
-'删除空文件夹' rmdir 文件夹名
-'删除非空的文件夹' rm -r 非空目录名
-'强制删除非空文件夹' rm -rf 非空的目录名 
-'复制文件夹到指定的目录' cp -r 要复制的文件 复制到哪里去
-'剪切文件到指定的目录' mv 要剪切的文件 剪切到哪里去
-'重命名' mv 要重命名的文件夹/文件 新的文件夹/文件的名字
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建文件夹<span class="pl-pds">'</span></span> mkdir 文件夹名1
+<span class="pl-s"><span class="pl-pds">'</span>创建多个文件夹<span class="pl-pds">'</span></span> mkdir 文件夹1 文件夹2
+<span class="pl-s"><span class="pl-pds">'</span>创建多层级的文件<span class="pl-pds">'</span></span> mkdir -p A/B
+<span class="pl-s"><span class="pl-pds">'</span>删除空文件夹<span class="pl-pds">'</span></span> rmdir 文件夹名
+<span class="pl-s"><span class="pl-pds">'</span>删除非空的文件夹<span class="pl-pds">'</span></span> rm -r 非空目录名
+<span class="pl-s"><span class="pl-pds">'</span>强制删除非空文件夹<span class="pl-pds">'</span></span> rm -rf 非空的目录名 
+<span class="pl-s"><span class="pl-pds">'</span>复制文件夹到指定的目录<span class="pl-pds">'</span></span> cp -r 要复制的文件 复制到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>剪切文件到指定的目录<span class="pl-pds">'</span></span> mv 要剪切的文件 剪切到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>重命名<span class="pl-pds">'</span></span> mv 要重命名的文件夹/文件 新的文件夹/文件的名字</pre></div>
 <h2>8.2编写路径</h2>
 <ul>
 <li>绝对路径：一次到达，从根目录开始写、例：<code class="notranslate">/etc/ssh/sshd_config</code></li>
 <li>相对路径：相对与当前目录而言、例：<code class="notranslate">../home/hanli</code>(假设当前目录为root)</li>
 </ul>
 <h2>8.3文件相关的命令</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">'创建文件' touch 文件1
-'创建多个文件' touch f2 f3
-'弹出提示信息删除文件' rm 文件名  
-'强制删除文件' rm -f 文件名
-'复制文件' cp 要复制的文件 复制到哪里去
-'剪切文件' mv 要剪切的文件 剪切到哪里去
-'覆盖写如内容到文件中'
-echo "i love linux" &gt; f1
-echo "i love python" &gt; f1
-'追加写内容到指定的文件' echo "i love oracle" &gt;&gt; f1
-</code></pre>
-<pre lang="shell" class="notranslate"><code class="notranslate">'查看文件的内容'
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建文件<span class="pl-pds">'</span></span> touch 文件1
+<span class="pl-s"><span class="pl-pds">'</span>创建多个文件<span class="pl-pds">'</span></span> touch f2 f3
+<span class="pl-s"><span class="pl-pds">'</span>弹出提示信息删除文件<span class="pl-pds">'</span></span> rm 文件名  
+<span class="pl-s"><span class="pl-pds">'</span>强制删除文件<span class="pl-pds">'</span></span> rm -f 文件名
+<span class="pl-s"><span class="pl-pds">'</span>复制文件<span class="pl-pds">'</span></span> cp 要复制的文件 复制到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>剪切文件<span class="pl-pds">'</span></span> mv 要剪切的文件 剪切到哪里去
+<span class="pl-s"><span class="pl-pds">'</span>覆盖写如内容到文件中<span class="pl-pds">'</span></span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>i love linux<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> f1
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>i love python<span class="pl-pds">"</span></span> <span class="pl-k">&gt;</span> f1
+<span class="pl-s"><span class="pl-pds">'</span>追加写内容到指定的文件<span class="pl-pds">'</span></span> <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>i love oracle<span class="pl-pds">"</span></span> <span class="pl-k">&gt;&gt;</span> f1</pre></div>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>查看文件的内容<span class="pl-pds">'</span></span>
 cat 查看小文件
-cat -n 文件名 #n不能代表代表任意数字
+cat -n 文件名 <span class="pl-c"><span class="pl-c">#</span>n不能代表代表任意数字</span>
 more 文件名
-less 文件名 #按照屏幕比例显示内容，可以输入next进行翻页
-head -n 文件名 #查看文件的前n行，n代表的任意数字
-tail -n 文件名 #查看文件的最后n行，n代表任意数字
-nl 文件名 #带行号显示文件的所有内容
-'查看一个文件的第3行到第5行' sed -n 'n1,n2p' 文件名  #n1和n2代表的是两个数字
-'查看一个文件的第3行到第5行' head -5 文件名 | tail -3
-'查看文件的第5行' sed -n '5p' 文件名
-</code></pre>
+less 文件名 <span class="pl-c"><span class="pl-c">#</span>按照屏幕比例显示内容，可以输入next进行翻页</span>
+head -n 文件名 <span class="pl-c"><span class="pl-c">#</span>查看文件的前n行，n代表的任意数字</span>
+tail -n 文件名 <span class="pl-c"><span class="pl-c">#</span>查看文件的最后n行，n代表任意数字</span>
+nl 文件名 <span class="pl-c"><span class="pl-c">#</span>带行号显示文件的所有内容</span>
+<span class="pl-s"><span class="pl-pds">'</span>查看一个文件的第3行到第5行<span class="pl-pds">'</span></span> sed -n <span class="pl-s"><span class="pl-pds">'</span>n1,n2p<span class="pl-pds">'</span></span> 文件名  <span class="pl-c"><span class="pl-c">#</span>n1和n2代表的是两个数字</span>
+<span class="pl-s"><span class="pl-pds">'</span>查看一个文件的第3行到第5行<span class="pl-pds">'</span></span> head -5 文件名 <span class="pl-k">|</span> tail -3
+<span class="pl-s"><span class="pl-pds">'</span>查看文件的第5行<span class="pl-pds">'</span></span> sed -n <span class="pl-s"><span class="pl-pds">'</span>5p<span class="pl-pds">'</span></span> 文件名</pre></div>
 <h2>8.4vi/vim编辑器</h2>
 <ul>
 <li>vi编辑器模式：命令模式，末行模式，编辑模式</li>
@@ -1084,48 +1086,46 @@ nl 文件名 #带行号显示文件的所有内容
 <li>编辑模式--&gt;按键盘左上角<code class="notranslate">ESC</code>--&gt;命令模式</li>
 <li>命令模式下--&gt;输入<code class="notranslate">:</code>--&gt;末行模式：保存退出、强制退出、保存不退出</li>
 </ul>
-<pre lang="shell" class="notranslate"><code class="notranslate">vi 文件名
-'打开一个文件，并把光标定位到161行' vi +161 文件名
+<div class="highlight highlight-source-shell"><pre class="notranslate">vi 文件名
+<span class="pl-s"><span class="pl-pds">'</span>打开一个文件，并把光标定位到161行<span class="pl-pds">'</span></span> vi +161 文件名
 
-'命令模式下的命令'
-大写G '跳转到行尾'
-小写gg '跳转到行首'
-ngg 'n代表任意数字,第n行行首'
-yy '复制一行'
-nyy '复制n行'
-p '粘贴'
-dd '删除'
-ndd '删除n行'
-大写ZZ '保存并退出'
+<span class="pl-s"><span class="pl-pds">'</span>命令模式下的命令<span class="pl-pds">'</span></span>
+大写G <span class="pl-s"><span class="pl-pds">'</span>跳转到行尾<span class="pl-pds">'</span></span>
+小写gg <span class="pl-s"><span class="pl-pds">'</span>跳转到行首<span class="pl-pds">'</span></span>
+ngg <span class="pl-s"><span class="pl-pds">'</span>n代表任意数字,第n行行首<span class="pl-pds">'</span></span>
+yy <span class="pl-s"><span class="pl-pds">'</span>复制一行<span class="pl-pds">'</span></span>
+nyy <span class="pl-s"><span class="pl-pds">'</span>复制n行<span class="pl-pds">'</span></span>
+p <span class="pl-s"><span class="pl-pds">'</span>粘贴<span class="pl-pds">'</span></span>
+dd <span class="pl-s"><span class="pl-pds">'</span>删除<span class="pl-pds">'</span></span>
+ndd <span class="pl-s"><span class="pl-pds">'</span>删除n行<span class="pl-pds">'</span></span>
+大写ZZ <span class="pl-s"><span class="pl-pds">'</span>保存并退出<span class="pl-pds">'</span></span>
 
-'末行模式下的命令'
-:set number '显示行号'
-:set nonumber '取消行号'
-:wq '保存退出'
-:q! '强制退出'
-:wq! '保存并强制退出'
-:1,$s/旧字符/新字符/g '把第一行到最后一行的所有的旧字符修改为新字符'
-:1,3s/旧字符/新字符/g '把第一行到第三行的所有的旧字符修改为新字符'
-:4s/旧字符/新字符/g '把第四行的所有的旧字符修改为新字符'
-:1,$s/旧字符/新字符 '把第一行到最后一行的第一个旧字符修改为新字符'
-</code></pre>
+<span class="pl-s"><span class="pl-pds">'</span>末行模式下的命令<span class="pl-pds">'</span></span>
+:set number <span class="pl-s"><span class="pl-pds">'</span>显示行号<span class="pl-pds">'</span></span>
+:set nonumber <span class="pl-s"><span class="pl-pds">'</span>取消行号<span class="pl-pds">'</span></span>
+:wq <span class="pl-s"><span class="pl-pds">'</span>保存退出<span class="pl-pds">'</span></span>
+:q<span class="pl-k">!</span> <span class="pl-s"><span class="pl-pds">'</span>强制退出<span class="pl-pds">'</span></span>
+:wq<span class="pl-k">!</span> <span class="pl-s"><span class="pl-pds">'</span>保存并强制退出<span class="pl-pds">'</span></span>
+:1,<span class="pl-smi">$s</span>/旧字符/新字符/g <span class="pl-s"><span class="pl-pds">'</span>把第一行到最后一行的所有的旧字符修改为新字符<span class="pl-pds">'</span></span>
+:1,3s/旧字符/新字符/g <span class="pl-s"><span class="pl-pds">'</span>把第一行到第三行的所有的旧字符修改为新字符<span class="pl-pds">'</span></span>
+:4s/旧字符/新字符/g <span class="pl-s"><span class="pl-pds">'</span>把第四行的所有的旧字符修改为新字符<span class="pl-pds">'</span></span>
+:1,<span class="pl-smi">$s</span>/旧字符/新字符 <span class="pl-s"><span class="pl-pds">'</span>把第一行到最后一行的第一个旧字符修改为新字符<span class="pl-pds">'</span></span></pre></div>
 <h2>8.5打包压缩相关的命令</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">#打包：可以对文件也可以对文件夹进行打包
-tar -cvf T.tar 要打包的文件/文件夹 'c：create f：file v：verbose 过程' '打包'
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>打包：可以对文件也可以对文件夹进行打包</span>
+tar -cvf T.tar 要打包的文件/文件夹 <span class="pl-s"><span class="pl-pds">'</span>c：create f：file v：verbose 过程<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>打包<span class="pl-pds">'</span></span>
 
-#压缩：压缩只能对文件，对包进行压缩
-gzip 文件 '创建压缩包'
-gunzip xxx.gz '默认解压到当前目录'
-gzip -d xxx.gz '解压缩，解压成功后删除xxx.gz文件'
-zip 文件 '创建压缩包'
-unzip xxx.zip '默认解压到当前目录'
+<span class="pl-c"><span class="pl-c">#</span>压缩：压缩只能对文件，对包进行压缩</span>
+gzip 文件 <span class="pl-s"><span class="pl-pds">'</span>创建压缩包<span class="pl-pds">'</span></span>
+gunzip xxx.gz <span class="pl-s"><span class="pl-pds">'</span>默认解压到当前目录<span class="pl-pds">'</span></span>
+gzip -d xxx.gz <span class="pl-s"><span class="pl-pds">'</span>解压缩，解压成功后删除xxx.gz文件<span class="pl-pds">'</span></span>
+zip 文件 <span class="pl-s"><span class="pl-pds">'</span>创建压缩包<span class="pl-pds">'</span></span>
+unzip xxx.zip <span class="pl-s"><span class="pl-pds">'</span>默认解压到当前目录<span class="pl-pds">'</span></span>
 
-#打包压缩：
-tar -czvf T.tar.gz 文件 文件夹1 文件2 文件夹2 'z：gzip 压缩' '创建压缩包'
-tar -xzvf T.tar.gz '默认解压到当前目录'
-tar -tzvf T.tar.gz '查看压缩文件'
-tar -xzvf T.tar.gz -大写C 目录 '解压缩到指定的目录'
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span>打包压缩：</span>
+tar -czvf T.tar.gz 文件 文件夹1 文件2 文件夹2 <span class="pl-s"><span class="pl-pds">'</span>z：gzip 压缩<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>创建压缩包<span class="pl-pds">'</span></span>
+tar -xzvf T.tar.gz <span class="pl-s"><span class="pl-pds">'</span>默认解压到当前目录<span class="pl-pds">'</span></span>
+tar -tzvf T.tar.gz <span class="pl-s"><span class="pl-pds">'</span>查看压缩文件<span class="pl-pds">'</span></span>
+tar -xzvf T.tar.gz -大写C 目录 <span class="pl-s"><span class="pl-pds">'</span>解压缩到指定的目录<span class="pl-pds">'</span></span></pre></div>
 <h2>8.6进程服务相关的命令</h2>
 <h3>8.6.1程序和进程的区别？</h3>
 <ul>
@@ -1133,19 +1133,18 @@ tar -xzvf T.tar.gz -大写C 目录 '解压缩到指定的目录'
 <li>进程：正在运行的程序(动态的)</li>
 <li>杀进程而不是杀程序</li>
 </ul>
-<pre lang="shell" class="notranslate"><code class="notranslate">'关闭防火墙的命令' systemclt stop firewalld #d代表的是进程，暂时关闭，重启防火墙默认开启
-systemctl restart firewalld #重启防火墙服务
-systemctl disable firewalld #关闭防火墙开机自启
-systemctl enable firewalld #防火墙开机自启(默认开启)
-systemclt start mysqld.service #启动MySQL服务
-systemctl start httpd #启动MySQL服务
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>关闭防火墙的命令<span class="pl-pds">'</span></span> systemclt stop firewalld <span class="pl-c"><span class="pl-c">#</span>d代表的是进程，暂时关闭，重启防火墙默认开启</span>
+systemctl restart firewalld <span class="pl-c"><span class="pl-c">#</span>重启防火墙服务</span>
+systemctl disable firewalld <span class="pl-c"><span class="pl-c">#</span>关闭防火墙开机自启</span>
+systemctl <span class="pl-c1">enable</span> firewalld <span class="pl-c"><span class="pl-c">#</span>防火墙开机自启(默认开启)</span>
+systemclt start mysqld.service <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span>
+systemctl start httpd <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span>
 
-'查看进程' ps -ef | grep tomcat
-| 管道符,分割开两个命令，把前一个命令处理的结果交给后面一个命令继续处理
+<span class="pl-s"><span class="pl-pds">'</span>查看进程<span class="pl-pds">'</span></span> ps -ef <span class="pl-k">|</span> grep tomcat
+<span class="pl-k">|</span> 管道符,分割开两个命令，把前一个命令处理的结果交给后面一个命令继续处理
 grep 过滤查找
 
-'杀进程' kill -9 pid
-</code></pre>
+<span class="pl-s"><span class="pl-pds">'</span>杀进程<span class="pl-pds">'</span></span> <span class="pl-c1">kill</span> -9 pid</pre></div>
 <h2>8.7权限相关的命令</h2>
 <h3>8.7.1用户</h3>
 <p><strong>Linux系统中有两类用户</strong></p>
@@ -1153,30 +1152,27 @@ grep 过滤查找
 <li>一类是管理员用户 root /root [root@localhost opt]# root用户的标识符 #</li>
 <li>一类是普通用户 xiaowang /home [xiaowang@localhost opt]$   普通用户的标识符  $</li>
 </ul>
-<pre lang="shell" class="notranslate"><code class="notranslate">'创建用户' useradd 用户名
-'修改用户密码' passwd 用户名
-'切换用户' su 用户名 '高级别切换到普通用户不需要输入密码，同级别的或者是低级别切换到高级别是需要输入密码'
-'删除用户' userdel 用户名
-'删除用户及相应的信息' userdel -r 用户名
-'用户的信息存放在' /etc/passwd   
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建用户<span class="pl-pds">'</span></span> useradd 用户名
+<span class="pl-s"><span class="pl-pds">'</span>修改用户密码<span class="pl-pds">'</span></span> passwd 用户名
+<span class="pl-s"><span class="pl-pds">'</span>切换用户<span class="pl-pds">'</span></span> su 用户名 <span class="pl-s"><span class="pl-pds">'</span>高级别切换到普通用户不需要输入密码，同级别的或者是低级别切换到高级别是需要输入密码<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>删除用户<span class="pl-pds">'</span></span> userdel 用户名
+<span class="pl-s"><span class="pl-pds">'</span>删除用户及相应的信息<span class="pl-pds">'</span></span> userdel -r 用户名
+<span class="pl-s"><span class="pl-pds">'</span>用户的信息存放在<span class="pl-pds">'</span></span> /etc/passwd   
 				xiaoming:x:1000:1001::/home/xiaoming:/bin/bash
-				用户名:密码:用户id:组ID:用户的家目录:shell环境
-</code></pre>
+				用户名:密码:用户id:组ID:用户的家目录:shell环境</pre></div>
 <h3>8.7.2组</h3>
-<pre lang="shell" class="notranslate"><code class="notranslate">'创建组' groupadd 组名
-'删除组' groupdel 组名 '不能删除有用户的组'
-'组的信息存放在' /etc/group
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-s"><span class="pl-pds">'</span>创建组<span class="pl-pds">'</span></span> groupadd 组名
+<span class="pl-s"><span class="pl-pds">'</span>删除组<span class="pl-pds">'</span></span> groupdel 组名 <span class="pl-s"><span class="pl-pds">'</span>不能删除有用户的组<span class="pl-pds">'</span></span>
+<span class="pl-s"><span class="pl-pds">'</span>组的信息存放在<span class="pl-pds">'</span></span> /etc/group
 			  xiaoming:x:1001:
-			  组名：组密码：组ID
-</code></pre>
+			  组名：组密码：组ID</pre></div>
 <p><strong>Linux系统的权限管理机制：组</strong></p>
 <ul>
 <li>Linux系统中的用户不能独立于组而存在，每一个用户都有一个主属组；权限是通过组来管理，赋予权限给某一个组，该组的用户就拥有了相应的权限，如果取消了该组响应的权限，该组的用户就取消了用户的权限</li>
 <li>创建一个组的时候，如果你没有给这个用户指定组，系统会自动的创建一个和这个用户名同名的组，然后把这个用户添加到这个组中</li>
 </ul>
-<pre lang="shell" class="notranslate"><code class="notranslate"># 创建一个用户并确定属组
-useradd -g 组id 用户名
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span> 创建一个用户并确定属组</span>
+useradd -g 组id 用户名</pre></div>
 <h3>8.7.3权限</h3>
 <ul>
 <li>Linux系统是一个多用户多任务的操作系统，安全，对每一个文件或者文件夹都管理了权限</li>
@@ -1191,53 +1187,47 @@ useradd -g 组id 用户名
 </ul>
 <p><code class="notranslate">rwx-r-x-r-x</code>：所有者的权限--所属组的权限--其他组的权限<br>
 <strong>对文件而言</strong></p>
-<pre lang="shell" class="notranslate"><code class="notranslate">读：查看 (cat head tail)
-写：编辑 (echo '' &gt; 文件)
-执行：可以运行文件 (./zbox start、sh startup.sh)
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">读：查看 (cat head tail)
+写：编辑 (echo <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span> <span class="pl-k">&gt;</span> 文件)
+执行：可以运行文件 (./zbox start、sh startup.sh)</pre></div>
 <p><strong>对文件夹而言</strong></p>
-<pre lang="shell" class="notranslate"><code class="notranslate">读:读取查看文件夹中的内容 ls ls-a
+<div class="highlight highlight-source-shell"><pre class="notranslate">读:读取查看文件夹中的内容 ls ls-a
 写：可以在文件夹中创建文件夹创建文件复制剪切
-执行:进入这个文件文件 cd
-</code></pre>
+执行:进入这个文件文件 <span class="pl-c1">cd</span></pre></div>
 <h3>8.7.4修改权限</h3>
 <p><strong>权限的数字： <code class="notranslate">r 读 4</code> <code class="notranslate">w  写  2</code> <code class="notranslate">x  执行 1</code></strong></p>
 <h4>方法一</h4>
 <p><strong>数字法修改权限</strong>：4+2+1</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">第一个数字代表的是所有者的权限，第二个数字代表的是所在组的权限，第三个数字是其他组的权限
-chmod 777 文件名 '给所有用户赋予读写执行权限'
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">第一个数字代表的是所有者的权限，第二个数字代表的是所在组的权限，第三个数字是其他组的权限
+chmod 777 文件名 <span class="pl-s"><span class="pl-pds">'</span>给所有用户赋予读写执行权限<span class="pl-pds">'</span></span></pre></div>
 <h4>方法二</h4>
 <p>通过字母来修改权限   u   所有者   g 所在组     o 其他组    a（all）所有用户</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">chmod u=rwx 1.txt
+<div class="highlight highlight-source-shell"><pre class="notranslate">chmod u=rwx 1.txt
 chmod u-r 1.txt
-chmod a=r 1.txt
-</code></pre>
+chmod a=r 1.txt</pre></div>
 <h2>8.8其他的常用命令</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">cd 'change directory' '切换目录'
-cd .. '切换到上一级目录'
-cd ../.. '切换到上上一级目录'
-cd / '切换到根目录'
-cd ~ '切换到家目录'
-cd - '切换到上次目录'
-. '代表的是当前目录'
-.. '代表的是上级目录'
-ls 'list' '列出所有文件'
-ls -a '显示所有的文件' #all: 所有的文件的包括了隐藏
-ls -l '显示文件的详细信息'
-ls -al '显示所有文件的详细信息'
-pwd 'print work directory' '打印当前工作目录'
-tree '树形结构展示当前目录下的所有文件或文件夹'
-clear '清空终端屏幕'
-man 命令 '查看帮忙命令' = 命令 --help
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c1">cd</span> <span class="pl-s"><span class="pl-pds">'</span>change directory<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>切换目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> .. <span class="pl-s"><span class="pl-pds">'</span>切换到上一级目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> ../.. <span class="pl-s"><span class="pl-pds">'</span>切换到上上一级目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> / <span class="pl-s"><span class="pl-pds">'</span>切换到根目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> <span class="pl-k">~</span> <span class="pl-s"><span class="pl-pds">'</span>切换到家目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">cd</span> - <span class="pl-s"><span class="pl-pds">'</span>切换到上次目录<span class="pl-pds">'</span></span>
+<span class="pl-c1">.</span> <span class="pl-s"><span class="pl-pds">'</span>代表的是当前目录<span class="pl-pds">'</span></span>
+.. <span class="pl-s"><span class="pl-pds">'</span>代表的是上级目录<span class="pl-pds">'</span></span>
+ls <span class="pl-s"><span class="pl-pds">'</span>list<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>列出所有文件<span class="pl-pds">'</span></span>
+ls -a <span class="pl-s"><span class="pl-pds">'</span>显示所有的文件<span class="pl-pds">'</span></span> <span class="pl-c"><span class="pl-c">#</span>all: 所有的文件的包括了隐藏</span>
+ls -l <span class="pl-s"><span class="pl-pds">'</span>显示文件的详细信息<span class="pl-pds">'</span></span>
+ls -al <span class="pl-s"><span class="pl-pds">'</span>显示所有文件的详细信息<span class="pl-pds">'</span></span>
+<span class="pl-c1">pwd</span> <span class="pl-s"><span class="pl-pds">'</span>print work directory<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>打印当前工作目录<span class="pl-pds">'</span></span>
+tree <span class="pl-s"><span class="pl-pds">'</span>树形结构展示当前目录下的所有文件或文件夹<span class="pl-pds">'</span></span>
+clear <span class="pl-s"><span class="pl-pds">'</span>清空终端屏幕<span class="pl-pds">'</span></span>
+man 命令 <span class="pl-s"><span class="pl-pds">'</span>查看帮忙命令<span class="pl-pds">'</span></span> = 命令 --help</pre></div>
 <h2>8.9常见文件后缀</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">.exe  ---可执行
+<div class="highlight highlight-source-shell"><pre class="notranslate">.exe  ---可执行
 .iso  ---镜像文件
 .bat  ---windoes中可执行文件
 .sh   ---Linux中可执行文件
-.xml  ---配置文件
-</code></pre>
+.xml  ---配置文件</pre></div>
 <h1>9.杂</h1>
 <h2>9.1项目组成员</h2>
 <ol>
@@ -1326,8 +1316,7 @@ cd   /data/anr</li>
 <h1>10.DD命令</h1>
 <p><code class="notranslate">dd</code>命令是Unix和Linux系统中一个非常强大的工具，用于转换和复制文件。以下是如何使用<code class="notranslate">dd</code>命令的一些基本方法：</p>
 <h2>10.1基本语法</h2>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=&lt;输入文件&gt; of=&lt;输出文件&gt; [选项]
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=<span class="pl-k">&lt;</span>输入文件<span class="pl-k">&gt;</span> of=<span class="pl-k">&lt;</span>输出文件<span class="pl-k">&gt;</span> [选项]</pre></div>
 <ul>
 <li><code class="notranslate">if</code>：指定输入文件名或设备名。默认为标准输入(stdin)。</li>
 <li><code class="notranslate">of</code>：指定输出文件名或设备名。默认为标准输出(stdout)。</li>
@@ -1346,33 +1335,27 @@ cd   /data/anr</li>
 <ul>
 <li>
 <p><strong>复制文件</strong>：将一个文件复制到另一个文件。</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=/path/to/source_file of=/path/to/destination_file
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/path/to/source_file of=/path/to/destination_file</pre></div>
 </li>
 <li>
 <p><strong>备份磁盘分区</strong>：将一个磁盘分区备份到一个镜像文件。</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=/dev/sda1 of=/path/to/backup.img
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/dev/sda1 of=/path/to/backup.img</pre></div>
 </li>
 <li>
 <p><strong>恢复磁盘分区</strong>：将镜像文件恢复到磁盘分区。</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=/path/to/backup.img of=/dev/sda1
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/path/to/backup.img of=/dev/sda1</pre></div>
 </li>
 <li>
 <p><strong>创建镜像文件</strong>：创建一个指定大小的镜像文件，内容全为零。</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=/dev/zero of=imagefile.img bs=1G count=10
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/dev/zero of=imagefile.img bs=1G count=10</pre></div>
 </li>
 <li>
 <p><strong>制作启动盘</strong>：将ISO文件写入U盘，制作启动盘。</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=/path/to/ubuntu.iso of=/dev/sdb bs=4M status=progress
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/path/to/ubuntu.iso of=/dev/sdb bs=4M status=progress</pre></div>
 </li>
 <li>
 <p><strong>擦除硬盘数据</strong>：使用随机数据覆盖整个硬盘，确保数据无法恢复。</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">dd if=/dev/urandom of=/dev/sda bs=4M
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">dd if=/dev/urandom of=/dev/sda bs=4M</pre></div>
 </li>
 </ul>
 <div class="markdown-alert markdown-alert-warning"><p class="markdown-alert-title"><svg class="octicon octicon-alert mr-2" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
@@ -1405,7 +1388,7 @@ if("08/20/2024"!=""){
 </script></div>
 </body>
 <script>
-var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z'};
+var IconList={'sun': 'M8 10.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zM8 12a4 4 0 100-8 4 4 0 000 8zM8 0a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0V.75A.75.75 0 018 0zm0 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 018 13zM2.343 2.343a.75.75 0 011.061 0l1.06 1.061a.75.75 0 01-1.06 1.06l-1.06-1.06a.75.75 0 010-1.06zm9.193 9.193a.75.75 0 011.06 0l1.061 1.06a.75.75 0 01-1.06 1.061l-1.061-1.06a.75.75 0 010-1.061zM16 8a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0116 8zM3 8a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h1.5A.75.75 0 013 8zm10.657-5.657a.75.75 0 010 1.061l-1.061 1.06a.75.75 0 11-1.06-1.06l1.06-1.06a.75.75 0 011.06 0zm-9.193 9.193a.75.75 0 010 1.06l-1.06 1.061a.75.75 0 11-1.061-1.06l1.06-1.061a.75.75 0 011.061 0z', 'moon': 'M9.598 1.591a.75.75 0 01.785-.175 7 7 0 11-8.967 8.967.75.75 0 01.961-.96 5.5 5.5 0 007.046-7.046.75.75 0 01.175-.786zm1.616 1.945a7 7 0 01-7.678 7.678 5.5 5.5 0 107.678-7.678z', 'sync': 'M1.705 8.005a.75.75 0 0 1 .834.656 5.5 5.5 0 0 0 9.592 2.97l-1.204-1.204a.25.25 0 0 1 .177-.427h3.646a.25.25 0 0 1 .25.25v3.646a.25.25 0 0 1-.427.177l-1.38-1.38A7.002 7.002 0 0 1 1.05 8.84a.75.75 0 0 1 .656-.834ZM8 2.5a5.487 5.487 0 0 0-4.131 1.869l1.204 1.204A.25.25 0 0 1 4.896 6H1.25A.25.25 0 0 1 1 5.75V2.104a.25.25 0 0 1 .427-.177l1.38 1.38A7.002 7.002 0 0 1 14.95 7.16a.75.75 0 0 1-1.49.178A5.5 5.5 0 0 0 8 2.5Z', 'home': 'M6.906.664a1.749 1.749 0 0 1 2.187 0l5.25 4.2c.415.332.657.835.657 1.367v7.019A1.75 1.75 0 0 1 13.25 15h-3.5a.75.75 0 0 1-.75-.75V9H7v5.25a.75.75 0 0 1-.75.75h-3.5A1.75 1.75 0 0 1 1 13.25V6.23c0-.531.242-1.034.657-1.366l5.25-4.2Zm1.25 1.171a.25.25 0 0 0-.312 0l-5.25 4.2a.25.25 0 0 0-.094.196v7.019c0 .138.112.25.25.25H5.5V8.25a.75.75 0 0 1 .75-.75h3.5a.75.75 0 0 1 .75.75v5.25h2.75a.25.25 0 0 0 .25-.25V6.23a.25.25 0 0 0-.094-.195Z', 'github': 'M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z', 'copy': 'M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z', 'check': 'M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z'};
 var utterancesLoad=0;
 
 let themeSettings={
@@ -1478,7 +1461,70 @@ function iFrameLoading(){
     }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+    const createClipboardHTML = (codeContent, additionalClasses = '') => `
+        <pre class="notranslate"><code class="notranslate">${codeContent}</code></pre>
+        <div class="clipboard-container position-absolute right-0 top-0 ${additionalClasses}">
+            <clipboard-copy class="ClipboardButton btn m-2 p-0" role="button" style="display: inherit;">
+                <svg height="16" width="16" class="octicon octicon-copy m-2"><path d="${IconList["copy"]}"></path></svg>
+                <svg height="16" width="16" class="octicon octicon-check color-fg-success m-2 d-none"><path d="${IconList["check"]}"></path></svg>
+            </clipboard-copy>
+            <div class="copy-feedback">Copied!</div>
+        </div>
+    `;
 
+    const handleCodeElements = (selector = '') => {
+        document.querySelectorAll(selector).forEach(codeElement => {
+            const codeContent = codeElement.innerHTML;
+            const newStructure = document.createElement('div');
+            newStructure.className = 'snippet-clipboard-content position-relative overflow-auto';
+            newStructure.innerHTML = createClipboardHTML(codeContent);
+
+            const parentElement = codeElement.parentElement;
+            if (selector.includes('highlight')) {
+                parentElement.insertBefore(newStructure, codeElement.nextSibling);
+                parentElement.removeChild(codeElement);
+            } else {
+                parentElement.parentElement.replaceChild(newStructure, parentElement);
+            }
+        });
+    };
+
+    handleCodeElements('pre.notranslate > code.notranslate');
+    handleCodeElements('div.highlight > pre.notranslate');
+
+    let currentFeedback = null;
+    document.querySelectorAll('clipboard-copy').forEach(copyButton => {
+        copyButton.addEventListener('click', () => {
+            const codeContent = copyButton.closest('.snippet-clipboard-content').innerText;
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = codeContent;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextArea);
+
+            const copyIcon = copyButton.querySelector('.octicon-copy');
+            const checkIcon = copyButton.querySelector('.octicon-check');
+            const copyFeedback = copyButton.nextElementSibling;
+
+            if (currentFeedback && currentFeedback !== copyFeedback) {currentFeedback.style.display = 'none';}
+            currentFeedback = copyFeedback;
+
+            copyIcon.classList.add('d-none');
+            checkIcon.classList.remove('d-none');
+            copyFeedback.style.display = 'block';
+            copyButton.style.borderColor = 'var(--color-success-fg)';
+
+            setTimeout(() => {
+                copyIcon.classList.remove('d-none');
+                checkIcon.classList.add('d-none');
+                copyFeedback.style.display = 'none';
+                copyButton.style.borderColor = '';
+            }, 2000);
+        });
+    });
+});
 
 </script>
 <script src='https://blog.meekdai.com/Gmeek/plugins/GmeekTOC.js'></script><script src='https://blog.meekdai.com/Gmeek/plugins/lightbox.js'></script>
