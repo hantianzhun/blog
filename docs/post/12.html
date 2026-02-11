@@ -519,7 +519,7 @@ FLUSH PRIVILEGES;
 <meta property="og:url" content="https://hantianzhun.github.io/blog/post/12.html">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/118879111?v=4">
 <title>Linux部署</title>
-
+<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
 
 
 </head>
@@ -601,8 +601,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </li>
 <li>
 <p>解压一键安装包</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">tar -xzvf ZenTaoxxx.tar.gz -C /opt
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">tar -xzvf ZenTaoxxx.tar.gz -C /opt</pre></div>
 </li>
 </ol>
 <h3>2.2在线安装</h3>
@@ -612,13 +611,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </li>
 <li>
 <p>使用wget进行下载(复制指南的)</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">wget https://www.zentao.net/dl/zentao/18.5/ZenTaoPMS.18.5.zbox_64.tar.gz
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">wget https://www.zentao.net/dl/zentao/18.5/ZenTaoPMS.18.5.zbox_64.tar.gz</pre></div>
 </li>
 <li>
 <p>解压一键安装包</p>
-<pre lang="shell" class="notranslate"><code class="notranslate">tar -xzvf ZenTaoxxx.tar.gz -C /opt
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">tar -xzvf ZenTaoxxx.tar.gz -C /opt</pre></div>
 </li>
 </ol>
 <h2>3.启动禅道</h2>
@@ -628,13 +625,12 @@ systemctl stop firewalld (暂时关闭)<br>
 systemctl disable firewalld (关闭开机自启动)</p>
 </div>
 <h3>3.1运行zbox</h3>
-<pre lang="shell" class="notranslate"><code class="notranslate">[root@localhost ~]# cd /opt
-[root@localhost opt]# ls
+<div class="highlight highlight-source-shell"><pre class="notranslate">[root@localhost <span class="pl-k">~</span>]<span class="pl-c"><span class="pl-c">#</span> cd /opt</span>
+[root@localhost opt]<span class="pl-c"><span class="pl-c">#</span> ls</span>
 btop  zbox
-[root@localhost opt]# cd zbox/
-[root@localhost zbox]# ./zbox start
- 16:03:17.91 INFO  ==&gt; Starting service with Apache port=80, MySQL port=3306, Redis port=6379...
-</code></pre>
+[root@localhost opt]<span class="pl-c"><span class="pl-c">#</span> cd zbox/</span>
+[root@localhost zbox]<span class="pl-c"><span class="pl-c">#</span> ./zbox start</span>
+ 16:03:17.91 INFO  ==<span class="pl-k">&gt;</span> Starting service with Apache port=80, MySQL port=3306, Redis port=6379...</pre></div>
 <h2>4.启动问题</h2>
 <h3>4.1端口占用：没有关程序(./zbox stop)导致</h3>
 <ul>
@@ -645,15 +641,14 @@ btop  zbox
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/c121282b4007fc938eb0b1376c095dac78f099a4f8efd53de413244e076aaa1b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30322e706e67"><img src="https://camo.githubusercontent.com/c121282b4007fc938eb0b1376c095dac78f099a4f8efd53de413244e076aaa1b/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30322e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.02.png" style="max-width: 100%;"></a></p>
 <h2>5.禅道的项目结构(集成项目软件包):php+apache+mysql</h2>
 <h3>5.1zbox文件夹下的目录介绍</h3>
-<pre lang="shell" class="notranslate"><code class="notranslate">app：存放的是开发人员写的代码
+<div class="highlight highlight-source-shell"><pre class="notranslate">app：存放的是开发人员写的代码
 bin：可执行文件的命令
 etc：配置文件  端口号修改等等
 tmp：临时文件
 auth：作者相关文件
 data：数据相关的文件
 logs：日志文件
-run：运行程序相关文件
-</code></pre>
+run：运行程序相关文件</pre></div>
 <h1>2.JavaWeb项目(Tomcat)</h1>
 <ul>
 <li>组成 ：案例依赖：编程语言(java)  jdk +服务器（tomcat）+数据库（mysql）</li>
@@ -716,54 +711,48 @@ kill -9 进程号
 <li>修改apache-tomcat-xx.xx.xx目录下的conf/server.xml文件</li>
 </ul>
 <h5>2.2.2.3.1部分修改</h5>
-<pre lang="shell" class="notranslate"><code class="notranslate">1.# vim ./apache-tomcat-xx.xx.xx/conf/server.xml
-2.# 使用vim进行搜索	/8080 并按回车（Enter）
-3.# 修改未被注释为需要的端口号（不可与被占用的端口号一致）
-4.# 保存退出
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">1.<span class="pl-c"><span class="pl-c">#</span> vim ./apache-tomcat-xx.xx.xx/conf/server.xml</span>
+2.<span class="pl-c"><span class="pl-c">#</span> 使用vim进行搜索	/8080 并按回车（Enter）</span>
+3.<span class="pl-c"><span class="pl-c">#</span> 修改未被注释为需要的端口号（不可与被占用的端口号一致）</span>
+4.<span class="pl-c"><span class="pl-c">#</span> 保存退出</span></pre></div>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/6120816b6659f982834b888b9f258738183609c68cfb645c269ab1c8b99b9d3a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30332e706e67"><img src="https://camo.githubusercontent.com/6120816b6659f982834b888b9f258738183609c68cfb645c269ab1c8b99b9d3a/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30332e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.03.png" style="max-width: 100%;"></a></p>
 <h5>2.2.2.3.2全部修改</h5>
-<pre lang="shell" class="notranslate"><code class="notranslate">1.# vim ./apache-tomcat-xx.xx.xx/conf/server.xml
-2.# 全部修改需要的端口号（不可与被占用的端口号一致）
-	:%s/8080/9090/g '%'是整个文件，其他同下
-	:1,$s/8080/9090/g ':'是进入命令模式1,$表示从第1行到$代表最后一行,"s"是substitute的缩写，表示替换操作,"/8080"是要被替换的文本,"g":替换每一行中所有匹配的8080
-3.#保存退出
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">1.<span class="pl-c"><span class="pl-c">#</span> vim ./apache-tomcat-xx.xx.xx/conf/server.xml</span>
+2.<span class="pl-c"><span class="pl-c">#</span> 全部修改需要的端口号（不可与被占用的端口号一致）</span>
+	:%s/8080/9090/g <span class="pl-s"><span class="pl-pds">'</span>%<span class="pl-pds">'</span></span>是整个文件，其他同下
+	:1,<span class="pl-smi">$s</span>/8080/9090/g <span class="pl-s"><span class="pl-pds">'</span>:<span class="pl-pds">'</span></span>是进入命令模式1,$表示从第1行到$代表最后一行,<span class="pl-s"><span class="pl-pds">"</span>s<span class="pl-pds">"</span></span>是substitute的缩写，表示替换操作,<span class="pl-s"><span class="pl-pds">"</span>/8080<span class="pl-pds">"</span></span>是要被替换的文本,<span class="pl-s"><span class="pl-pds">"</span>g<span class="pl-pds">"</span></span>:替换每一行中所有匹配的8080
+3.<span class="pl-c"><span class="pl-c">#</span>保存退出</span></pre></div>
 <h2>2.3安装并运行数据库</h2>
 <p><strong>示例：Centos7安装MySQL_5.6.51</strong></p>
 <h3>2.3.1安装MySQL</h3>
-<pre lang="shell" class="notranslate"><code class="notranslate">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm #获取MySQL5的yum源
-rpm -ivh mysql-community-release-el7-5.noarch.rpm #安装MySQL5的yum源
-'安装数据库' yum -y install mysql-server
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm <span class="pl-c"><span class="pl-c">#</span>获取MySQL5的yum源</span>
+rpm -ivh mysql-community-release-el7-5.noarch.rpm <span class="pl-c"><span class="pl-c">#</span>安装MySQL5的yum源</span>
+<span class="pl-s"><span class="pl-pds">'</span>安装数据库<span class="pl-pds">'</span></span> yum -y install mysql-server</pre></div>
 <h3>2.3.2运行数据库</h3>
-<pre lang="shell" class="notranslate"><code class="notranslate">systemctl start mysqld #启动MySQL服务
-</code></pre>
+<div class="highlight highlight-source-shell"><pre class="notranslate">systemctl start mysqld <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span></pre></div>
 <h4>2.3.2.1MySQL无法启动</h4>
-<pre lang="shell" class="notranslate"><code class="notranslate">#解决办法一
-ps -ef | grep mysql #筛选出包含MySQL字段的进程
-netstat -ano | grep 3306 #筛选出使用3306端口的进程
-kill -9 pid #强制关闭进程
-systemctl start mysqld #启动MySQL服务
+<div class="highlight highlight-source-shell"><pre class="notranslate"><span class="pl-c"><span class="pl-c">#</span>解决办法一</span>
+ps -ef <span class="pl-k">|</span> grep mysql <span class="pl-c"><span class="pl-c">#</span>筛选出包含MySQL字段的进程</span>
+netstat -ano <span class="pl-k">|</span> grep 3306 <span class="pl-c"><span class="pl-c">#</span>筛选出使用3306端口的进程</span>
+<span class="pl-c1">kill</span> -9 pid <span class="pl-c"><span class="pl-c">#</span>强制关闭进程</span>
+systemctl start mysqld <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span>
 
-#解决办法二
-systemctl stop mysqld #关闭MySQL服务
-systemctl start mysqld #启动MySQL服务
+<span class="pl-c"><span class="pl-c">#</span>解决办法二</span>
+systemctl stop mysqld <span class="pl-c"><span class="pl-c">#</span>关闭MySQL服务</span>
+systemctl start mysqld <span class="pl-c"><span class="pl-c">#</span>启动MySQL服务</span>
 
-#解决办法三---&gt;最好使用前两种
-reboot #重启服务器，MySQL默认开机自启
-systemctl status mysqld #查看MySQL服务状态
-</code></pre>
+<span class="pl-c"><span class="pl-c">#</span>解决办法三---&gt;最好使用前两种</span>
+reboot <span class="pl-c"><span class="pl-c">#</span>重启服务器，MySQL默认开机自启</span>
+systemctl status mysqld <span class="pl-c"><span class="pl-c">#</span>查看MySQL服务状态</span></pre></div>
 <h3>2.3.2赋予权限并设置密码</h3>
-<pre lang="sql" class="notranslate"><code class="notranslate">mysql -u root -p #本机连接MySQL
-show databases; #查看数据库
-use mysql; #使用mysql数据库
-select user,host,password from user; #查看数据库的用户名、host和密码
-# 新建root用户，密码为123456，允许远程连接，赋予全部权限
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
-# 刷新权限
-FLUSH PRIVILEGES;
-</code></pre>
+<div class="highlight highlight-source-sql"><pre class="notranslate">mysql <span class="pl-k">-</span>u root <span class="pl-k">-</span>p <span class="pl-c"><span class="pl-c">#</span>本机连接MySQL</span>
+show databases; <span class="pl-c"><span class="pl-c">#</span>查看数据库</span>
+use mysql; <span class="pl-c"><span class="pl-c">#</span>使用mysql数据库</span>
+<span class="pl-k">select</span> user,host,password <span class="pl-k">from</span> user; <span class="pl-c"><span class="pl-c">#</span>查看数据库的用户名、host和密码</span>
+<span class="pl-c"><span class="pl-c">#</span> 新建root用户，密码为123456，允许远程连接，赋予全部权限</span>
+<span class="pl-k">GRANT</span> ALL PRIVILEGES <span class="pl-k">ON</span> <span class="pl-k">*</span>.<span class="pl-k">*</span> TO <span class="pl-s"><span class="pl-pds">'</span>root<span class="pl-pds">'</span></span>@<span class="pl-s"><span class="pl-pds">'</span>%<span class="pl-pds">'</span></span> IDENTIFIED BY <span class="pl-s"><span class="pl-pds">'</span>123456<span class="pl-pds">'</span></span> WITH <span class="pl-k">GRANT</span> OPTION;
+<span class="pl-c"><span class="pl-c">#</span> 刷新权限</span>
+FLUSH PRIVILEGES;</pre></div>
 <h2>2.4远程连接数据库</h2>
 <p><strong>Navicat for MySQL v10为例</strong></p>
 <p><a target="_blank" rel="noopener noreferrer nofollow" href="https://camo.githubusercontent.com/70405729f6994559b27f3af82d06d227e53742f82d3ea695ae5d6ef6e23d0209/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30342e706e67"><img src="https://camo.githubusercontent.com/70405729f6994559b27f3af82d06d227e53742f82d3ea695ae5d6ef6e23d0209/68747470733a2f2f68616e7469616e7a68756e2e6769746875622e696f2f626c6f672f69737375657331322e30342e706e67" alt="" data-canonical-src="https://hantianzhun.github.io/blog/issues12.04.png" style="max-width: 100%;"></a></p>
